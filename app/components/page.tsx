@@ -13,16 +13,145 @@ import { Switch } from "@/components/ui/switch"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter } from "@/components/ui/sheet"
+import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable"
+import { Drawer, DrawerTrigger, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose } from "@/components/ui/drawer"
 
 type ComponentItem = {
   name: string;
-  category: "Core/General" | "Forms" | "Data Display" | "Feedback";
+  category: "Core/General" | "Forms" | "Data Display" | "Feedback" | "Layout/Structure";
   description: string;
   preview: React.ReactNode;
   code: string;
 };
 
 const componentsList: ComponentItem[] = [
+  {
+    name: "Accordion",
+    category: "Layout/Structure",
+    description: "A vertically stacked set of interactive headings that each reveal a section of content.",
+    preview: (
+      <div className="w-full max-w-sm bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border text-black shadow-[var(--shadow-comic)]">
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="item-1">
+            <AccordionTrigger>Is it accessible?</AccordionTrigger>
+            <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-2">
+            <AccordionTrigger>Is it styled?</AccordionTrigger>
+            <AccordionContent>Yes. It comes with default styles that matches the other components&apos; aesthetic.</AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-3" className="border-b-0">
+            <AccordionTrigger>Is it animated?</AccordionTrigger>
+            <AccordionContent>Yes. It&apos;s animated by default, but you can disable it if you prefer.</AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </div>
+    ),
+    code: "<Accordion type=\"single\" collapsible>\n  <AccordionItem value=\"item-1\">\n    <AccordionTrigger>Is it accessible?</AccordionTrigger>\n    <AccordionContent>Yes!</AccordionContent>\n  </AccordionItem>\n</Accordion>"
+  },
+  {
+    name: "Tabs",
+    category: "Layout/Structure",
+    description: "A set of layered sections of content, displayed one at a time.",
+    preview: (
+      <div className="w-full max-w-sm bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border text-black shadow-[var(--shadow-comic)]">
+        <Tabs defaultValue="account" className="w-full">
+          <TabsList className="w-full flex mb-2">
+            <TabsTrigger value="account" className="flex-1">Account</TabsTrigger>
+            <TabsTrigger value="password" className="flex-1">Password</TabsTrigger>
+          </TabsList>
+          <TabsContent value="account" className="p-4 border-[3px] border-border rounded-[var(--radius-comic)]">
+            <p className="font-bold">Make changes to your account here.</p>
+          </TabsContent>
+          <TabsContent value="password" className="p-4 border-[3px] border-border rounded-[var(--radius-comic)]">
+            <p className="font-bold">Change your password here.</p>
+          </TabsContent>
+        </Tabs>
+      </div>
+    ),
+    code: "<Tabs defaultValue=\"account\">\n  <TabsList>\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Content</TabsContent>\n</Tabs>"
+  },
+  {
+    name: "Sheet / Side Panel",
+    category: "Layout/Structure",
+    description: "Extends from the edges of the window to display mobile panels, drawers, or dialogs.",
+    preview: (
+      <div className="w-full h-full flex items-center justify-center p-4">
+        <Sheet>
+          <SheetTrigger><Button variant="default">Open Sidebar</Button></SheetTrigger>
+          <SheetContent side="right">
+            <SheetHeader>
+              <SheetTitle>App Settings</SheetTitle>
+              <SheetDescription>Configure your app layout settings here.</SheetDescription>
+            </SheetHeader>
+            <div className="grid gap-4 py-4">
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="name">System Name</Label>
+                <Input id="name" defaultValue="C-Comic App" />
+              </div>
+            </div>
+            <SheetFooter>
+              <Button type="submit">Save changes</Button>
+            </SheetFooter>
+          </SheetContent>
+        </Sheet>
+      </div>
+    ),
+    code: "<Sheet>\n  <SheetTrigger><Button>Open Sidebar</Button></SheetTrigger>\n  <SheetContent side=\"right\">\n    <SheetHeader>\n      <SheetTitle>App Settings</SheetTitle>\n    </SheetHeader>\n  </SheetContent>\n</Sheet>"
+  },
+  {
+    name: "Resizable Panels",
+    category: "Layout/Structure",
+    description: "Accessible resizable panel groups and layouts.",
+    preview: (
+      <div className="w-full h-64 p-2 bg-white rounded-[var(--radius-comic)] border-[3px] border-border text-black shadow-[var(--shadow-comic)]">
+        <ResizablePanelGroup direction="horizontal">
+          <ResizablePanel defaultSize={30} minSize={20}>
+            <div className="flex h-full items-center justify-center p-6 bg-card text-card-foreground">
+              <span className="font-bold text-center">Sidebar Content</span>
+            </div>
+          </ResizablePanel>
+          <ResizableHandle withHandle />
+          <ResizablePanel defaultSize={70}>
+            <div className="flex h-full flex-col p-6 bg-background text-foreground">
+              <span className="font-bold border-b-[3px] border-border pb-2 mb-4">Main Content Window</span>
+              <p className="text-sm font-semibold opacity-80">Drag the thick comic handle to see the resizing layout!</p>
+            </div>
+          </ResizablePanel>
+        </ResizablePanelGroup>
+      </div>
+    ),
+    code: "<ResizablePanelGroup direction=\"horizontal\">\n  <ResizablePanel defaultSize={30}>Sidebar</ResizablePanel>\n  <ResizableHandle withHandle />\n  <ResizablePanel defaultSize={70}>Content</ResizablePanel>\n</ResizablePanelGroup>"
+  },
+  {
+    name: "Drawer (Mobile Panel)",
+    category: "Layout/Structure",
+    description: "A drawer component for React, typically used on mobile for bottom-up dialogs.",
+    preview: (
+      <div className="w-full flex items-center justify-center p-4">
+        <Drawer>
+          <DrawerTrigger><Button variant="secondary">Open Drawer</Button></DrawerTrigger>
+          <DrawerContent>
+            <div className="mx-auto w-full max-w-sm">
+              <DrawerHeader>
+                <DrawerTitle>Move Goal</DrawerTitle>
+                <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+              </DrawerHeader>
+              <div className="p-4 pb-0 flex flex-col gap-4">
+                <Button>Action</Button>
+                <DrawerClose><Button variant="destructive" className="w-full">Cancel</Button></DrawerClose>
+              </div>
+              <DrawerFooter />
+            </div>
+          </DrawerContent>
+        </Drawer>
+      </div>
+    ),
+    code: "<Drawer>\n  <DrawerTrigger><Button>Open Drawer</Button></DrawerTrigger>\n  <DrawerContent>\n    <DrawerHeader>\n      <DrawerTitle>Move Goal</DrawerTitle>\n    </DrawerHeader>\n    <DrawerFooter>\n      <DrawerClose><Button>Cancel</Button></DrawerClose>\n    </DrawerFooter>\n  </DrawerContent>\n</Drawer>"
+  },
+
   {
     name: "Button",
     category: "Core/General",
