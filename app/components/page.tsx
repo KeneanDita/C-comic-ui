@@ -26,17 +26,205 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Progress } from "@/components/ui/progress"
 import { toast } from "sonner"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Copy, Bot, User, RefreshCcw, SquarePen, Sparkles, MessageSquare, Plus, Hash, Check, CreditCard, Download, Key, Users, Settings2, Trash2, Zap, Smartphone, Mail, Lock, ShieldCheck, Monitor, Laptop, ArrowRight, ChevronRight, Command, Menu, X, Home, Compass, Folder, Calendar, Star, Compass as ExploreIcon, AlignLeft, UploadCloud, Clock, Bold, Italic, Link2, List as ListIcon, Type, Save, Cloud, AlertTriangle, CheckCircle, FileText, Image as ImageIcon, Heading1, Heading2, MapPin, Code } from "lucide-react"
+import { Copy, Bot, User, RefreshCcw, SquarePen, Sparkles, MessageSquare, Plus, Hash, Check, CreditCard, Download, Key, Users, Settings2, Trash2, Zap, Smartphone, Mail, Lock, ShieldCheck, Monitor, Laptop, ArrowRight, ChevronRight, Command, Menu, X, Home, Compass, Folder, Calendar, Star, Compass as ExploreIcon, AlignLeft, UploadCloud, Clock, Bold, Italic, Link2, List as ListIcon, Type, Save, Cloud, AlertTriangle, CheckCircle, FileText, Image as ImageIcon, Heading1, Heading2, MapPin, Code, Ghost, Map as MapIcon, Route, Keyboard, Moon, Sun, MousePointerClick, Eye, Accessibility } from "lucide-react"
 
 type ComponentItem = {
   name: string;
-  category: "Core/General" | "Forms" | "Data Display" | "Feedback" | "Layout/Structure" | "Complex Data" | "AI & LLM" | "SaaS & Billing" | "Auth & Security" | "Navigation & Discovery" | "Advanced Forms";
+  category: "Core/General" | "Forms" | "Data Display" | "Feedback" | "Layout/Structure" | "Complex Data" | "AI & LLM" | "SaaS & Billing" | "Auth & Security" | "Navigation & Discovery" | "Advanced Forms" | "Polished UI";
   description: string;
   preview: React.ReactNode;
   code: string;
 };
 
 const componentsList: ComponentItem[] = [
+  {
+    name: "Empty State",
+    category: "Polished UI",
+    description: "Keep users smiling even when there's no data.",
+    preview: (
+      <div className="w-full max-w-md mx-auto bg-yellow-50 p-8 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] text-center flex flex-col items-center gap-4">
+        <div className="relative">
+          <div className="absolute -top-2 -right-2 bg-black w-full h-full rounded-[var(--radius-comic)] z-0"></div>
+          <div className="bg-white border-[3px] border-black p-6 rounded-[var(--radius-comic)] z-10 relative">
+            <Ghost className="h-16 w-16 text-gray-400 mx-auto opacity-50" />
+            <div className="absolute -top-3 -right-3 bg-red-400 h-8 w-8 rounded-full border-[3px] border-black flex items-center justify-center font-black animate-bounce text-white">?</div>
+          </div>
+        </div>
+        <div className="mt-4">
+          <h3 className="text-2xl font-black uppercase tracking-tight">Whoops! It's a ghost town.</h3>
+          <p className="text-gray-600 font-bold mt-2">Looks like there are no missions available right now.</p>
+        </div>
+        <Button className="mt-2 bg-black text-white hover:bg-gray-800 border-[3px] border-black font-black px-8 shadow-[var(--shadow-comic-sm)] uppercase tracking-wide">
+          <Plus className="mr-2 h-4 w-4" /> Start New Mission
+        </Button>
+      </div>
+    ),
+    code: `<div className="text-center flex flex-col items-center">...<Ghost />...<Button>Start</Button></div>`
+  },
+  {
+    name: "Error Pages (404/500)",
+    category: "Polished UI",
+    description: "Turn frustration into a fun storytelling moment.",
+    preview: (
+      <div className="w-full max-w-lg mx-auto bg-blue-600 p-8 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-lg)] overflow-hidden relative">
+        <div className="absolute top-[-50px] right-[-50px] text-[180px] font-black text-blue-500 opacity-50 rotate-12 leading-none select-none z-0">404</div>
+        <div className="relative z-10 text-white flex flex-col items-start gap-4">
+          <div className="bg-white text-black font-black uppercase px-4 py-1 border-[3px] border-black rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-sm)] inline-flex items-center gap-2 transform -rotate-2">
+            <MapIcon className="h-5 w-5 text-red-500" /> Off the Grid
+          </div>
+          <h2 className="text-5xl font-black uppercase text-yellow-300 drop-shadow-[2px_2px_0_#000] tracking-tighter">Lost in space!</h2>
+          <p className="text-lg font-bold border-l-[4px] border-white pl-4 my-2 text-blue-100 max-w-sm">
+            Our satellites scan the entire galaxy, but the page you are looking for has been destroyed or never existed.
+          </p>
+          <div className="flex gap-4 mt-4 w-full sm:w-auto">
+            <Button className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-black border-[3px] border-black font-black uppercase shadow-[var(--shadow-comic-sm)]">
+              <Home className="mr-2 h-4 w-4" /> Return Home
+            </Button>
+            <Button className="flex-1 bg-white hover:bg-gray-100 text-black border-[3px] border-black font-black uppercase shadow-[var(--shadow-comic-sm)]">
+              <RefreshCcw className="mr-2 h-4 w-4" /> Retry
+            </Button>
+          </div>
+        </div>
+      </div>
+    ),
+    code: `<div className="bg-blue-600 relative overflow-hidden">...<div className="text-[180px]">404</div>...</div>`
+  },
+  {
+    name: "Onboarding Flow",
+    category: "Polished UI",
+    description: "In-app guided tours with comic-style tooltips.",
+    preview: (
+      <div className="w-full max-w-full mx-auto flex flex-col items-center justify-center p-12 bg-gray-100 border-[3px] border-border rounded-[var(--radius-comic)] shadow-[inset_0_4px_10px_rgba(0,0,0,0.1)] relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/10 rounded-[calc(var(--radius-comic)-3px)] z-0"></div>
+        <div className="relative w-full max-w-md mx-auto z-10 text-center">
+          <div className="bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border inline-block relative shadow-[0_0_0_9999px_rgba(0,0,0,0.4)] ring-4 ring-yellow-400 ring-offset-2">
+            <Button className="bg-purple-500 text-white hover:bg-purple-600 font-black border-[2px] border-black">
+              <Sparkles className="mr-2 h-4 w-4" /> Super Power
+            </Button>
+            
+            <div className="absolute top-[-20px] left-1/2 -translate-x-1/2 -translate-y-full w-64 bg-yellow-300 border-[3px] border-black rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-lg)] p-4 text-black text-left">
+              <div className="absolute bottom-[-14px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-r-[10px] border-t-[12px] border-l-transparent border-r-transparent border-t-black"></div>
+              <div className="absolute bottom-[-10px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-r-[8px] border-t-[10px] border-l-transparent border-r-transparent border-t-yellow-300"></div>
+              
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-black uppercase text-xs tracking-widest bg-black text-white px-2 py-0.5 rounded-sm">Step 1 of 3</span>
+                <X className="h-4 w-4 cursor-pointer hover:scale-110 transition-transform" />
+              </div>
+              <h4 className="font-black text-lg leading-tight mb-1">Activate Powers</h4>
+              <p className="text-sm font-bold opacity-80 mb-3">Click this button to unleash devastating combos on your enemies!</p>
+              <div className="flex justify-between items-center">
+                <Button variant="ghost" className="h-8 text-xs font-black px-2 hover:bg-yellow-400 hover:text-black text-black">Skip Tour</Button>
+                <Button className="h-8 text-xs font-black uppercase bg-black text-white px-4 border-[2px] border-black hover:bg-gray-800">Next <ArrowRight className="ml-1 h-3 w-3"/></Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+    code: `<div className="ring-4 ring-yellow-400 shadow-[0_0_0_999px_rgba(0,0,0,0.5)]"><Button>...</Button></div>`
+  },
+  {
+    name: "Keyboard Shortcuts UI",
+    category: "Polished UI",
+    description: "Power user tooltips showing keybindings in style.",
+    preview: (
+      <div className="w-full max-w-sm mx-auto bg-white rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] p-1 overflow-hidden">
+        <div className="p-3 border-b-[3px] border-border bg-gray-50 flex items-center justify-between">
+          <div className="font-black uppercase flex items-center gap-2"><Keyboard className="h-5 w-5" /> Shortcuts</div>
+        </div>
+        <div className="flex flex-col gap-1 p-2">
+          <div className="flex justify-between items-center p-2 rounded-[var(--radius-comic)] hover:bg-gray-100 border-[2px] border-transparent hover:border-black cursor-pointer">
+            <span className="font-bold text-gray-700">Open Command Palette</span>
+            <div className="flex items-center gap-1">
+              <kbd className="bg-white border-[2px] border-black border-b-[4px] rounded-md px-2 py-0.5 font-black text-xs shadow-sm font-mono flex items-center gap-1"><Command className="h-3 w-3" /> K</kbd>
+            </div>
+          </div>
+          <div className="flex justify-between items-center p-2 rounded-[var(--radius-comic)] hover:bg-gray-100 border-[2px] border-transparent hover:border-black cursor-pointer">
+            <span className="font-bold text-gray-700">Save Mission Log</span>
+            <div className="flex items-center gap-1">
+              <kbd className="bg-white border-[2px] border-black border-b-[4px] rounded-md px-2 py-0.5 font-black text-xs shadow-sm font-mono"><Command className="h-3 w-3 inline mr-0.5" /> S</kbd>
+            </div>
+          </div>
+          <div className="flex justify-between items-center p-2 rounded-[var(--radius-comic)] hover:bg-gray-100 border-[2px] border-transparent hover:border-black cursor-pointer">
+            <span className="font-bold text-gray-700">Quick Esc</span>
+            <div className="flex items-center gap-1">
+              <kbd className="bg-white border-[2px] border-black border-b-[4px] rounded-md px-2 py-0.5 font-black text-xs shadow-sm font-mono">Esc</kbd>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+    code: `<kbd className="border-[2px] border-black border-b-[4px] rounded-md px-2 font-mono">⌘ K</kbd>`
+  },
+  {
+    name: "Theme Switcher",
+    category: "Polished UI",
+    description: "Loud, chunky toggle for dark/light/system modes.",
+    preview: (
+      <div className="w-full max-w-xs mx-auto bg-slate-900 border-[3px] border-black rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-lg)] p-6 relative overflow-hidden flex flex-col items-center justify-center min-h-[200px]">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-400 rounded-full blur-3xl opacity-20 transform translate-x-10 -translate-y-10"></div>
+        <div className="z-10 bg-white p-2 rounded-full border-[3px] border-black shadow-[var(--shadow-comic-sm)] flex gap-2">
+          <Button variant="ghost" size="icon" className="rounded-full bg-slate-100 hover:bg-slate-200 border-[2px] border-transparent text-slate-800">
+            <Sun className="h-5 w-5" />
+          </Button>
+          <Button variant="ghost" size="icon" className="rounded-full bg-black text-white hover:bg-gray-800 border-[2px] border-black shadow-[var(--shadow-comic-sm)] scale-110">
+            <Moon className="h-5 w-5" />
+          </Button>
+          <Button variant="ghost" size="icon" className="rounded-full bg-slate-100 hover:bg-slate-200 border-[2px] border-transparent text-slate-800">
+            <Monitor className="h-5 w-5" />
+          </Button>
+        </div>
+        <div className="mt-6 z-10 text-white text-center">
+          <h4 className="font-black uppercase tracking-wider mb-1">Dark Mode Active</h4>
+          <p className="text-xs font-bold text-slate-400">Embrace the shadows, crusader.</p>
+        </div>
+      </div>
+    ),
+    code: `<div className="bg-slate-900 p-6 flex items-center justify-center">...Theme toggles...</div>`
+  },
+  {
+    name: "Accessibility Helpers",
+    category: "Polished UI",
+    description: "Oversized focus rings & screen reader indications.",
+    preview: (
+      <div className="w-full max-w-lg mx-auto bg-white p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] space-y-6">
+        <div>
+          <div className="flex items-center gap-2 mb-3 text-purple-600">
+            <MousePointerClick className="h-5 w-5" /> <span className="font-black uppercase text-sm">Focus Highlights</span>
+          </div>
+          <div className="flex gap-4">
+            <Button className="outline-none ring-4 ring-offset-2 ring-purple-500 border-[3px] border-black font-black shadow-[var(--shadow-comic-sm)] bg-purple-100 text-purple-900 hover:bg-purple-200">
+              Focused State Example
+            </Button>
+          </div>
+        </div>
+        <div className="border-[3px] border-dashed border-gray-300 p-4 rounded-[var(--radius-comic)] bg-gray-50 relative group">
+          <div className="absolute top-[-12px] right-4 bg-gray-800 text-white text-[10px] font-black uppercase px-2 py-0.5 rounded-[var(--radius-comic)] border-[2px] border-black tracking-wide flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+            <Accessibility className="h-3 w-3" /> Screen reader hidden
+          </div>
+          <div className="flex items-center gap-2 mb-3 text-blue-600">
+            <Eye className="h-5 w-5" /> <span className="font-black uppercase text-sm">Alt-Text & Aria-labels</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="h-16 w-16 bg-blue-100 border-[3px] border-blue-600 rounded-full flex items-center justify-center relative">
+               <User className="h-8 w-8 text-blue-600" aria-hidden="true" />
+               <span className="sr-only">User profile avatar for Bruce Wayne</span>
+               <div className="absolute inset-0 border-[2px] border-dashed border-red-500 rounded-full animate-[spin_4s_linear_infinite] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+            <div className="flex-1 font-bold text-sm text-gray-500 group-hover:text-black transition-colors rounded-[var(--radius-comic)] bg-white p-3 border-[2px] border-gray-200 group-hover:border-black shadow-sm overflow-hidden">
+              <span className="text-gray-400">&lt;span className="sr-only"&gt;</span>
+              <br />
+              <span className="text-blue-600 font-mono">User profile avatar for Bruce Wayne</span>
+              <br />
+              <span className="text-gray-400">&lt;/span&gt;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+    code: `<Button className="outline-none ring-4 ring-offset-2 ring-purple-500">Focused</Button>...<span className="sr-only">SR Only Text</span>`
+  }
+,
   {
     name: "Multi-Step Wizard",
     category: "Advanced Forms",
