@@ -30,6 +30,9 @@ export default function Home() {
             <Link href="/components">
               <Button variant="secondary" className="text-lg px-8 py-6">Browse Components</Button>
             </Link>
+            <Link href="/dash">
+              <Button variant="outline" className="text-lg px-8 py-6 bg-yellow-400 border-black hover:bg-yellow-500 text-black">View V1 Demo</Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -69,7 +72,7 @@ export default function Home() {
               </CardContent>
               <CardFooter className="flex gap-4">
                 <Button variant="default" className="w-full text-lg">View Stats</Button>
-                <Button variant="outline" className="w-full text-lg">Edit Info</Button>
+                <Button variant="outline" className="w-full text-lg text-black">Edit Info</Button>
               </CardFooter>
             </Card>
 
