@@ -8,6 +8,14 @@ import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 
+import { Badge } from "@/components/ui/badge"
+import { Label } from "@/components/ui/label"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Switch } from "@/components/ui/switch"
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+import { Separator } from "@/components/ui/separator"
+import { Skeleton } from "@/components/ui/skeleton"
+
 const componentsList = [
   {
     name: "Button",
@@ -33,6 +41,87 @@ const componentsList = [
       </div>
     ),
     code: `<div className="flex w-full max-w-sm items-center space-x-2">\n  <Input type="email" placeholder="Email" />\n  <Button type="submit">Subscribe</Button>\n</div>`
+  },
+  {
+    name: "Badge",
+    description: "Displays a badge or a component that looks like a badge.",
+    preview: (
+      <div className="flex gap-4 items-center">
+        <Badge variant="default">New</Badge>
+        <Badge variant="secondary">Beta</Badge>
+        <Badge variant="destructive">Warning</Badge>
+        <Badge variant="outline">Outline</Badge>
+      </div>
+    ),
+    code: `<Badge variant="default">New</Badge>\n<Badge variant="secondary">Beta</Badge>\n<Badge variant="destructive">Warning</Badge>`
+  },
+  {
+    name: "Avatar",
+    description: "An image element with a fallback for representing the user.",
+    preview: (
+      <div className="flex gap-4">
+        <Avatar>
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Avatar>
+          <AvatarFallback>BOOM</AvatarFallback>
+        </Avatar>
+      </div>
+    ),
+    code: `<Avatar>\n  <AvatarImage src="https://github.com/shadcn.png" />\n  <AvatarFallback>CN</AvatarFallback>\n</Avatar>`
+  },
+  {
+    name: "Checkbox & Label",
+    description: "A control that allows the user to toggle between checked and not checked.",
+    preview: (
+      <div className="flex items-center space-x-2 bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border text-black">
+        <Checkbox id="terms" />
+        <Label htmlFor="terms" className="text-black">Accept terms and conditions</Label>
+      </div>
+    ),
+    code: `<div className="flex items-center space-x-2">\n  <Checkbox id="terms" />\n  <Label htmlFor="terms">Accept terms and conditions</Label>\n</div>`
+  },
+  {
+    name: "Switch",
+    description: "A control that allows the user to toggle between checked and not checked.",
+    preview: (
+      <div className="flex items-center space-x-2 bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border text-black">
+        <Switch id="airplane-mode" />
+        <Label htmlFor="airplane-mode" className="text-black">Airplane Mode</Label>
+      </div>
+    ),
+    code: `<div className="flex items-center space-x-2">\n  <Switch id="airplane-mode" />\n  <Label htmlFor="airplane-mode">Airplane Mode</Label>\n</div>`
+  },
+  {
+    name: "Separator",
+    description: "Visually or semantically separates content.",
+    preview: (
+      <div className="w-full max-w-sm bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border text-black">
+        <div className="text-sm font-bold uppercase tracking-tight">Radix Primitives</div>
+        <Separator className="my-4" />
+        <div className="flex h-5 items-center space-x-4 text-sm font-semibold">
+          <div>Docs</div>
+          <Separator orientation="vertical" />
+          <div>Source</div>
+        </div>
+      </div>
+    ),
+    code: `<div className="flex h-5 items-center space-x-4">\n  <div>Docs</div>\n  <Separator orientation="vertical" />\n  <div>Source</div>\n</div>`
+  },
+  {
+    name: "Skeleton",
+    description: "Use to show a placeholder while content is loading.",
+    preview: (
+      <div className="flex items-center space-x-4 bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border">
+        <Skeleton className="h-12 w-12 rounded-full" />
+        <div className="space-y-2">
+          <Skeleton className="h-4 w-[250px]" />
+          <Skeleton className="h-4 w-[200px]" />
+        </div>
+      </div>
+    ),
+    code: `<div className="flex items-center space-x-4">\n  <Skeleton className="h-12 w-12 rounded-full" />\n  <div className="space-y-2">\n    <Skeleton className="h-4 w-[250px]" />\n    <Skeleton className="h-4 w-[200px]" />\n  </div>\n</div>`
   }
 ]
 
