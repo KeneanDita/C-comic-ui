@@ -1,0 +1,115 @@
+{
+  "button": {
+    "name": "button",
+    "dependencies": [
+      "@radix-ui/react-slot",
+      "class-variance-authority",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      {
+        "name": "button.tsx",
+        "content": "import * as React from \"react\"\r\nimport { Slot } from \"@radix-ui/react-slot\"\r\nimport { cva, type VariantProps } from \"class-variance-authority\"\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nconst buttonVariants = cva(\r\n  \"inline-flex items-center justify-center whitespace-nowrap text-sm font-black uppercase tracking-wider transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ring-offset-background\",\r\n  {\r\n    variants: {\r\n      variant: {\r\n        default:\r\n          \"bg-primary text-primary-foreground border-[var(--border-comic)] border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[var(--shadow-comic-hover)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-[var(--shadow-comic-active)]\",\r\n        destructive:\r\n          \"bg-destructive text-destructive-foreground border-[var(--border-comic)] border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[var(--shadow-comic-hover)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-[var(--shadow-comic-active)]\",\r\n        outline:\r\n          \"border-[var(--border-comic)] border-border bg-background hover:bg-secondary hover:text-secondary-foreground rounded-[var(--radius-comic)] shadow-[var(--shadow-comic)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[var(--shadow-comic-hover)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-[var(--shadow-comic-active)]\",\r\n        secondary:\r\n          \"bg-secondary text-secondary-foreground border-[var(--border-comic)] border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[var(--shadow-comic-hover)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-[var(--shadow-comic-active)]\",\r\n        ghost: \"hover:bg-accent hover:text-accent-foreground rounded-[var(--radius-comic)]\",\r\n        link: \"text-primary underline-offset-4 hover:underline\",\r\n      },\r\n      size: {\r\n        default: \"h-10 px-4 py-2\",\r\n        sm: \"h-9 rounded-md px-3\",\r\n        lg: \"h-11 rounded-md px-8 text-base\",\r\n        icon: \"h-10 w-10\",\r\n      },\r\n    },\r\n    defaultVariants: {\r\n      variant: \"default\",\r\n      size: \"default\",\r\n    },\r\n  }\r\n)\r\n\r\nexport interface ButtonProps\r\n  extends React.ButtonHTMLAttributes<HTMLButtonElement>,\r\n    VariantProps<typeof buttonVariants> {\r\n  asChild?: boolean\r\n}\r\n\r\nconst Button = React.forwardRef<HTMLButtonElement, ButtonProps>(\r\n  ({ className, variant, size, asChild = false, ...props }, ref) => {\r\n    const Comp = asChild ? Slot : \"button\"\r\n    return (\r\n      <Comp\r\n        className={cn(buttonVariants({ variant, size, className }))}\r\n        ref={ref}\r\n        {...props}\r\n      />\r\n    )\r\n  }\r\n)\r\nButton.displayName = \"Button\"\r\n\r\nexport { Button, buttonVariants }"
+      }
+    ]
+  },
+  "card": {
+    "name": "card",
+    "dependencies": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      {
+        "name": "card.tsx",
+        "content": "import * as React from \"react\"\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nconst Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <div\r\n      ref={ref}\r\n      className={cn(\r\n        \"rounded-[var(--radius-comic)] border-[var(--border-comic)] border-border bg-card text-card-foreground shadow-[var(--shadow-comic)]\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nCard.displayName = \"Card\"\r\n\r\nconst CardHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <div\r\n      ref={ref}\r\n      className={cn(\"flex flex-col space-y-1.5 p-6 border-b-[var(--border-comic)] border-border relative\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nCardHeader.displayName = \"CardHeader\"\r\n\r\nconst CardTitle = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLHeadingElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <h3\r\n      ref={ref}\r\n      className={cn(\r\n        \"font-black uppercase tracking-wider text-xl leading-none\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nCardTitle.displayName = \"CardTitle\"\r\n\r\nconst CardDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <p\r\n      ref={ref}\r\n      className={cn(\"text-sm font-bold text-muted-foreground\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nCardDescription.displayName = \"CardDescription\"\r\n\r\nconst CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <div ref={ref} className={cn(\"p-6 pt-6\", className)} {...props} />\r\n  )\r\n)\r\nCardContent.displayName = \"CardContent\"\r\n\r\nconst CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <div\r\n      ref={ref}\r\n      className={cn(\"flex flex-col sm:flex-row sm:items-center sm:justify-end gap-2 p-6 pt-0 border-t-[var(--border-comic)] border-border mt-auto bg-muted/50 rounded-b-[calc(var(--radius-comic)-3px)]\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nCardFooter.displayName = \"CardFooter\"\r\n\r\nexport { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }"
+      }
+    ]
+  },
+  "checkbox": {
+    "name": "checkbox",
+    "dependencies": [
+      "@radix-ui/react-checkbox",
+      "lucide-react",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      {
+        "name": "checkbox.tsx",
+        "content": "import * as React from \"react\"\r\nimport * as CheckboxPrimitive from \"@radix-ui/react-checkbox\"\r\nimport { Check } from \"lucide-react\"\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nconst Checkbox = React.forwardRef<\r\n  React.ElementRef<typeof CheckboxPrimitive.Root>,\r\n  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>\r\n>(({ className, ...props }, ref) => (\r\n  <CheckboxPrimitive.Root\r\n    ref={ref}\r\n    className={cn(\r\n      \"peer h-5 w-5 shrink-0 rounded-[2px] border-[var(--border-comic)] border-border shadow-[var(--shadow-comic-sm)] ring-offset-background hover:scale-110 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-all duration-200 active:translate-y-[2px] active:translate-x-[2px] active:shadow-none bg-white\",\r\n      className\r\n    )}\r\n    {...props}\r\n  >\r\n    <CheckboxPrimitive.Indicator\r\n      className={cn(\"flex items-center justify-center text-current\")}\r\n    >\r\n      <Check className=\"h-4 w-4 stroke-[4px]\" />\r\n    </CheckboxPrimitive.Indicator>\r\n  </CheckboxPrimitive.Root>\r\n))\r\nCheckbox.displayName = CheckboxPrimitive.Root.displayName\r\n\r\nexport { Checkbox }"
+      }
+    ]
+  },
+  "dialog": {
+    "name": "dialog",
+    "dependencies": [
+      "@radix-ui/react-dialog",
+      "lucide-react",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      {
+        "name": "dialog.tsx",
+        "content": "import * as React from \"react\"\r\nimport * as DialogPrimitive from \"@radix-ui/react-dialog\"\r\nimport { X } from \"lucide-react\"\r\n\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nconst Dialog = DialogPrimitive.Root\r\nconst DialogTrigger = DialogPrimitive.Trigger\r\nconst DialogPortal = DialogPrimitive.Portal\r\nconst DialogClose = DialogPrimitive.Close\r\n\r\nconst DialogOverlay = React.forwardRef<\r\n  React.ElementRef<typeof DialogPrimitive.Overlay>,\r\n  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>\r\n>(({ className, ...props }, ref) => (\r\n  <DialogPrimitive.Overlay\r\n    ref={ref}\r\n    className={cn(\r\n      \"fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\r\n      className\r\n    )}\r\n    {...props}\r\n  />\r\n))\r\nDialogOverlay.displayName = DialogPrimitive.Overlay.displayName\r\n\r\nconst DialogContent = React.forwardRef<\r\n  React.ElementRef<typeof DialogPrimitive.Content>,\r\n  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>\r\n>(({ className, children, ...props }, ref) => (\r\n  <DialogPortal>\r\n    <DialogOverlay />\r\n    <DialogPrimitive.Content\r\n      ref={ref}\r\n      className={cn(\r\n        \"fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border-[var(--border-comic)] border-border bg-background p-6 shadow-[var(--shadow-comic)] sm:rounded-[var(--radius-comic)] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:shadow-[8px_8px_0_0_#000]\",\r\n        className\r\n      )}\r\n      {...props}\r\n    >\r\n      {children}\r\n      <DialogPrimitive.Close className=\"absolute right-4 top-4 rounded-[var(--radius-comic)] border-[2px] border-transparent opacity-70 ring-offset-background transition-opacity hover:opacity-100 hover:border-black focus:outline-none focus:ring-4 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground p-1\">\r\n        <X className=\"h-5 w-5 stroke-[3px]\" />\r\n        <span className=\"sr-only\">Close</span>\r\n      </DialogPrimitive.Close>\r\n    </DialogPrimitive.Content>\r\n  </DialogPortal>\r\n))\r\nDialogContent.displayName = DialogPrimitive.Content.displayName\r\n\r\nconst DialogHeader = ({\r\n  className,\r\n  ...props\r\n}: React.HTMLAttributes<HTMLDivElement>) => (\r\n  <div\r\n    className={cn(\r\n      \"flex flex-col space-y-1.5 text-center sm:text-left border-b-[var(--border-comic)] border-black pb-4\",\r\n      className\r\n    )}\r\n    {...props}\r\n  />\r\n)\r\nDialogHeader.displayName = \"DialogHeader\"\r\n\r\nconst DialogFooter = ({\r\n  className,\r\n  ...props\r\n}: React.HTMLAttributes<HTMLDivElement>) => (\r\n  <div\r\n    className={cn(\r\n      \"flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 pt-4 border-t-[var(--border-comic)] border-black\",\r\n      className\r\n    )}\r\n    {...props}\r\n  />\r\n)\r\nDialogFooter.displayName = \"DialogFooter\"\r\n\r\nconst DialogTitle = React.forwardRef<\r\n  React.ElementRef<typeof DialogPrimitive.Title>,\r\n  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>\r\n>(({ className, ...props }, ref) => (\r\n  <DialogPrimitive.Title\r\n    ref={ref}\r\n    className={cn(\r\n      \"text-2xl font-black uppercase tracking-tight leading-none text-foreground\",\r\n      className\r\n    )}\r\n    {...props}\r\n  />\r\n))\r\nDialogTitle.displayName = DialogPrimitive.Title.displayName\r\n\r\nconst DialogDescription = React.forwardRef<\r\n  React.ElementRef<typeof DialogPrimitive.Description>,\r\n  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>\r\n>(({ className, ...props }, ref) => (\r\n  <DialogPrimitive.Description\r\n    ref={ref}\r\n    className={cn(\"text-sm font-bold text-muted-foreground\", className)}\r\n    {...props}\r\n  />\r\n))\r\nDialogDescription.displayName = DialogPrimitive.Description.displayName\r\n\r\nexport {\r\n  Dialog,\r\n  DialogPortal,\r\n  DialogOverlay,\r\n  DialogClose,\r\n  DialogTrigger,\r\n  DialogContent,\r\n  DialogHeader,\r\n  DialogFooter,\r\n  DialogTitle,\r\n  DialogDescription,\r\n}"
+      }
+    ]
+  },
+  "input": {
+    "name": "input",
+    "dependencies": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      {
+        "name": "input.tsx",
+        "content": "import * as React from \"react\"\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nexport interface InputProps\r\n  extends React.InputHTMLAttributes<HTMLInputElement> {}\r\n\r\nconst Input = React.forwardRef<HTMLInputElement, InputProps>(\r\n  ({ className, type, ...props }, ref) => {\r\n    return (\r\n      <input\r\n        type={type}\r\n        className={cn(\r\n          \"flex h-10 w-full rounded-[var(--radius-comic)] border-[var(--border-comic)] border-border bg-input px-3 py-2 text-sm font-bold shadow-[var(--shadow-comic-sm)] transition-colors file:border-0 file:bg-transparent file:text-sm file:font-black file:uppercase placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ring-offset-background\",\r\n          className\r\n        )}\r\n        ref={ref}\r\n        {...props}\r\n      />\r\n    )\r\n  }\r\n)\r\nInput.displayName = \"Input\"\r\n\r\nexport { Input }"
+      }
+    ]
+  },
+  "label": {
+    "name": "label",
+    "dependencies": [
+      "@radix-ui/react-label",
+      "class-variance-authority",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      {
+        "name": "label.tsx",
+        "content": "import * as React from \"react\"\r\nimport * as LabelPrimitive from \"@radix-ui/react-label\"\r\nimport { cva, type VariantProps } from \"class-variance-authority\"\r\n\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nconst labelVariants = cva(\r\n  \"text-sm font-black uppercase tracking-wider leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\r\n)\r\n\r\nconst Label = React.forwardRef<\r\n  React.ElementRef<typeof LabelPrimitive.Root>,\r\n  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &\r\n    VariantProps<typeof labelVariants>\r\n>(({ className, ...props }, ref) => (\r\n  <LabelPrimitive.Root\r\n    ref={ref}\r\n    className={cn(labelVariants(), className)}\r\n    {...props}\r\n  />\r\n))\r\nLabel.displayName = LabelPrimitive.Root.displayName\r\n\r\nexport { Label }"
+      }
+    ]
+  },
+  "switch": {
+    "name": "switch",
+    "dependencies": [
+      "@radix-ui/react-switch",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      {
+        "name": "switch.tsx",
+        "content": "import * as React from \"react\"\r\nimport * as SwitchPrimitives from \"@radix-ui/react-switch\"\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nconst Switch = React.forwardRef<\r\n  React.ElementRef<typeof SwitchPrimitives.Root>,\r\n  React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>\r\n>(({ className, ...props }, ref) => (\r\n  <SwitchPrimitives.Root\r\n    className={cn(\r\n      \"peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-[var(--border-comic)] border-border bg-input shadow-[var(--shadow-comic-sm)] transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-200\",\r\n      className\r\n    )}\r\n    {...props}\r\n    ref={ref}\r\n  >\r\n    <SwitchPrimitives.Thumb\r\n      className={cn(\r\n        \"pointer-events-none block h-4 w-4 rounded-full bg-white border-[2px] border-black shadow-[1px_1px_0_0_rgba(0,0,0,1)] ring-0 transition-transform data-[state=checked]:translate-x-[22px] data-[state=unchecked]:translate-x-1\"\r\n      )}\r\n    />\r\n  </SwitchPrimitives.Root>\r\n))\r\nSwitch.displayName = SwitchPrimitives.Root.displayName\r\n\r\nexport { Switch }"
+      }
+    ]
+  },
+  "table": {
+    "name": "table",
+    "dependencies": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      {
+        "name": "table.tsx",
+        "content": "import * as React from \"react\"\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nconst Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <div className=\"w-full overflow-auto rounded-[var(--radius-comic)] border-[var(--border-comic)] border-border bg-white shadow-[var(--shadow-comic)] mt-2 mb-4\">\r\n      <table\r\n        ref={ref}\r\n        className={cn(\"w-full caption-bottom text-sm font-sans\", className)}\r\n        {...props}\r\n      />\r\n    </div>\r\n  )\r\n)\r\nTable.displayName = \"Table\"\r\n\r\nconst TableHeader = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <thead ref={ref} className={cn(\"bg-muted/50 border-b-[var(--border-comic)] border-border text-black\", className)} {...props} />\r\n  )\r\n)\r\nTableHeader.displayName = \"TableHeader\"\r\n\r\nconst TableBody = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <tbody\r\n      ref={ref}\r\n      className={cn(\"[&_tr:last-child]:border-0\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nTableBody.displayName = \"TableBody\"\r\n\r\nconst TableFooter = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <tfoot\r\n      ref={ref}\r\n      className={cn(\"bg-primary text-primary-foreground font-black border-t-[var(--border-comic)] border-border\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nTableFooter.displayName = \"TableFooter\"\r\n\r\nconst TableRow = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTMLTableRowElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <tr\r\n      ref={ref}\r\n      className={cn(\r\n        \"border-b-[var(--border-comic)] border-border transition-colors hover:bg-muted/30 data-[state=selected]:bg-muted\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nTableRow.displayName = \"TableRow\"\r\n\r\nconst TableHead = React.forwardRef<HTMLTableCellElement, React.ThHTMLAttributes<HTMLTableCellElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <th\r\n      ref={ref}\r\n      className={cn(\r\n        \"h-12 px-4 text-left align-middle font-black uppercase tracking-wider text-muted-foreground [&:has([role=checkbox])]:pr-0\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nTableHead.displayName = \"TableHead\"\r\n\r\nconst TableCell = React.forwardRef<HTMLTableCellElement, React.TdHTMLAttributes<HTMLTableCellElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <td\r\n      ref={ref}\r\n      className={cn(\"p-4 align-middle font-bold [&:has([role=checkbox])]:pr-0\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nTableCell.displayName = \"TableCell\"\r\n\r\nconst TableCaption = React.forwardRef<HTMLTableCaptionElement, React.HTMLAttributes<HTMLTableCaptionElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <caption\r\n      ref={ref}\r\n      className={cn(\"mt-4 text-sm font-bold text-muted-foreground px-4\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nTableCaption.displayName = \"TableCaption\"\r\n\r\nexport {\r\n  Table,\r\n  TableHeader,\r\n  TableBody,\r\n  TableFooter,\r\n  TableHead,\r\n  TableRow,\r\n  TableCell,\r\n  TableCaption,\r\n}"
+      }
+    ]
+  }
+}

@@ -1,7 +1,16 @@
 {
   "name": "c-comic-ui",
   "version": "0.1.0",
-  "private": true,
+  "bin": {
+    "c-comic": "./bin/c-comic.js"
+  },
+  "private": false,
+  "main": "components/comic-ui/index.ts",
+  "exports": {
+    ".": "./components/comic-ui/index.ts",
+    "./components/*": "./components/*",
+    "./lib/*": "./lib/*"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
