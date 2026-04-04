@@ -26,17 +26,242 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Progress } from "@/components/ui/progress"
 import { toast } from "sonner"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Copy, Bot, User, RefreshCcw, SquarePen, Sparkles, MessageSquare, Plus, Hash } from "lucide-react"
+import { Copy, Bot, User, RefreshCcw, SquarePen, Sparkles, MessageSquare, Plus, Hash, Check, CreditCard, Download, Key, Users, Settings2, Trash2, Zap } from "lucide-react"
 
 type ComponentItem = {
   name: string;
-  category: "Core/General" | "Forms" | "Data Display" | "Feedback" | "Layout/Structure" | "Complex Data" | "AI & LLM";
+  category: "Core/General" | "Forms" | "Data Display" | "Feedback" | "Layout/Structure" | "Complex Data" | "AI & LLM" | "SaaS & Billing";
   description: string;
   preview: React.ReactNode;
   code: string;
 };
 
 const componentsList: ComponentItem[] = [
+  {
+    name: "Pricing Table",
+    category: "SaaS & Billing",
+    description: "Clear and bold pricing tiers that grab the user's attention.",
+    preview: (
+      <div className="w-full flex flex-col md:flex-row gap-6 max-w-4xl mx-auto">
+        <div className="flex-1 bg-white p-8 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] flex flex-col items-center text-center">
+          <h4 className="font-black text-xl uppercase text-black">Starter</h4>
+          <div className="mt-4 mb-6">
+            <span className="text-4xl font-black text-black">$0</span>
+            <span className="font-bold text-muted-foreground">/mo</span>
+          </div>
+          <ul className="flex flex-col gap-3 font-bold text-sm text-black mb-8 w-full text-left">
+            <li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500" /> 1,000 API Calls</li>
+            <li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500" /> Basic Support</li>
+            <li className="flex items-center gap-2 opacity-50"><Check className="h-5 w-5" /> Analytics Dashboard</li>
+          </ul>
+          <Button variant="outline" className="w-full font-black border-[3px] border-black">Get Started</Button>
+        </div>
+        <div className="flex-1 bg-yellow-400 p-8 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-lg)] flex flex-col items-center text-center relative md:-translate-y-4">
+          <div className="absolute -top-4 bg-black text-white px-4 py-1 font-black text-sm uppercase rounded-full border-[2px] border-black">Most Popular</div>
+          <h4 className="font-black text-xl uppercase text-black pt-2">Hero</h4>
+          <div className="mt-4 mb-6">
+            <span className="text-4xl font-black text-black">$29</span>
+            <span className="font-bold text-black/70">/mo</span>
+          </div>
+          <ul className="flex flex-col gap-3 font-bold text-sm text-black mb-8 w-full text-left">
+            <li className="flex items-center gap-2"><Check className="h-5 w-5 text-black" /> 50,000 API Calls</li>
+            <li className="flex items-center gap-2"><Check className="h-5 w-5 text-black" /> Priority Support</li>
+            <li className="flex items-center gap-2"><Check className="h-5 w-5 text-black" /> Analytics Dashboard</li>
+          </ul>
+          <Button className="w-full font-black bg-black hover:bg-gray-800 text-white border-[3px] border-black shadow-[var(--shadow-comic-sm)]">Upgrade to Hero</Button>
+        </div>
+      </div>
+    ),
+    code: "<div className=\"bg-yellow-400 border-[3px] border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-lg)]\">...</div>"
+  },
+  {
+    name: "Subscription Management",
+    category: "SaaS & Billing",
+    description: "Account overview panel showing current plan, dates, and upgrade paths.",
+    preview: (
+      <div className="w-full max-w-lg bg-white p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] text-black">
+        <div className="flex justify-between items-start mb-6">
+          <div>
+            <h3 className="font-black text-xl uppercase">Current Plan</h3>
+            <p className="text-sm font-bold text-muted-foreground mt-1">Next billing date: <strong>Nov 1st, 2026</strong></p>
+          </div>
+          <Badge className="bg-yellow-400 text-black border-[2px] border-black uppercase font-black px-3 py-1">Hero Tier</Badge>
+        </div>
+        <div className="bg-blue-50 border-[3px] border-border rounded-[var(--radius-comic)] p-4 flex justify-between items-center gap-4 border-dashed mb-6">
+           <Zap className="h-8 w-8 text-yellow-400 drop-shadow-md" />
+           <div className="flex-1">
+             <div className="font-black text-sm uppercase">Looking for more power?</div>
+             <div className="text-xs font-bold text-muted-foreground mt-1">Upgrade to the "God Tier" for unlimited access.</div>
+           </div>
+           <Button className="bg-blue-400 text-white font-black hover:bg-blue-500 shadow-[var(--shadow-comic-sm)]">Upgrade</Button>
+        </div>
+        <div className="flex gap-4">
+          <Button variant="outline" className="font-black border-[3px] flex-1">Update Payment Method</Button>
+          <Button variant="destructive" className="font-black border-[3px] border-black">Cancel</Button>
+        </div>
+      </div>
+    ),
+    code: "<div className=\"w-full max-w-lg bg-white p-6 border-[3px]\"><Badge>Hero Tier</Badge>...</div>"
+  },
+  {
+    name: "Billing History & Invoices",
+    category: "SaaS & Billing",
+    description: "Invoice history table with comic-styled download actions.",
+    preview: (
+      <div className="w-full max-w-2xl bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] text-black">
+        <h3 className="font-black text-xl uppercase mb-4 pl-2">Billing History</h3>
+        <Table>
+          <TableHeader>
+            <TableRow className="bg-gray-100 hover:bg-gray-100 border-b-[3px] border-border">
+              <TableHead className="font-black text-black">Date</TableHead>
+              <TableHead className="font-black text-black">Amount</TableHead>
+              <TableHead className="font-black text-black">Status</TableHead>
+              <TableHead className="text-right font-black text-black">Invoice</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow className="border-b-[2px] border-border">
+              <TableCell className="font-bold">Oct 1, 2026</TableCell>
+              <TableCell className="font-black">$29.00</TableCell>
+              <TableCell><Badge className="bg-green-400 text-black border-[2px] border-black">Paid</Badge></TableCell>
+              <TableCell className="text-right">
+                <Button variant="ghost" size="sm" className="font-bold border-[2px] border-border shadow-[var(--shadow-comic-sm)] hover:bg-gray-100">
+                  <Download className="h-4 w-4 mr-2" /> PDF
+                </Button>
+              </TableCell>
+            </TableRow>
+            <TableRow className="border-b-[2px] border-border">
+              <TableCell className="font-bold">Sep 1, 2026</TableCell>
+              <TableCell className="font-black">$29.00</TableCell>
+              <TableCell><Badge className="bg-green-400 text-black border-[2px] border-black">Paid</Badge></TableCell>
+              <TableCell className="text-right">
+                <Button variant="ghost" size="sm" className="font-bold border-[2px] border-border shadow-[var(--shadow-comic-sm)] hover:bg-gray-100">
+                  <Download className="h-4 w-4 mr-2" /> PDF
+                </Button>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+    ),
+    code: "<Table>\n  <TableHeader>...\n</Table>"
+  },
+  {
+    name: "API Usage Meter",
+    category: "SaaS & Billing",
+    description: "Visual indicator for tracking quota consumption.",
+    preview: (
+      <div className="w-full max-w-sm bg-white p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] text-black flex flex-col gap-4">
+        <div className="flex justify-between items-end">
+          <div>
+            <div className="font-black uppercase text-sm">Monthly API Requests</div>
+            <div className="font-black text-2xl mt-1 text-red-500">42,500 <span className="text-sm text-muted-foreground">/ 50k</span></div>
+          </div>
+          <AlertCircle className="h-8 w-8 text-red-500" />
+        </div>
+        <Progress value={85} indicatorColor="bg-red-500" />
+        <p className="text-xs font-bold text-muted-foreground mt-1 text-center">
+          You are nearing your plan\'s limit.
+        </p>
+      </div>
+    ),
+    code: "<Progress value={85} indicatorColor=\"bg-red-500\" />"
+  },
+  {
+    name: "Team Roles & Permissions",
+    category: "SaaS & Billing",
+    description: "Manage organization members with styled Selects and Avatars.",
+    preview: (
+      <div className="w-full max-w-lg bg-white p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] text-black">
+        <div className="flex justify-between items-center mb-6 border-b-[3px] border-border pb-4">
+          <div className="flex items-center gap-2">
+             <Users className="h-6 w-6 text-blue-500" />
+             <h3 className="font-black text-xl uppercase">Team Members</h3>
+          </div>
+          <Button className="bg-blue-400 hover:bg-blue-500 text-white font-black shadow-[var(--shadow-comic-sm)] border-[3px]">Invite</Button>
+        </div>
+        <div className="flex flex-col gap-4">
+          <div className="flex justify-between items-center">
+             <div className="flex items-center gap-3">
+               <Avatar className="border-[3px] border-border shadow-[var(--shadow-comic-sm)]">
+                 <AvatarFallback className="bg-yellow-400 font-bold text-black border-border">BR</AvatarFallback>
+               </Avatar>
+               <div>
+                  <div className="font-black text-sm">Bruce Wayne</div>
+                  <div className="text-xs font-bold text-muted-foreground">bruce@wayne.enterprises</div>
+               </div>
+             </div>
+             <div className="flex items-center gap-2">
+               <Badge className="bg-gray-100 text-black border-[2px] border-border">Owner</Badge>
+             </div>
+          </div>
+          <div className="flex justify-between items-center">
+             <div className="flex items-center gap-3">
+               <Avatar className="border-[3px] border-border shadow-[var(--shadow-comic-sm)]">
+                 <AvatarFallback className="bg-purple-400 text-white font-bold border-border">CK</AvatarFallback>
+               </Avatar>
+               <div>
+                  <div className="font-black text-sm">Clark Kent</div>
+                  <div className="text-xs font-bold text-muted-foreground">clark@dailyplanet.com</div>
+               </div>
+             </div>
+             <div className="flex items-center gap-2">
+               <Select defaultValue="editor">
+                 <SelectTrigger className="w-[110px] h-8 bg-white font-black">
+                   <SelectValue placeholder="Role" />
+                 </SelectTrigger>
+                 <SelectContent>
+                   <SelectGroup>
+                     <SelectItem value="admin">Admin</SelectItem>
+                     <SelectItem value="editor">Editor</SelectItem>
+                     <SelectItem value="viewer">Viewer</SelectItem>
+                   </SelectGroup>
+                 </SelectContent>
+               </Select>
+               <Button variant="ghost" size="icon" className="hover:bg-red-100 text-red-500 hover:text-red-600 rounded-[var(--radius-comic)] border-[2px] border-transparent hover:border-red-500">
+                 <Trash2 className="h-4 w-4" />
+               </Button>
+             </div>
+          </div>
+        </div>
+      </div>
+    ),
+    code: "<Select defaultValue=\"editor\">\n  <SelectTrigger>...</SelectTrigger>\n</Select>"
+  },
+  {
+    name: "API Key Management",
+    category: "SaaS & Billing",
+    description: "Panel to reveal, revoke, or generate new API credentials.",
+    preview: (
+      <div className="w-full max-w-xl bg-white p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] text-black">
+        <div className="flex items-center gap-2 mb-6 border-b-[3px] border-border pb-4">
+           <Key className="h-6 w-6 text-yellow-500" />
+           <h3 className="font-black text-xl uppercase">API Keys</h3>
+        </div>
+        <div className="bg-gray-50 p-4 border-[3px] border-border rounded-[var(--radius-comic)] mb-4 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+           <div className="flex flex-col gap-1 w-full max-w-[300px]">
+             <div className="font-black text-sm flex items-center justify-between mb-1">
+               Production Key
+               <Badge className="bg-green-400 text-black border-[2px] border-black text-[10px] h-5 px-1 py-0">Active</Badge>
+             </div>
+             <div className="flex gap-2 w-full">
+               <Input className="font-mono text-xs border-[2px] h-9 bg-white" placeholder="sk_live_················" readOnly />
+               <Button size="icon" className="h-9 w-9 shrink-0 bg-white text-black border-[2px] hover:bg-gray-100 shadow-[var(--shadow-comic-sm)]">
+                 <Copy className="h-4 w-4" />
+               </Button>
+             </div>
+           </div>
+           <Button variant="destructive" className="font-black bg-red-500 text-white border-[3px] border-black hover:bg-red-600 mt-2 md:mt-0">Revoke</Button>
+        </div>
+        <Button className="font-black bg-black text-white hover:bg-gray-800 border-[3px] border-black w-full border-dashed">
+          <Plus className="h-4 w-4 mr-2" />
+          Generate New Key
+        </Button>
+      </div>
+    ),
+    code: "<Input className=\"font-mono\" placeholder=\"sk_live_...\" readOnly />"
+  },
+
   {
     name: "Model Switcher",
     category: "AI & LLM",
