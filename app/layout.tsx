@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Sora } from "next/font/google";
 import { Navbar } from "@/components/site/navbar";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 const sora = Sora({
@@ -29,6 +30,7 @@ export default function RootLayout({
         <main className="flex-1">
           {children}
         </main>
+        <Toaster />
       </body>
     </html>
   );

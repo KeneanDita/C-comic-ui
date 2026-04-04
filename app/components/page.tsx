@@ -19,7 +19,12 @@ import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/componen
 import { Drawer, DrawerTrigger, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose } from "@/components/ui/drawer"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts"
-import { Target, Activity, FileBox } from "lucide-react"
+import { Target, Activity, FileBox, AlertCircle, Terminal, CheckCircle2, Loader2 } from "lucide-react"
+
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
+import { Progress } from "@/components/ui/progress"
+import { toast } from "sonner"
 
 type ComponentItem = {
   name: string;
@@ -30,6 +35,122 @@ type ComponentItem = {
 };
 
 const componentsList: ComponentItem[] = [
+  {
+    name: "Loaders & Progress",
+    category: "Feedback",
+    description: "Indicate loading state with spinners, skeletons, or progress bars.",
+    preview: (
+      <div className="w-full max-w-sm flex flex-col gap-6 p-6 bg-white rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] text-black">
+        <div className="flex items-center gap-4">
+          <Loader2 className="h-8 w-8 animate-spin" />
+          <span className="font-black">Loading heroes...</span>
+        </div>
+        <div className="flex flex-col gap-2">
+          <span className="font-black text-sm uppercase">Mission Progress</span>
+          <Progress value={65} indicatorColor="bg-yellow-400" />
+        </div>
+        <div className="flex items-center space-x-4">
+          <Skeleton className="h-12 w-12 rounded-full border-[3px] border-border" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[200px] border-[2px] border-border" />
+            <Skeleton className="h-4 w-[150px] border-[2px] border-border" />
+          </div>
+        </div>
+      </div>
+    ),
+    code: `<Progress value={60} />\n<Skeleton className="h-4 w-[200px]" />`
+  },
+  {
+    name: "Toast Notifications",
+    category: "Feedback",
+    description: "Brief, non-interruptive notifications that slide in.",
+    preview: (
+      <Button
+        className="bg-blue-400 text-white font-bold"
+        onClick={() => toast("Hero deployed!", {
+          description: "Captain Thunder is en route to the scene.",
+          action: { label: "Undo", onClick: () => console.log("Undo") }
+        })}
+      >
+        Trigger Toast
+      </Button>
+    ),
+    code: `toast("Hero deployed!")`
+  },
+  {
+    name: "Alerts",
+    category: "Feedback",
+    description: "Important messages that deserve the user's attention.",
+    preview: (
+      <div className="w-full max-w-md flex flex-col gap-4">
+        <Alert variant="warning">
+          <Terminal className="h-5 w-5" />
+          <AlertTitle>Heads up!</AlertTitle>
+          <AlertDescription>
+            You are about to enter a high-danger zone.
+          </AlertDescription>
+        </Alert>
+        <Alert variant="destructive">
+          <AlertCircle className="h-5 w-5" />
+          <AlertTitle>Error</AlertTitle>
+          <AlertDescription>
+            Your session has expired. Please log in again.
+          </AlertDescription>
+        </Alert>
+        <Alert variant="success">
+          <CheckCircle2 className="h-5 w-5" />
+          <AlertTitle>Success</AlertTitle>
+          <AlertDescription>
+            Villain captured successfully!
+          </AlertDescription>
+        </Alert>
+      </div>
+    ),
+    code: `<Alert variant="warning">\n  <AlertTitle>Heads up!</AlertTitle>\n  <AlertDescription>Danger zone.</AlertDescription>\n</Alert>`
+  },
+  {
+    name: "Confirmation Dialog",
+    category: "Feedback",
+    description: "Interruptive dialog for destructive actions.",
+    preview: (
+      <AlertDialog>
+        <AlertDialogTrigger asChild>
+          <Button variant="destructive" className="bg-red-500 font-bold">Delete Lair</Button>
+        </AlertDialogTrigger>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete your superhero lair and remove your data from our servers.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel className="font-bold border-[2px] border-border">Cancel</AlertDialogCancel>
+            <AlertDialogAction className="bg-red-500 font-bold border-[3px] border-black text-white hover:bg-red-600">Yes, delete lair</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    ),
+    code: `<AlertDialog>\n  <AlertDialogTrigger>Open</AlertDialogTrigger>\n  <AlertDialogContent>...</AlertDialogContent>\n</AlertDialog>`
+  },
+  {
+    name: "Inline Validation",
+    category: "Forms",
+    description: "Show validation errors inline with form inputs.",
+    preview: (
+      <div className="w-full max-w-sm bg-white p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] text-black">
+        <div className="grid w-full items-center gap-2">
+          <Label htmlFor="hero-name" className="font-black text-red-500">Hero Name</Label>
+          <Input id="hero-name" defaultValue="$$$" className="border-red-500 border-[3px] focus-visible:ring-red-500" />
+          <p className="text-[13px] font-bold text-red-500 flex items-center gap-1 mt-1">
+            <AlertCircle className="h-4 w-4" />
+            Special characters are not allowed.
+          </p>
+        </div>
+      </div>
+    ),
+    code: `<Input className="border-red-500" />\n<p className="text-red-500">Error message</p>`
+  },
   {
     name: "Data Table",
     category: "Complex Data",
@@ -100,24 +221,13 @@ const componentsList: ComponentItem[] = [
     category: "Complex Data",
     description: "Important high-level metrics for dashboard homepages.",
     preview: (
-      <div className="w-full flex flex-col md:flex-row gap-4">
-        <div className="bg-red-400 flex-1 p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] text-white flex gap-4 items-center">
-          <div className="p-3 bg-white text-black rounded-full border-[3px] border-border">
-            <Target className="h-6 w-6" />
-          </div>
-          <div>
-            <div className="text-sm font-black uppercase text-black drop-shadow-sm">Threat Level</div>
-            <div className="text-3xl font-black drop-shadow-md">CRITICAL</div>
-          </div>
+      <div className="bg-red-400 w-full max-w-sm p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] text-white flex gap-4 items-center">
+        <div className="p-3 bg-white text-black rounded-full border-[3px] border-border">
+          <Target className="h-6 w-6" />
         </div>
-        <div className="bg-blue-400 flex-1 p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] text-white flex gap-4 items-center">
-          <div className="p-3 bg-white text-black rounded-full border-[3px] border-border">
-            <Activity className="h-6 w-6" />
-          </div>
-          <div>
-            <div className="text-sm font-black uppercase text-black drop-shadow-sm">Civilians Saved</div>
-            <div className="text-3xl font-black drop-shadow-md">10,492</div>
-          </div>
+        <div>
+          <div className="text-sm font-black uppercase text-black drop-shadow-sm">Threat Level</div>
+          <div className="text-3xl font-black drop-shadow-md">CRITICAL</div>
         </div>
       </div>
     ),
@@ -166,19 +276,19 @@ const componentsList: ComponentItem[] = [
     category: "Layout/Structure",
     description: "A vertically stacked set of interactive headings that each reveal a section of content.",
     preview: (
-      <div className="w-full max-w-sm bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border text-black shadow-[var(--shadow-comic)]">
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
-            <AccordionTrigger>Is it accessible?</AccordionTrigger>
-            <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
+      <div className="w-full max-w-sm bg-[#FFE135] p-4 rounded-[var(--radius-comic)] border-[3px] border-border text-black shadow-[var(--shadow-comic)]">
+        <Accordion type="single" collapsible className="w-full bg-white border-[3px] border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-sm)]">
+          <AccordionItem value="item-1" className="border-border border-b-[3px]">
+            <AccordionTrigger className="px-4 font-black hover:bg-[#FF90E8] transition-colors rounded-t-[var(--radius-comic)-3px]">Is it accessible?</AccordionTrigger>
+            <AccordionContent className="px-4 font-bold bg-white">Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-2">
-            <AccordionTrigger>Is it styled?</AccordionTrigger>
-            <AccordionContent>Yes. It comes with default styles that matches the other components&apos; aesthetic.</AccordionContent>
+          <AccordionItem value="item-2" className="border-border border-b-[3px]">
+            <AccordionTrigger className="px-4 font-black hover:bg-[#FF90E8] transition-colors">Is it styled?</AccordionTrigger>
+            <AccordionContent className="px-4 font-bold bg-white">Yes. It comes with default styles that matches the other components&apos; aesthetic.</AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3" className="border-b-0">
-            <AccordionTrigger>Is it animated?</AccordionTrigger>
-            <AccordionContent>Yes. It&apos;s animated by default, but you can disable it if you prefer.</AccordionContent>
+            <AccordionTrigger className="px-4 font-black hover:bg-[#FF90E8] transition-colors rounded-b-[var(--radius-comic)-3px]">Is it animated?</AccordionTrigger>
+            <AccordionContent className="px-4 font-bold bg-white">Yes. It&apos;s animated by default.</AccordionContent>
           </AccordionItem>
         </Accordion>
       </div>
@@ -190,17 +300,19 @@ const componentsList: ComponentItem[] = [
     category: "Layout/Structure",
     description: "A set of layered sections of content, displayed one at a time.",
     preview: (
-      <div className="w-full max-w-sm bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border text-black shadow-[var(--shadow-comic)]">
+      <div className="w-full max-w-sm bg-[#4ade80] p-6 rounded-[var(--radius-comic)] border-[3px] border-border text-black shadow-[var(--shadow-comic)]">
         <Tabs defaultValue="account" className="w-full">
-          <TabsList className="w-full flex mb-2">
-            <TabsTrigger value="account" className="flex-1">Account</TabsTrigger>
-            <TabsTrigger value="password" className="flex-1">Password</TabsTrigger>
+          <TabsList className="w-full flex mb-4 bg-white border-[3px] border-border rounded-[var(--radius-comic)-3px] p-1 shadow-[var(--shadow-comic-sm)]">
+            <TabsTrigger value="account" className="flex-1 font-black rounded-sm data-[state=active]:bg-[#FF90E8] data-[state=active]:border-[2px] data-[state=active]:border-black transition-all">Account</TabsTrigger>
+            <TabsTrigger value="password" className="flex-1 font-black rounded-sm data-[state=active]:bg-[#FF90E8] data-[state=active]:border-[2px] data-[state=active]:border-black transition-all">Password</TabsTrigger>
           </TabsList>
-          <TabsContent value="account" className="p-4 border-[3px] border-border rounded-[var(--radius-comic)]">
-            <p className="font-bold">Make changes to your account here.</p>
+          <TabsContent value="account" className="p-6 bg-white border-[3px] border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-sm)]">
+            <p className="font-bold text-lg">Make changes to your account here.</p>
+            <Button className="mt-4 w-full font-black bg-white hover:bg-gray-100 text-black border-[3px] shadow-[var(--shadow-comic-sm)]">Save changes</Button>
           </TabsContent>
-          <TabsContent value="password" className="p-4 border-[3px] border-border rounded-[var(--radius-comic)]">
-            <p className="font-bold">Change your password here.</p>
+          <TabsContent value="password" className="p-6 bg-white border-[3px] border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-sm)]">
+            <p className="font-bold text-lg">Change your password here.</p>
+            <Button className="mt-4 w-full font-black bg-white hover:bg-gray-100 text-black border-[3px] shadow-[var(--shadow-comic-sm)]">Update password</Button>
           </TabsContent>
         </Tabs>
       </div>
