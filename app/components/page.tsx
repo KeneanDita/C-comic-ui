@@ -25,16 +25,190 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
 import { Progress } from "@/components/ui/progress"
 import { toast } from "sonner"
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Copy, Bot, User, RefreshCcw, SquarePen, Sparkles, MessageSquare, Plus, Hash } from "lucide-react"
 
 type ComponentItem = {
   name: string;
-  category: "Core/General" | "Forms" | "Data Display" | "Feedback" | "Layout/Structure" | "Complex Data";
+  category: "Core/General" | "Forms" | "Data Display" | "Feedback" | "Layout/Structure" | "Complex Data" | "AI & LLM";
   description: string;
   preview: React.ReactNode;
   code: string;
 };
 
 const componentsList: ComponentItem[] = [
+  {
+    name: "Model Switcher",
+    category: "AI & LLM",
+    description: "A playful, heavy-bordered dropdown to select active LLM models.",
+    preview: (
+      <div className="bg-[#a78bfa] p-8 w-full max-w-sm rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] flex items-center justify-center">
+        <Select defaultValue="gemini">
+          <SelectTrigger className="w-[180px] bg-white font-black hover:-translate-y-1 transition-transform">
+            <SelectValue placeholder="Select a model" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Creative Models</SelectLabel>
+              <SelectItem value="gemini">Gemini 1.5 Pro</SelectItem>
+              <SelectItem value="claude">Claude 3.5 Sonnet</SelectItem>
+              <SelectItem value="gpt4o">GPT-4o</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      </div>
+    ),
+    code: `<Select>\n  <SelectTrigger>\n    <SelectValue placeholder="Select a model" />\n  </SelectTrigger>\n  <SelectContent>\n    <SelectItem value="gemini">Gemini 1.5 Pro</SelectItem>\n  </SelectContent>\n</Select>`
+  },
+  {
+    name: "Chat Bubbles",
+    category: "AI & LLM",
+    description: "Action-packed text bubbles distinguishing User and Assistant.",
+    preview: (
+      <div className="w-full max-w-md bg-white border-[3px] border-border rounded-[var(--radius-comic)] p-4 shadow-[var(--shadow-comic)] flex flex-col gap-4">
+        <div className="flex gap-3 justify-end w-full">
+          <div className="bg-yellow-400 p-4 border-[3px] border-border rounded-[var(--radius-comic)] rounded-tr-sm max-w-[80%] shadow-[var(--shadow-comic-sm)]">
+            <p className="font-bold text-sm text-black">Can you explain quantum physics like it's a comic book?</p>
+          </div>
+          <div className="shrink-0 pt-1">
+            <div className="w-10 h-10 rounded-full border-[3px] border-border bg-white flex items-center justify-center overflow-hidden shadow-[var(--shadow-comic-sm)]">
+               <User className="h-6 w-6 text-black" />
+            </div>
+          </div>
+        </div>
+        <div className="flex gap-3 w-full">
+          <div className="shrink-0 pt-1">
+            <div className="w-10 h-10 rounded-full border-[3px] border-border bg-blue-400 flex items-center justify-center shadow-[var(--shadow-comic-sm)]">
+              <Bot className="h-6 w-6 text-white" />
+            </div>
+          </div>
+          <div className="bg-gray-100 p-4 border-[3px] border-border rounded-[var(--radius-comic)] rounded-tl-sm max-w-[80%] relative shadow-[var(--shadow-comic-sm)]">
+             <p className="font-bold text-sm text-black">KA-POW! The atom is split! It's both a particle and a wave!</p>
+          </div>
+        </div>
+      </div>
+    ),
+    code: `<div className="bg-yellow-400 p-4 border-[3px] border-border rounded-2xl">...</div>`
+  },
+  {
+    name: "Code Block (with copy)",
+    category: "AI & LLM",
+    description: "Syntax highlighting block with a comic-style copy button.",
+    preview: (
+      <div className="w-full max-w-lg bg-black border-[3px] border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic)] overflow-hidden relative">
+        <div className="w-full bg-[#e5e7eb] border-b-[3px] border-border px-4 py-2 flex justify-between items-center">
+          <span className="font-black text-xs uppercase text-black">Python</span>
+          <button className="bg-white border-[2px] border-border p-1 rounded hover:-translate-y-0.5 hover:shadow-[var(--shadow-comic-sm)] transition-all text-black" title="Copy code">
+            <Copy className="h-3 w-3" />
+          </button>
+        </div>
+        <div className="p-4 overflow-x-auto text-sm font-mono text-green-400">
+          <div><span className="text-pink-400">def</span> <span className="text-blue-300">save_the_day</span>():</div>
+          <div className="pl-4"><span className="text-pink-400">print</span>(<span className="text-yellow-300">"Hero arriving!"</span>)</div>
+        </div>
+      </div>
+    ),
+    code: `<div className="bg-black border-[3px] border-border rounded-[var(--radius-comic)]">\n  <div className="bg-gray-200 border-b-[3px] border-border px-4 py-2">...</div>\n  <pre><code>...</code></pre>\n</div>`
+  },
+  {
+    name: "Prompt Templates",
+    category: "AI & LLM",
+    description: "Grid of starting prompts for user discovery.",
+    preview: (
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {[
+          {id: 1, title: "Brainstorming", desc: "Generate 5 superpower ideas", icon: Sparkles, color: "bg-yellow-400"},
+          {id: 2, title: "Refactoring", desc: "Rewrite this villain's code", icon: SquarePen, color: "bg-blue-400"}
+        ].map((pt) => {
+          const Icon = pt.icon
+          return (
+            <button key={pt.id} className="w-full text-left bg-white border-[3px] border-border p-4 rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-sm)] hover:-translate-y-1 hover:shadow-[var(--shadow-comic)] transition-all flex flex-col gap-2 group">
+              <div className={`w-10 h-10 ${pt.color} border-[3px] border-border rounded-full flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                <Icon className="h-5 w-5 text-black" />
+              </div>
+              <div>
+                <div className="font-black text-black">{pt.title}</div>
+                <div className="text-sm font-bold text-muted-foreground">{pt.desc}</div>
+              </div>
+            </button>
+          )
+        })}
+      </div>
+    ),
+    code: `<button className="bg-white border-[3px] border-border p-4 rounded-[var(--radius-comic)]">...</button>`
+  },
+  {
+    name: "Conversation Sidebar",
+    category: "AI & LLM",
+    description: "History list for AI chats with bold active states.",
+    preview: (
+      <div className="w-64 bg-[#fbbf24] border-[3px] border-border rounded-[var(--radius-comic)] overflow-hidden shadow-[var(--shadow-comic)] flex flex-col h-[300px]">
+        <div className="p-4 border-b-[3px] border-border bg-white flex justify-between items-center z-10">
+          <span className="font-black uppercase text-sm text-black">Chat History</span>
+          <button className="bg-black text-white p-1 border-[2px] border-black rounded hover:-translate-y-0.5 hover:shadow-[var(--shadow-comic-sm)] transition-all">
+            <Plus className="h-4 w-4" />
+          </button>
+        </div>
+        <div className="flex-1 overflow-y-auto p-2 flex flex-col gap-2">
+          {["Secret Base Defense", "Gadget Blueprints", "Villain Origins"].map((c, i) => (
+             <div key={i} className={`p-3 rounded-md font-bold text-sm flex items-center gap-2 cursor-pointer border-[3px] border-transparent transition-all ${i === 0 ? 'bg-white border-black shadow-[var(--shadow-comic-sm)] text-black' : 'hover:bg-yellow-300 text-black/80'}`}>
+               <MessageSquare className="h-4 w-4 shrink-0" />
+               <span className="truncate">{c}</span>
+             </div>
+          ))}
+        </div>
+      </div>
+    ),
+    code: `<div className="w-64 bg-[#fbbf24] border-[3px] border-border">...</div>`
+  },
+  {
+    name: "Streaming Text & Indicators",
+    category: "AI & LLM",
+    description: "Loading states and token usage specifically designed for LLMs.",
+    preview: (
+      <div className="w-full max-w-sm flex flex-col gap-6">
+        <div className="bg-white border-[3px] border-border p-4 rounded-[var(--radius-comic)] shadow-[var(--shadow-comic)]">
+           <div className="font-bold text-black flex items-center gap-1">
+             <span>Generating plans</span>
+             <span className="flex gap-0.5">
+               <span className="animate-bounce">.</span>
+               <span className="animate-bounce delay-75">.</span>
+               <span className="animate-bounce delay-150">.</span>
+             </span>
+           </div>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge className="bg-black text-white border-[2px] border-black px-3 py-1 font-black gap-1 text-sm">
+            <Hash className="h-3 w-3" />
+            1,204 tokens
+          </Badge>
+          <Badge className="bg-white text-black border-[2px] border-black px-3 py-1 font-bold text-sm">
+            $0.02 cost
+          </Badge>
+        </div>
+      </div>
+    ),
+    code: `<div className="flex flex-wrap gap-2">\n  <Badge>1,204 tokens</Badge>\n</div>`
+  },
+  {
+    name: "Regenerate/Edit Prompt Actions",
+    category: "AI & LLM",
+    description: "Pill-shaped toolbars below assistant messages for quick actions.",
+    preview: (
+      <div className="w-max bg-white border-[3px] border-border p-1.5 rounded-full shadow-[var(--shadow-comic-sm)] flex gap-1 items-center">
+        <Button variant="ghost" size="sm" className="rounded-full font-black h-8 px-4 text-black hover:bg-gray-100 hover:text-black">
+           <RefreshCcw className="h-4 w-4 mr-2" />
+           Regenerate
+        </Button>
+        <div className="w-[3px] h-5 bg-border rounded-full"></div>
+        <Button variant="ghost" size="sm" className="rounded-full font-black h-8 px-4 text-black hover:bg-gray-100 hover:text-black">
+           <SquarePen className="h-4 w-4 mr-2" />
+           Edit
+        </Button>
+      </div>
+    ),
+    code: `<div className="bg-white border-[3px] border-border p-1.5 rounded-full flex">...</div>`
+  },
   {
     name: "Loaders & Progress",
     category: "Feedback",
