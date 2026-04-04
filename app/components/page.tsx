@@ -5,9 +5,7 @@ import { TypographyH1, TypographyH2, TypographyP } from "@/components/ui/typogra
 import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
-
 import { Badge } from "@/components/ui/badge"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -16,9 +14,18 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
 import { Skeleton } from "@/components/ui/skeleton"
 
-const componentsList = [
+type ComponentItem = {
+  name: string;
+  category: "Core/General" | "Forms" | "Data Display" | "Feedback";
+  description: string;
+  preview: React.ReactNode;
+  code: string;
+};
+
+const componentsList: ComponentItem[] = [
   {
     name: "Button",
+    category: "Core/General",
     description: "Displays a button or a component that looks like a button.",
     preview: (
       <div className="flex gap-4 flex-wrap">
@@ -33,17 +40,19 @@ const componentsList = [
   },
   {
     name: "Input",
+    category: "Forms",
     description: "Displays a form input field or a component that looks like an input field.",
     preview: (
       <div className="flex w-full max-w-sm items-center space-x-2">
-        <Input type="email" placeholder="Email" className="text-black" />
+        <Input type="email" placeholder="Email" className="text-black bg-white" />
         <Button type="submit">Subscribe</Button>
       </div>
     ),
-    code: `<div className="flex w-full max-w-sm items-center space-x-2">\n  <Input type="email" placeholder="Email" />\n  <Button type="submit">Subscribe</Button>\n</div>`
+    code: `<div className="flex w-full max-w-sm items-center space-x-2">\n  <Input type="email" placeholder="Email" className="bg-white" />\n  <Button type="submit">Subscribe</Button>\n</div>`
   },
   {
     name: "Badge",
+    category: "Data Display",
     description: "Displays a badge or a component that looks like a badge.",
     preview: (
       <div className="flex gap-4 items-center">
@@ -57,22 +66,28 @@ const componentsList = [
   },
   {
     name: "Avatar",
+    category: "Data Display",
     description: "An image element with a fallback for representing the user.",
     preview: (
       <div className="flex gap-4">
         <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarImage src="/Headshot%20(1).jpg" alt="@user" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <Avatar>
-          <AvatarFallback>BOOM</AvatarFallback>
+          <AvatarImage src="/Headshot%20(2).jpg" alt="@user2" />
+          <AvatarFallback>BM</AvatarFallback>
+        </Avatar>
+        <Avatar>
+          <AvatarFallback>PO</AvatarFallback>
         </Avatar>
       </div>
     ),
-    code: `<Avatar>\n  <AvatarImage src="https://github.com/shadcn.png" />\n  <AvatarFallback>CN</AvatarFallback>\n</Avatar>`
+    code: `<Avatar>\n  <AvatarImage src="/Headshot (1).jpg" alt="@user" />\n  <AvatarFallback>CN</AvatarFallback>\n</Avatar>`
   },
   {
     name: "Checkbox & Label",
+    category: "Forms",
     description: "A control that allows the user to toggle between checked and not checked.",
     preview: (
       <div className="flex items-center space-x-2 bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border text-black">
@@ -84,6 +99,7 @@ const componentsList = [
   },
   {
     name: "Switch",
+    category: "Forms",
     description: "A control that allows the user to toggle between checked and not checked.",
     preview: (
       <div className="flex items-center space-x-2 bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border text-black">
@@ -95,6 +111,7 @@ const componentsList = [
   },
   {
     name: "Separator",
+    category: "Core/General",
     description: "Visually or semantically separates content.",
     preview: (
       <div className="w-full max-w-sm bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border text-black">
@@ -111,6 +128,7 @@ const componentsList = [
   },
   {
     name: "Skeleton",
+    category: "Feedback",
     description: "Use to show a placeholder while content is loading.",
     preview: (
       <div className="flex items-center space-x-4 bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border">
@@ -132,12 +150,14 @@ export default function ComponentsPage() {
     comp.name.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
+  const categories = Array.from(new Set(filteredComponents.map(c => c.category)))
+
   return (
     <div className="container mx-auto px-4 max-w-6xl py-12 flex flex-col gap-12 text-foreground">
       <div className="bg-card text-white p-12 border-[3px] border-border shadow-[var(--shadow-comic)] rounded-[var(--radius-comic-lg)]">
         <TypographyH1>Components</TypographyH1>
         <TypographyP className="text-white/90 text-lg">
-          Browse the collection of superhero-ready components. Ready to drop into your setup.
+          Browse the collection. Ready to drop into your setup (categorized for ease of use).
         </TypographyP>
         <div className="relative mt-8 max-w-md">
           <Search className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
@@ -151,32 +171,40 @@ export default function ComponentsPage() {
       </div>
 
       <div className="flex flex-col gap-16">
-        {filteredComponents.map((component) => (
-          <div key={component.name} className="flex flex-col gap-4">
-            <TypographyH2>{component.name}</TypographyH2>
-            <TypographyP className="text-muted-foreground my-0 pb-4">{component.description}</TypographyP>
+        {categories.map(category => (
+          <div key={category} className="flex flex-col gap-8">
+            <TypographyH2 className="border-b-[4px] pb-4">{category}</TypographyH2>
             
-            <Tabs defaultValue="preview" className="w-full">
-              <TabsList className="mb-4">
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-              <TabsContent value="preview" className="p-8 border-[3px] border-border rounded-comic bg-background shadow-comic flex items-center justify-center min-h-[250px] bg-halftone">
-                <div className="bg-white p-6 rounded-comic border-[3px] border-border shadow-comic w-full max-w-2xl flex justify-center">
-                  {component.preview}
-                </div>
-              </TabsContent>
-              <TabsContent value="code" className="text-white">
-                <div className="bg-black p-6 rounded-comic border-[3px] border-border shadow-comic overflow-x-auto relative">
-                  <pre className="text-sm font-mono whitespace-pre-wrap break-words">{component.code}</pre>
-                </div>
-              </TabsContent>
-            </Tabs>
+            <div className="grid gap-12 lg:grid-cols-2">
+            {filteredComponents.filter(c => c.category === category).map((component) => (
+              <div key={component.name} className="flex flex-col gap-4">
+                <div className="text-2xl font-bold uppercase">{component.name}</div>
+                <TypographyP className="text-muted-foreground my-0 pb-2">{component.description}</TypographyP>
+                
+                <Tabs defaultValue="preview" className="w-full">
+                  <TabsList className="mb-4">
+                    <TabsTrigger value="preview">Preview</TabsTrigger>
+                    <TabsTrigger value="code">Code</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="preview" className="p-8 border-[3px] border-border rounded-[var(--radius-comic)] bg-background shadow-[var(--shadow-comic)] flex items-center justify-center min-h-[150px] bg-halftone">
+                    <div className="bg-white p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] w-full max-w-2xl flex justify-center text-black">
+                      {component.preview}
+                    </div>
+                  </TabsContent>
+                  <TabsContent value="code" className="text-white">
+                    <div className="bg-black p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] overflow-x-auto relative">
+                      <pre className="text-sm font-mono whitespace-pre-wrap break-words">{component.code}</pre>
+                    </div>
+                  </TabsContent>
+                </Tabs>
+              </div>
+            ))}
+            </div>
           </div>
         ))}
 
         {filteredComponents.length === 0 && (
-          <div className="p-12 text-center border-[3px] border-border border-dashed rounded-comic">
+          <div className="p-12 text-center border-[3px] border-border border-dashed rounded-[var(--radius-comic)]">
             <TypographyH2>No components found.</TypographyH2>
           </div>
         )}
