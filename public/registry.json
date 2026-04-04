@@ -1,4 +1,32 @@
 {
+  "alert": {
+    "name": "alert",
+    "dependencies": [
+      "class-variance-authority",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      {
+        "name": "alert.tsx",
+        "content": "import * as React from \"react\"\r\nimport { cva, type VariantProps } from \"class-variance-authority\"\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nconst alertVariants = cva(\r\n  \"relative w-full rounded-[var(--radius-comic)] border-[var(--border-comic)] border-border px-4 py-3 text-sm shadow-[var(--shadow-comic)] bg-background [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground [&>svg~*]:pl-8\",\r\n  {\r\n    variants: {\r\n      variant: {\r\n        default: \"bg-background text-foreground\",\r\n        destructive:\r\n          \"bg-destructive text-destructive-foreground border-border shadow-[var(--shadow-comic)] [&>svg]:text-current\",\r\n        warning:\r\n          \"bg-primary text-primary-foreground border-border shadow-[var(--shadow-comic)] [&>svg]:text-current\",\r\n      },\r\n    },\r\n    defaultVariants: {\r\n      variant: \"default\",\r\n    },\r\n  }\r\n)\r\n\r\nconst Alert = React.forwardRef<\r\n  HTMLDivElement,\r\n  React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>\r\n>(({ className, variant, ...props }, ref) => (\r\n  <div\r\n    ref={ref}\r\n    role=\"alert\"\r\n    className={cn(alertVariants({ variant }), className)}\r\n    {...props}\r\n  />\r\n))\r\nAlert.displayName = \"Alert\"\r\n\r\nconst AlertTitle = React.forwardRef<\r\n  HTMLParagraphElement,\r\n  React.HTMLAttributes<HTMLHeadingElement>\r\n>(({ className, ...props }, ref) => (\r\n  <h5\r\n    ref={ref}\r\n    className={cn(\"mb-1 font-black uppercase tracking-wider leading-none tracking-tight\", className)}\r\n    {...props}\r\n  />\r\n))\r\nAlertTitle.displayName = \"AlertTitle\"\r\n\r\nconst AlertDescription = React.forwardRef<\r\n  HTMLParagraphElement,\r\n  React.HTMLAttributes<HTMLParagraphElement>\r\n>(({ className, ...props }, ref) => (\r\n  <div\r\n    ref={ref}\r\n    className={cn(\"text-sm font-bold opacity-90 [&_p]:leading-relaxed\", className)}\r\n    {...props}\r\n  />\r\n))\r\nAlertDescription.displayName = \"AlertDescription\"\r\n\r\nexport { Alert, AlertTitle, AlertDescription }"
+      }
+    ]
+  },
+  "badge": {
+    "name": "badge",
+    "dependencies": [
+      "class-variance-authority",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      {
+        "name": "badge.tsx",
+        "content": "import * as React from \"react\"\r\nimport { cva, type VariantProps } from \"class-variance-authority\"\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nconst badgeVariants = cva(\r\n  \"inline-flex items-center rounded-[var(--radius-comic)] border-[var(--border-comic)] border-border px-2.5 py-0.5 text-xs font-black uppercase tracking-wider transition-colors shadow-[var(--shadow-comic-sm)] focus:outline-none focus:ring-4 focus:ring-ring focus:ring-offset-2\",\r\n  {\r\n    variants: {\r\n      variant: {\r\n        default:\r\n          \"bg-primary text-primary-foreground hover:bg-primary/80\",\r\n        secondary:\r\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\r\n        destructive:\r\n          \"bg-destructive text-destructive-foreground hover:bg-destructive/80\",\r\n        outline:\r\n          \"text-foreground bg-background hover:bg-accent hover:text-accent-foreground\",\r\n      },\r\n    },\r\n    defaultVariants: {\r\n      variant: \"default\",\r\n    },\r\n  }\r\n)\r\n\r\nexport interface BadgeProps\r\n  extends React.HTMLAttributes<HTMLDivElement>,\r\n    VariantProps<typeof badgeVariants> {}\r\n\r\nfunction Badge({ className, variant, ...props }: BadgeProps) {\r\n  return (\r\n    <div className={cn(badgeVariants({ variant }), className)} {...props} />\r\n  )\r\n}\r\n\r\nexport { Badge, badgeVariants }"
+      }
+    ]
+  },
   "button": {
     "name": "button",
     "dependencies": [
@@ -109,6 +137,20 @@
       {
         "name": "table.tsx",
         "content": "import * as React from \"react\"\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nconst Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <div className=\"w-full overflow-auto rounded-[var(--radius-comic)] border-[var(--border-comic)] border-border bg-white shadow-[var(--shadow-comic)] mt-2 mb-4\">\r\n      <table\r\n        ref={ref}\r\n        className={cn(\"w-full caption-bottom text-sm font-sans\", className)}\r\n        {...props}\r\n      />\r\n    </div>\r\n  )\r\n)\r\nTable.displayName = \"Table\"\r\n\r\nconst TableHeader = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <thead ref={ref} className={cn(\"bg-muted/50 border-b-[var(--border-comic)] border-border text-black\", className)} {...props} />\r\n  )\r\n)\r\nTableHeader.displayName = \"TableHeader\"\r\n\r\nconst TableBody = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <tbody\r\n      ref={ref}\r\n      className={cn(\"[&_tr:last-child]:border-0\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nTableBody.displayName = \"TableBody\"\r\n\r\nconst TableFooter = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <tfoot\r\n      ref={ref}\r\n      className={cn(\"bg-primary text-primary-foreground font-black border-t-[var(--border-comic)] border-border\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nTableFooter.displayName = \"TableFooter\"\r\n\r\nconst TableRow = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTMLTableRowElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <tr\r\n      ref={ref}\r\n      className={cn(\r\n        \"border-b-[var(--border-comic)] border-border transition-colors hover:bg-muted/30 data-[state=selected]:bg-muted\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nTableRow.displayName = \"TableRow\"\r\n\r\nconst TableHead = React.forwardRef<HTMLTableCellElement, React.ThHTMLAttributes<HTMLTableCellElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <th\r\n      ref={ref}\r\n      className={cn(\r\n        \"h-12 px-4 text-left align-middle font-black uppercase tracking-wider text-muted-foreground [&:has([role=checkbox])]:pr-0\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nTableHead.displayName = \"TableHead\"\r\n\r\nconst TableCell = React.forwardRef<HTMLTableCellElement, React.TdHTMLAttributes<HTMLTableCellElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <td\r\n      ref={ref}\r\n      className={cn(\"p-4 align-middle font-bold [&:has([role=checkbox])]:pr-0\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nTableCell.displayName = \"TableCell\"\r\n\r\nconst TableCaption = React.forwardRef<HTMLTableCaptionElement, React.HTMLAttributes<HTMLTableCaptionElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <caption\r\n      ref={ref}\r\n      className={cn(\"mt-4 text-sm font-bold text-muted-foreground px-4\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n)\r\nTableCaption.displayName = \"TableCaption\"\r\n\r\nexport {\r\n  Table,\r\n  TableHeader,\r\n  TableBody,\r\n  TableFooter,\r\n  TableHead,\r\n  TableRow,\r\n  TableCell,\r\n  TableCaption,\r\n}"
+      }
+    ]
+  },
+  "tabs": {
+    "name": "tabs",
+    "dependencies": [
+      "@radix-ui/react-tabs",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      {
+        "name": "tabs.tsx",
+        "content": "import * as React from \"react\"\r\nimport * as TabsPrimitive from \"@radix-ui/react-tabs\"\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nconst Tabs = TabsPrimitive.Root\r\n\r\nconst TabsList = React.forwardRef<\r\n  React.ElementRef<typeof TabsPrimitive.List>,\r\n  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>\r\n>(({ className, ...props }, ref) => (\r\n  <TabsPrimitive.List\r\n    ref={ref}\r\n    className={cn(\r\n      \"inline-flex h-12 items-center justify-center rounded-[var(--radius-comic)] border-[var(--border-comic)] border-border bg-muted p-1 text-muted-foreground shadow-[var(--shadow-comic-sm)]\",\r\n      className\r\n    )}\r\n    {...props}\r\n  />\r\n))\r\nTabsList.displayName = TabsPrimitive.List.displayName\r\n\r\nconst TabsTrigger = React.forwardRef<\r\n  React.ElementRef<typeof TabsPrimitive.Trigger>,\r\n  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>\r\n>(({ className, ...props }, ref) => (\r\n  <TabsPrimitive.Trigger\r\n    ref={ref}\r\n    className={cn(\r\n      \"inline-flex items-center justify-center whitespace-nowrap rounded-[calc(var(--radius-comic)-4px)] px-3 py-1.5 text-sm font-black uppercase tracking-wider ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:border-[2px] data-[state=active]:border-border data-[state=active]:shadow-[1px_1px_0_0_#000]\",\r\n      className\r\n    )}\r\n    {...props}\r\n  />\r\n))\r\nTabsTrigger.displayName = TabsPrimitive.Trigger.displayName\r\n\r\nconst TabsContent = React.forwardRef<\r\n  React.ElementRef<typeof TabsPrimitive.Content>,\r\n  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>\r\n>(({ className, ...props }, ref) => (\r\n  <TabsPrimitive.Content\r\n    ref={ref}\r\n    className={cn(\r\n      \"mt-4 ring-offset-background focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring focus-visible:ring-offset-2\",\r\n      className\r\n    )}\r\n    {...props}\r\n  />\r\n))\r\nTabsContent.displayName = TabsPrimitive.Content.displayName\r\n\r\nexport { Tabs, TabsList, TabsTrigger, TabsContent }"
       }
     ]
   }

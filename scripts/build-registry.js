@@ -6,6 +6,9 @@ const registryPath = path.join(__dirname, "../public/registry.json");
 
 // Map of external dependencies required for each component
 const dependenciesMap = {
+  alert: ["class-variance-authority", "clsx", "tailwind-merge"],
+  badge: ["class-variance-authority", "clsx", "tailwind-merge"],
+  tabs: ["@radix-ui/react-tabs", "clsx", "tailwind-merge"],
   button: [
     "@radix-ui/react-slot",
     "class-variance-authority",
