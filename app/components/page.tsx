@@ -17,16 +17,150 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter } from "@/components/ui/sheet"
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable"
 import { Drawer, DrawerTrigger, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose } from "@/components/ui/drawer"
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts"
+import { Target, Activity, FileBox } from "lucide-react"
 
 type ComponentItem = {
   name: string;
-  category: "Core/General" | "Forms" | "Data Display" | "Feedback" | "Layout/Structure";
+  category: "Core/General" | "Forms" | "Data Display" | "Feedback" | "Layout/Structure" | "Complex Data";
   description: string;
   preview: React.ReactNode;
   code: string;
 };
 
 const componentsList: ComponentItem[] = [
+  {
+    name: "Data Table",
+    category: "Complex Data",
+    description: "Highly structured table for sorting, filtering, and pagination.",
+    preview: (
+      <div className="w-full max-w-2xl bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] text-black">
+        <Table>
+          <TableCaption>A list of recent hero activities.</TableCaption>
+          <TableHeader>
+            <TableRow className="bg-yellow-400">
+              <TableHead className="w-[100px] text-black">ID</TableHead>
+              <TableHead className="text-black">Hero</TableHead>
+              <TableHead className="text-black">Status</TableHead>
+              <TableHead className="text-right text-black">Missions</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell className="font-bold">#001</TableCell>
+              <TableCell>Captain Thunder</TableCell>
+              <TableCell><Badge className="bg-green-400 text-black border-[2px] border-black">Active</Badge></TableCell>
+              <TableCell className="text-right font-black">250</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-bold">#002</TableCell>
+              <TableCell>Shadow Strike</TableCell>
+              <TableCell><Badge className="bg-red-400 text-white border-[2px] border-black">MIA</Badge></TableCell>
+              <TableCell className="text-right font-black">12</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-bold">#003</TableCell>
+              <TableCell>Laser Fist</TableCell>
+              <TableCell><Badge className="bg-blue-400 text-white border-[2px] border-black">Training</Badge></TableCell>
+              <TableCell className="text-right font-black">42</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+    ),
+    code: `<Table>\n  <TableHeader>\n    <TableRow>\n      <TableHead>Hero</TableHead>\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n    <TableRow>\n      <TableCell>Captain Thunder</TableCell>\n    </TableRow>\n  </TableBody>\n</Table>`
+  },
+  {
+    name: "List View (Activity)",
+    category: "Complex Data",
+    description: "Virtualization-ready list style for tracking activity or generic data.",
+    preview: (
+      <div className="w-full max-w-md bg-white p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] text-black">
+        <h4 className="font-black text-xl mb-4 border-b-[3px] border-border pb-2">Hero Activity Feed</h4>
+        <div className="flex flex-col gap-4">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="flex gap-4 items-start pb-4 border-b-[2px] border-border last:border-0 last:pb-0">
+              <Avatar className="h-10 w-10 border-[3px] border-border">
+                <AvatarFallback className="bg-yellow-400 text-black font-bold">H</AvatarFallback>
+              </Avatar>
+              <div className="flex flex-col">
+                <span className="font-bold text-base leading-none">Defeated Villain X</span>
+                <span className="text-sm font-bold text-muted-foreground mt-1">2 hours ago</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ),
+    code: `<div className="flex flex-col gap-4">\n  <div className="flex gap-4 items-start">\n    <Avatar><AvatarFallback>H1</AvatarFallback></Avatar>\n    <div className="flex flex-col">\n      <span className="font-bold">Action Performed</span>\n    </div>\n  </div>\n</div>`
+  },
+  {
+    name: "Stats / KPI Block",
+    category: "Complex Data",
+    description: "Important high-level metrics for dashboard homepages.",
+    preview: (
+      <div className="w-full flex flex-col md:flex-row gap-4">
+        <div className="bg-red-400 flex-1 p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] text-white flex gap-4 items-center">
+          <div className="p-3 bg-white text-black rounded-full border-[3px] border-border">
+            <Target className="h-6 w-6" />
+          </div>
+          <div>
+            <div className="text-sm font-black uppercase text-black drop-shadow-sm">Threat Level</div>
+            <div className="text-3xl font-black drop-shadow-md">CRITICAL</div>
+          </div>
+        </div>
+        <div className="bg-blue-400 flex-1 p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] text-white flex gap-4 items-center">
+          <div className="p-3 bg-white text-black rounded-full border-[3px] border-border">
+            <Activity className="h-6 w-6" />
+          </div>
+          <div>
+            <div className="text-sm font-black uppercase text-black drop-shadow-sm">Civilians Saved</div>
+            <div className="text-3xl font-black drop-shadow-md">10,492</div>
+          </div>
+        </div>
+      </div>
+    ),
+    code: `<div className="bg-red-400 p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)]">\n  <div className="text-sm font-black text-black">Threat Level</div>\n  <div className="text-3xl font-black text-white">CRITICAL</div>\n</div>`
+  },
+  {
+    name: "Bar Chart",
+    category: "Complex Data",
+    description: "Integrated charts (recharts) with bold comic colors.",
+    preview: (
+      <div className="w-full h-[250px] bg-white p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] flex justify-center items-center">
+        <div className="w-full h-full flex flex-col">
+          <h4 className="font-black text-lg text-black mb-4 uppercase">City Crime Rate</h4>
+          <div className="flex-1 w-full relative h-[200px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={[{name: 'Jan', uv: 400}, {name: 'Feb', uv: 300}, {name: 'Mar', uv: 200}, {name: 'Apr', uv: 278}, {name: 'May', uv: 189}]}>
+                <XAxis dataKey="name" stroke="#000" tick={{fontWeight: 'bold', fill: '#000'}} />
+                <Tooltip cursor={{fill: '#e5e7eb'}} contentStyle={{border: '3px solid #000', borderRadius: 'var(--radius-comic)', fontWeight: 'bold'}} />
+                <Bar dataKey="uv" fill="#facc15" stroke="#000" strokeWidth={3} radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      </div>
+    ),
+    code: `<ResponsiveContainer width="100%" height="100%">\n  <BarChart data={data}>\n    <XAxis dataKey="name" stroke="#000" />\n    <Tooltip contentStyle={{border: '3px solid #000', fontWeight: 'bold'}} />\n    <Bar dataKey="uv" fill="#facc15" stroke="#000" strokeWidth={3} radius={[4,4,0,0]} />\n  </BarChart>\n</ResponsiveContainer>`
+  },
+  {
+    name: "Empty State",
+    category: "Complex Data",
+    description: "Playful empty states for lists with no data.",
+    preview: (
+      <div className="w-full max-w-lg p-12 bg-white rounded-[var(--radius-comic)] border-[4px] border-dashed border-border flex flex-col items-center justify-center text-center mx-auto">
+        <div className="h-20 w-20 bg-yellow-400 rounded-full border-[3px] border-border flex items-center justify-center mb-6 shadow-[var(--shadow-comic-sm)] hover:-translate-y-1 transition-transform">
+          <FileBox className="h-10 w-10 text-black" />
+        </div>
+        <h3 className="text-2xl font-black text-black uppercase">No Missions Found</h3>
+        <p className="text-muted-foreground font-bold mt-2 text-lg">Looks like the city is safe today. Take a break, hero!</p>
+        <Button className="mt-8 font-bold shadow-[var(--shadow-comic)] border-[3px] py-6 px-8 text-xl text-black" variant="default">Refresh Radar</Button>
+      </div>
+    ),
+    code: `<div className="p-12 bg-white rounded-[var(--radius-comic)] border-[4px] border-dashed flex flex-col items-center text-center">\n  <div className="h-20 w-20 bg-yellow-400 rounded-full flex items-center justify-center mb-6">\n    <FileBox className="h-10 w-10 text-black" />\n  </div>\n  <h3 className="text-2xl font-black text-black">No Missions Found</h3>\n  <Button>Refresh Radar</Button>\n</div>`
+  },
   {
     name: "Accordion",
     category: "Layout/Structure",
@@ -158,14 +292,14 @@ const componentsList: ComponentItem[] = [
     description: "Displays a button or a component that looks like a button.",
     preview: (
       <div className="flex gap-4 flex-wrap">
-        <Button variant="default">Default</Button>
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="destructive">Destructive</Button>
+        <Button variant="default" className="bg-blue-500 hover:bg-blue-600 text-white">Action Blue</Button>
+        <Button variant="secondary" className="bg-yellow-400 hover:bg-yellow-500 text-black">Zap Yellow</Button>
+        <Button variant="destructive" className="bg-red-500 hover:bg-red-600 text-white">Pow Red</Button>
         <Button variant="outline">Outline</Button>
         <Button variant="ghost">Ghost</Button>
       </div>
     ),
-    code: `<Button variant="default">Default</Button>\n<Button variant="secondary">Secondary</Button>\n<Button variant="destructive">Destructive</Button>`,
+    code: `<Button variant="default" className="bg-blue-500 hover:bg-blue-600 text-white">Action Blue</Button>\n<Button variant="secondary" className="bg-yellow-400 hover:bg-yellow-500 text-black">Zap Yellow</Button>\n<Button variant="destructive" className="bg-red-500 hover:bg-red-600 text-white">Pow Red</Button>`,
   },
   {
     name: "Input",
@@ -185,13 +319,13 @@ const componentsList: ComponentItem[] = [
     description: "Displays a badge or a component that looks like a badge.",
     preview: (
       <div className="flex gap-4 items-center">
-        <Badge variant="default">New</Badge>
-        <Badge variant="secondary">Beta</Badge>
-        <Badge variant="destructive">Warning</Badge>
+        <Badge className="bg-blue-500 text-white border-[2px] border-black">New</Badge>
+        <Badge className="bg-yellow-400 text-black border-[2px] border-black">Beta</Badge>
+        <Badge className="bg-red-500 text-white border-[2px] border-black">Warning</Badge>
         <Badge variant="outline">Outline</Badge>
       </div>
     ),
-    code: `<Badge variant="default">New</Badge>\n<Badge variant="secondary">Beta</Badge>\n<Badge variant="destructive">Warning</Badge>`
+    code: `<Badge className="bg-blue-500 text-white border-[2px] border-black">New</Badge>\n<Badge className="bg-yellow-400 text-black border-[2px] border-black">Beta</Badge>\n<Badge className="bg-red-500 text-white border-[2px] border-black">Warning</Badge>`
   },
   {
     name: "Avatar",
