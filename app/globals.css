@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+
+  /* Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Comic Dimensions */
+  --radius-comic: 3px;
+  --radius-comic-lg: 6px;
+  --border-comic: 3px;
+
+  /* Comic Effects */
+  --shadow-comic: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-comic-sm: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-comic-hover: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-comic-active: 0px 0px 0px 0px rgba(0, 0, 0, 1);
+}
+
+@layer base {
+  :root {
+    --background: #ffffff; /* Page background white or halftone */
+    --foreground: #000000;
+
+    --card: #3b82f6; /* Blue background for text/components */
+    --card-foreground: #ffffff; /* White text on blue background */
+
+    --primary: #facc15; /* Comic Yellow */
+    --primary-foreground: #000000;
+
+    --secondary: #e5e7eb; /* Light Gray */
+    --secondary-foreground: #000000;
+
+    --destructive: #ef4444; /* Comic Red */
+    --destructive-foreground: #ffffff;
+
+    --muted: #f3f4f6;
+    --muted-foreground: #4b5563;
+
+    --accent: #a7f3d0; /* Soft cyan/blue */
+    --accent-foreground: #000000;
+
+    --border: #000000;
+    --input: #ffffff;
+    --ring: #000000;
+  }
+
+  .dark {
+    --background: #0f172a; /* Dark blue/gray */
+    --foreground: #ffffff;
+
+    --card: #1e3a8a; /* Deep blue background for dark mode cards */
+    --card-foreground: #ffffff;
+
+    --primary: #facc15;
+    --primary-foreground: #000000;
+
+    --secondary: #1f2937;
+    --secondary-foreground: #ffffff;
+
+    --destructive: #7f1d1d;
+    --destructive-foreground: #ffffff;
+
+    --muted: #1f2937;
+    --muted-foreground: #9ca3af;
+
+    --accent: #0f766e;
+    --accent-foreground: #ffffff;
+
+    --border: #ffffff;
+    --input: #1e293b;
+    --ring: #ffffff;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+/* Halftone Pattern Utility */
+@layer utilities {
+  .bg-halftone {
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.2) 2px, transparent 2.5px);
+    background-size: 10px 10px;
+    background-position: 0 0, 5px 5px;
+  }
+  .dark .bg-halftone {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 2px, transparent 2.5px);
+  }
+}
