@@ -26,17 +26,246 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Progress } from "@/components/ui/progress"
 import { toast } from "sonner"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Copy, Bot, User, RefreshCcw, SquarePen, Sparkles, MessageSquare, Plus, Hash, Check, CreditCard, Download, Key, Users, Settings2, Trash2, Zap, Smartphone, Mail, Lock, ShieldCheck, Monitor, Laptop, ArrowRight } from "lucide-react"
+import { Copy, Bot, User, RefreshCcw, SquarePen, Sparkles, MessageSquare, Plus, Hash, Check, CreditCard, Download, Key, Users, Settings2, Trash2, Zap, Smartphone, Mail, Lock, ShieldCheck, Monitor, Laptop, ArrowRight, ChevronRight, Command, Menu, X, Home, Compass, Folder, Calendar, Star, Compass as ExploreIcon, AlignLeft } from "lucide-react"
 
 type ComponentItem = {
   name: string;
-  category: "Core/General" | "Forms" | "Data Display" | "Feedback" | "Layout/Structure" | "Complex Data" | "AI & LLM" | "SaaS & Billing" | "Auth & Security";
+  category: "Core/General" | "Forms" | "Data Display" | "Feedback" | "Layout/Structure" | "Complex Data" | "AI & LLM" | "SaaS & Billing" | "Auth & Security" | "Navigation & Discovery";
   description: string;
   preview: React.ReactNode;
   code: string;
 };
 
 const componentsList: ComponentItem[] = [
+  {
+    name: "Breadcrumbs",
+    category: "Navigation & Discovery",
+    description: "Fun, heavily bordered block-style breadcrumbs.",
+    preview: (
+      <div className="w-full flex items-center justify-center p-8 bg-white rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)]">
+        <nav className="flex items-center gap-2 font-black text-sm">
+          <a href="#!" onClick={(e) => e.preventDefault()} className="flex items-center gap-2 bg-yellow-300 px-3 py-1.5 rounded-[var(--radius-comic)] border-[2px] border-black hover:-translate-y-1 hover:shadow-[var(--shadow-comic-sm)] transition-all">
+            <Home className="h-4 w-4" /> Home
+          </a>
+          <ChevronRight className="h-5 w-5 text-gray-400" />
+          <a href="#!" onClick={(e) => e.preventDefault()} className="flex items-center gap-2 bg-pink-300 px-3 py-1.5 rounded-[var(--radius-comic)] border-[2px] border-black hover:-translate-y-1 hover:shadow-[var(--shadow-comic-sm)] transition-all">
+            Products
+          </a>
+          <ChevronRight className="h-5 w-5 text-gray-400" />
+          <span className="flex items-center gap-2 bg-gray-200 px-3 py-1.5 rounded-[var(--radius-comic)] border-[2px] border-black opacity-70">
+            Comic Books
+          </span>
+        </nav>
+      </div>
+    ),
+    code: "<nav className=\"flex gap-2\"><a className=\"bg-yellow-300 border-[2px]...\">Home</a>...</nav>"
+  },
+  {
+    name: "Command Palette",
+    category: "Navigation & Discovery",
+    description: "Cmd+K interface for global navigation and actions.",
+    preview: (
+      <div className="w-full max-w-lg mx-auto bg-white rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-lg)] overflow-hidden">
+        <div className="flex items-center px-4 py-3 border-b-[3px] border-border bg-gray-50">
+          <Search className="h-5 w-5 text-gray-500 mr-2" />
+          <input className="w-full bg-transparent border-none outline-none font-bold text-lg placeholder:text-gray-400" placeholder="Type a command or search..." />
+          <Badge className="bg-white border-[2px] border-black text-black font-bold font-mono ml-2">⌘K</Badge>
+        </div>
+        <div className="p-2 max-h-[300px] overflow-y-auto">
+          <div className="px-2 py-1.5 text-xs font-black uppercase text-gray-500">Suggestions</div>
+          <button className="w-full flex items-center justify-between px-3 py-3 rounded-[var(--radius-comic)] border-[2px] border-transparent hover:border-black hover:bg-yellow-100 hover:shadow-[var(--shadow-comic-sm)] transition-all text-left group">
+            <div className="flex items-center gap-3">
+              <Calendar className="h-5 w-5 text-blue-500 group-hover:scale-110 transition-transform" />
+              <span className="font-bold text-black">Create new event</span>
+            </div>
+            <span className="text-xs font-bold text-gray-400">Action</span>
+          </button>
+          <button className="w-full flex items-center justify-between px-3 py-3 rounded-[var(--radius-comic)] border-[2px] border-transparent hover:border-black hover:bg-green-100 hover:shadow-[var(--shadow-comic-sm)] transition-all text-left group">
+            <div className="flex items-center gap-3">
+              <Folder className="h-5 w-5 text-yellow-500 group-hover:scale-110 transition-transform" />
+              <span className="font-bold text-black">Search projects</span>
+            </div>
+            <span className="text-xs font-bold text-gray-400">Navigation</span>
+          </button>
+          <div className="px-2 py-1.5 mt-2 text-xs font-black uppercase text-gray-500">Settings</div>
+          <button className="w-full flex items-center justify-between px-3 py-3 rounded-[var(--radius-comic)] border-[2px] border-transparent hover:border-black hover:bg-purple-100 hover:shadow-[var(--shadow-comic-sm)] transition-all text-left group">
+            <div className="flex items-center gap-3">
+              <Settings2 className="h-5 w-5 text-gray-600 group-hover:scale-110 transition-transform" />
+              <span className="font-bold text-black">Account preferences</span>
+            </div>
+            <span className="text-xs font-bold text-gray-400">Settings</span>
+          </button>
+        </div>
+      </div>
+    ),
+    code: "<div className=\"border-[3px] shadow-[var(--shadow-comic-lg)]\"><input placeholder=\"Search...\" />...</div>"
+  },
+  {
+    name: "Global Search",
+    category: "Navigation & Discovery",
+    description: "Search bar with live preview dropdown.",
+    preview: (
+      <div className="w-full max-w-xl mx-auto align-top min-h-[350px]">
+        <div className="relative">
+          <div className="flex items-center bg-white border-[3px] border-black rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-sm)] overflow-hidden focus-within:shadow-[var(--shadow-comic)] transition-shadow">
+            <div className="pl-4">
+              <Search className="h-5 w-5 text-black" />
+            </div>
+            <Input className="border-none shadow-none focus-visible:ring-0 text-lg font-bold h-14" placeholder="Search for users, docs, or settings..." />
+            <Button className="bg-black text-white font-black rounded-none h-14 px-6 border-l-[3px] border-black">Search</Button>
+          </div>
+          
+          <div className="absolute top-[calc(100%+8px)] left-0 w-full bg-white border-[3px] border-black rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-lg)] z-10 overflow-hidden">
+            <div className="p-4 border-b-[2px] border-dashed border-gray-300 bg-blue-50">
+              <h4 className="font-black text-xs uppercase text-blue-800 mb-2">Top Results</h4>
+              <div className="flex items-center gap-3 bg-white p-3 rounded-[var(--radius-comic)] border-[2px] border-black cursor-pointer hover:-translate-y-0.5 hover:shadow-[var(--shadow-comic-sm)] transition-all">
+                <Avatar className="h-10 w-10 border-[2px] border-black">
+                  <AvatarFallback className="bg-yellow-400 font-bold text-black">BR</AvatarFallback>
+                </Avatar>
+                <div>
+                  <div className="font-black">Bruce Wayne</div>
+                  <div className="text-xs font-bold text-gray-500">User • bruce@wayne.com</div>
+                </div>
+              </div>
+            </div>
+            <div className="p-4">
+              <h4 className="font-black text-xs uppercase text-gray-500 mb-2">Documentation</h4>
+              <ul className="space-y-2">
+                <li className="font-bold text-sm hover:text-blue-600 cursor-pointer flex items-center gap-2"><FileBox className="h-4 w-4" /> How to connect API</li>
+                <li className="font-bold text-sm hover:text-blue-600 cursor-pointer flex items-center gap-2"><FileBox className="h-4 w-4" /> Billing and Subscriptions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+    code: "<div className=\"relative\"><Input /><div className=\"absolute top-full\">Results...</div></div>"
+  },
+  {
+    name: "Collapsible Sidebar",
+    category: "Navigation & Discovery",
+    description: "A fun, chunky sidebar navigation for dashboards.",
+    preview: (
+      <div className="w-full max-w-3xl mx-auto h-[400px] border-[3px] border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-lg)] flex overflow-hidden bg-gray-50">
+        <aside className="w-48 sm:w-64 bg-yellow-400 border-r-[3px] border-border flex flex-col shrink-0">
+          <div className="h-16 flex items-center px-4 border-b-[3px] border-border bg-white justify-between">
+            <span className="font-black text-xl tracking-tight">COMIC.UI</span>
+            <Button size="icon" variant="ghost" className="hover:bg-gray-100 rounded-full border-[2px] border-transparent hover:border-black h-8 w-8">
+              <AlignLeft className="h-4 w-4" />
+            </Button>
+          </div>
+          <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-2">
+            <a href="#!" onClick={(e) => e.preventDefault()} className="flex items-center gap-3 px-3 py-2 bg-black text-white rounded-[var(--radius-comic)] font-black border-[2px] border-black shadow-[var(--shadow-comic-sm)]">
+              <Home className="h-5 w-5" /> Dashboard
+            </a>
+            <a href="#!" onClick={(e) => e.preventDefault()} className="flex items-center gap-3 px-3 py-2 text-black hover:bg-white rounded-[var(--radius-comic)] font-bold border-[2px] border-transparent hover:border-black transition-colors">
+              <Compass className="h-5 w-5" /> Explore
+            </a>
+            <a href="#!" onClick={(e) => e.preventDefault()} className="flex items-center gap-3 px-3 py-2 text-black hover:bg-white rounded-[var(--radius-comic)] font-bold border-[2px] border-transparent hover:border-black transition-colors">
+              <Star className="h-5 w-5" /> Favorites
+            </a>
+            <div className="mt-4 mb-1 px-3 text-xs font-black uppercase text-yellow-800">Workspace</div>
+            <a href="#!" onClick={(e) => e.preventDefault()} className="flex items-center gap-3 px-3 py-2 text-black hover:bg-white rounded-[var(--radius-comic)] font-bold border-[2px] border-transparent hover:border-black transition-colors">
+              <Folder className="h-5 w-5" /> Projects
+            </a>
+            <a href="#!" onClick={(e) => e.preventDefault()} className="flex items-center justify-between px-3 py-2 text-black hover:bg-white rounded-[var(--radius-comic)] font-bold border-[2px] border-transparent hover:border-black transition-colors">
+              <div className="flex items-center gap-3"><Users className="h-5 w-5" /> Team</div>
+              <Badge className="bg-black text-white px-1.5 py-0 h-5 text-[10px]">3</Badge>
+            </a>
+          </div>
+          <div className="p-4 border-t-[3px] border-border bg-white">
+            <a href="#!" onClick={(e) => e.preventDefault()} className="flex items-center gap-3 px-3 py-2 text-black hover:bg-gray-100 rounded-[var(--radius-comic)] font-bold border-[2px] border-transparent hover:border-black transition-colors">
+              <Settings2 className="h-5 w-5" /> Settings
+            </a>
+          </div>
+        </aside>
+        <main className="flex-1 p-8 bg-[#f8f9fa] flex items-center justify-center">
+          <div className="text-center opacity-50 font-black text-2xl uppercase">Main Content Area</div>
+        </main>
+      </div>
+    ),
+    code: "<aside className=\"w-64 bg-yellow-400 border-r-[3px] border-border flex flex-col\">...</aside>"
+  },
+  {
+    name: "Mega Menu",
+    category: "Navigation & Discovery",
+    description: "Large dropdown menu for complex site structures.",
+    preview: (
+      <div className="w-full max-w-4xl mx-auto relative min-h-[450px]">
+        <header className="bg-white border-[3px] border-black rounded-[var(--radius-comic)] shadow-[var(--shadow-comic)] p-4 flex items-center justify-between">
+          <div className="font-black text-xl tracking-tight bg-black text-white px-3 py-1 rounded-[var(--radius-comic)] rotate-[-2deg]">LOGO</div>
+          <nav className="hidden md:flex items-center gap-6 font-bold">
+             <a href="#!" onClick={(e) => e.preventDefault()} className="hover:underline decoration-2 underline-offset-4 decoration-blue-500">Home</a>
+             
+             {/* Simulating hovered mega menu active state */}
+             <div className="relative group">
+                <a href="#!" onClick={(e) => e.preventDefault()} className="bg-blue-100 px-3 py-1 rounded-full border-[2px] border-blue-500 text-blue-700 flex items-center gap-1 cursor-default">
+                  Features <ChevronRight className="h-4 w-4 rotate-90" />
+                </a>
+             </div>
+             
+             <a href="#!" onClick={(e) => e.preventDefault()} className="hover:underline decoration-2 underline-offset-4 decoration-blue-500">Pricing</a>
+             <a href="#!" onClick={(e) => e.preventDefault()} className="hover:underline decoration-2 underline-offset-4 decoration-blue-500">Docs</a>
+          </nav>
+          <Button className="font-black bg-black text-white border-[2px] border-black shadow-[var(--shadow-comic-sm)] hover:-translate-y-1 transition-transform">Get Started</Button>
+        </header>
+
+        {/* Mega Menu Dropdown */}
+        <div className="absolute top-[80px] left-0 w-full bg-white border-[3px] border-black rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-lg)] z-20 flex flex-col md:flex-row p-6 gap-6 md:gap-8 overflow-hidden">
+           <div className="w-full md:w-1/3 bg-blue-50 p-6 rounded-[var(--radius-comic)] border-[2px] border-black flex flex-col justify-between">
+             <div>
+               <h3 className="font-black text-2xl mb-2 text-blue-600">All Features</h3>
+               <p className="font-bold text-sm text-gray-700">Discover everything our platform has to offer to turbocharge your workflow.</p>
+             </div>
+             <Button variant="link" className="font-black px-0 text-left justify-start text-blue-600 hover:text-blue-800">
+               View All <ArrowRight className="h-4 w-4 ml-1" />
+             </Button>
+           </div>
+           
+           <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+             <a href="#!" onClick={(e) => e.preventDefault()} className="group flex items-start gap-3 p-2 rounded-[var(--radius-comic)] border-[2px] border-transparent hover:border-black hover:bg-yellow-50 transition-colors">
+               <div className="bg-yellow-300 p-2 rounded-full border-[2px] border-black group-hover:rotate-12 transition-transform">
+                 <Zap className="h-5 w-5 text-black" />
+               </div>
+               <div>
+                  <div className="font-black text-sm">Automation</div>
+                  <div className="text-xs font-bold text-gray-500 mt-0.5">Automate your tasks</div>
+               </div>
+             </a>
+             <a href="#!" onClick={(e) => e.preventDefault()} className="group flex items-start gap-3 p-2 rounded-[var(--radius-comic)] border-[2px] border-transparent hover:border-black hover:bg-green-50 transition-colors">
+               <div className="bg-green-300 p-2 rounded-full border-[2px] border-black group-hover:rotate-12 transition-transform">
+                 <Users className="h-5 w-5 text-black" />
+               </div>
+               <div>
+                  <div className="font-black text-sm">Collaboration</div>
+                  <div className="text-xs font-bold text-gray-500 mt-0.5">Work with your team</div>
+               </div>
+             </a>
+             <a href="#!" onClick={(e) => e.preventDefault()} className="group flex items-start gap-3 p-2 rounded-[var(--radius-comic)] border-[2px] border-transparent hover:border-black hover:bg-purple-50 transition-colors">
+               <div className="bg-purple-300 p-2 rounded-full border-[2px] border-black group-hover:rotate-12 transition-transform">
+                 <ShieldCheck className="h-5 w-5 text-black" />
+               </div>
+               <div>
+                  <div className="font-black text-sm">Security</div>
+                  <div className="text-xs font-bold text-gray-500 mt-0.5">Enterprise grade</div>
+               </div>
+             </a>
+             <a href="#!" onClick={(e) => e.preventDefault()} className="group flex items-start gap-3 p-2 rounded-[var(--radius-comic)] border-[2px] border-transparent hover:border-black hover:bg-pink-50 transition-colors">
+               <div className="bg-pink-300 p-2 rounded-full border-[2px] border-black group-hover:rotate-12 transition-transform">
+                 <BarChart className="h-5 w-5 text-black" />
+               </div>
+               <div>
+                  <div className="font-black text-sm">Analytics</div>
+                  <div className="text-xs font-bold text-gray-500 mt-0.5">Data driven decisions</div>
+               </div>
+             </a>
+           </div>
+        </div>
+      </div>
+    ),
+    code: "<nav>...<div className=\"absolute w-full max-w-3xl\">Mega Menu Content</div></nav>"
+  },
+
   {
     name: "Login / Sign Up",
     category: "Auth & Security",
@@ -73,14 +302,14 @@ const componentsList: ComponentItem[] = [
           <div className="flex flex-col gap-2">
             <div className="flex justify-between items-center">
               <Label className="font-black uppercase">Password</Label>
-              <a href="#" className="text-xs font-black text-blue-600 hover:underline">Forgot?</a>
+              <a href="#!" onClick={(e) => e.preventDefault()} className="text-xs font-black text-blue-600 hover:underline">Forgot?</a>
             </div>
             <Input type="password" className="border-[3px] h-12 font-bold bg-yellow-50 focus-visible:ring-0 focus-visible:bg-white" placeholder="••••••••" />
           </div>
           <Button className="w-full h-12 font-black uppercase text-lg bg-black text-white hover:bg-gray-800 border-[3px] border-black shadow-[var(--shadow-comic)] mt-2">Log In</Button>
         </form>
         <p className="text-center mt-6 text-sm font-bold">
-          Don't have an account? <a href="#" className="font-black text-blue-600 hover:underline">Sign up</a>
+          Don't have an account? <a href="#!" onClick={(e) => e.preventDefault()} className="font-black text-blue-600 hover:underline">Sign up</a>
         </p>
       </div>
     ),
@@ -138,16 +367,16 @@ const componentsList: ComponentItem[] = [
     category: "Auth & Security",
     description: "Six-digit verification code entry.",
     preview: (
-      <div className="w-full max-w-md mx-auto bg-blue-100 p-8 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-lg)]">
+      <div className="w-full max-w-md mx-auto bg-blue-100 p-4 sm:p-8 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-lg)] overflow-hidden">
         <div className="bg-white p-6 rounded-[var(--radius-comic)] border-[3px] border-border">
           <div className="flex items-center gap-2 mb-4">
             <ShieldCheck className="h-6 w-6 text-blue-500" />
             <h3 className="font-black text-xl uppercase">Two-Factor Auth</h3>
           </div>
           <p className="text-sm font-bold text-muted-foreground mb-6">Enter the 6-digit code from your authenticator app.</p>
-          <div className="flex justify-between gap-2 mb-6">
+          <div className="flex flex-wrap justify-center sm:justify-between gap-2 mb-6">
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <Input key={i} className="w-12 h-14 text-center text-2xl font-black border-[3px] focus-visible:ring-0 focus-visible:bg-yellow-100 transition-colors" maxLength={1} placeholder="•" />
+              <Input key={i} className="w-10 h-12 sm:w-12 sm:h-14 text-center text-xl sm:text-2xl font-black border-[3px] focus-visible:ring-0 focus-visible:bg-yellow-100 transition-colors" maxLength={1} placeholder="•" />
             ))}
           </div>
           <Button className="w-full h-12 font-black uppercase bg-blue-500 text-white hover:bg-blue-600 border-[3px] border-black shadow-[var(--shadow-comic-sm)]">Verify Code</Button>
@@ -1124,7 +1353,7 @@ export default function ComponentsPage() {
             
             <div className="grid gap-12 lg:grid-cols-2">
             {filteredComponents.filter(c => c.category === category).map((component) => (
-              <div key={component.name} className="flex flex-col gap-4">
+              <div key={component.name} className={`flex flex-col gap-4 ${component.name === "Mega Menu" ? "lg:col-span-2" : ""}`}>
                 <div className="text-2xl font-bold uppercase">{component.name}</div>
                 <TypographyP className="text-muted-foreground my-0 pb-2">{component.description}</TypographyP>
                 
@@ -1134,7 +1363,7 @@ export default function ComponentsPage() {
                     <TabsTrigger value="code">Code</TabsTrigger>
                   </TabsList>
                   <TabsContent value="preview" className="p-8 border-[3px] border-border rounded-[var(--radius-comic)] bg-background shadow-[var(--shadow-comic)] flex items-center justify-center min-h-[150px] bg-halftone">
-                    <div className="bg-white p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] w-full max-w-2xl flex justify-center text-black">
+                    <div className={`bg-white p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] w-full flex justify-center text-black ${component.name === "Mega Menu" || component.name === "Pricing Table" ? "max-w-full" : "max-w-2xl"}`}>
                       {component.preview}
                     </div>
                   </TabsContent>
