@@ -26,17 +26,230 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Progress } from "@/components/ui/progress"
 import { toast } from "sonner"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Copy, Bot, User, RefreshCcw, SquarePen, Sparkles, MessageSquare, Plus, Hash, Check, CreditCard, Download, Key, Users, Settings2, Trash2, Zap, Smartphone, Mail, Lock, ShieldCheck, Monitor, Laptop, ArrowRight, ChevronRight, Command, Menu, X, Home, Compass, Folder, Calendar, Star, Compass as ExploreIcon, AlignLeft } from "lucide-react"
+import { Copy, Bot, User, RefreshCcw, SquarePen, Sparkles, MessageSquare, Plus, Hash, Check, CreditCard, Download, Key, Users, Settings2, Trash2, Zap, Smartphone, Mail, Lock, ShieldCheck, Monitor, Laptop, ArrowRight, ChevronRight, Command, Menu, X, Home, Compass, Folder, Calendar, Star, Compass as ExploreIcon, AlignLeft, UploadCloud, Clock, Bold, Italic, Link2, List as ListIcon, Type, Save, Cloud, AlertTriangle, CheckCircle, FileText, Image as ImageIcon, Heading1, Heading2, MapPin, Code } from "lucide-react"
 
 type ComponentItem = {
   name: string;
-  category: "Core/General" | "Forms" | "Data Display" | "Feedback" | "Layout/Structure" | "Complex Data" | "AI & LLM" | "SaaS & Billing" | "Auth & Security" | "Navigation & Discovery";
+  category: "Core/General" | "Forms" | "Data Display" | "Feedback" | "Layout/Structure" | "Complex Data" | "AI & LLM" | "SaaS & Billing" | "Auth & Security" | "Navigation & Discovery" | "Advanced Forms";
   description: string;
   preview: React.ReactNode;
   code: string;
 };
 
 const componentsList: ComponentItem[] = [
+  {
+    name: "Multi-Step Wizard",
+    category: "Advanced Forms",
+    description: "Break complex forms into fun, bite-sized comic panels.",
+    preview: (
+      <div className="w-full max-w-xl mx-auto bg-white p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-lg)]">
+        <div className="flex items-center justify-between mb-8 relative px-4">
+          <div className="absolute left-0 top-1/2 w-full border-t-[3px] border-black -translate-y-1/2 opacity-20"></div>
+          <div className="absolute left-0 top-1/2 w-[50%] border-t-[3px] border-black -translate-y-1/2"></div>
+          
+          <div className="h-10 w-10 rounded-full border-[3px] border-black bg-blue-400 text-white font-black flex items-center justify-center shadow-[var(--shadow-comic-sm)] z-10">
+            <Check className="h-5 w-5" />
+          </div>
+          <div className="h-10 w-10 rounded-full border-[3px] border-black bg-yellow-400 text-black font-black flex items-center justify-center shadow-[var(--shadow-comic-sm)] z-10 scale-110">2</div>
+          <div className="h-10 w-10 rounded-full border-[3px] border-black bg-white text-gray-400 font-black flex items-center justify-center shadow-[var(--shadow-comic-sm)] z-10">3</div>
+        </div>
+        <h3 className="font-black text-2xl uppercase mb-1">Super Identity</h3>
+        <p className="text-sm font-bold text-gray-500 mb-6">Tell us who you really are beneath the mask.</p>
+        <div className="flex flex-col gap-4 mb-8">
+          <div className="flex flex-col gap-2">
+            <Label className="font-black uppercase">Alter Ego Name</Label>
+            <Input className="border-[3px] font-bold h-12" placeholder="e.g. Bruce Wayne" />
+          </div>
+          <div className="flex flex-col gap-2">
+            <Label className="font-black uppercase text-sm">Headquarters Location</Label>
+            <div className="relative">
+              <Input className="border-[3px] font-bold h-12 pl-10" placeholder="Gotham City" />
+              <MapPin className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-between items-center border-t-[3px] border-border pt-4">
+          <Button variant="ghost" className="font-black text-gray-500 hover:text-black hover:bg-gray-100">Back</Button>
+          <Button className="bg-black text-white hover:bg-gray-800 border-[3px] border-black shadow-[var(--shadow-comic-sm)] font-black uppercase tracking-wider px-8">Next Step <ArrowRight className="ml-2 h-4 w-4" /></Button>
+        </div>
+      </div>
+    ),
+    code: "<div className=\"flex items-center justify-between mb-8 relative px-4\"><div className=\"h-10 w-10 rounded-full bg-blue-400...\">1</div>...</div>"
+  },
+  {
+    name: "Form Validation",
+    category: "Advanced Forms",
+    description: "In-your-face validation states with bold colors and icons.",
+    preview: (
+      <div className="w-full max-w-sm mx-auto bg-white p-8 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] flex flex-col gap-6">
+        <div className="flex flex-col gap-2 relative">
+          <Label className="font-black uppercase text-red-500 flex items-center gap-1">
+            Username <AlertTriangle className="h-4 w-4" />
+          </Label>
+          <div className="relative">
+            <Input className="border-[3px] border-red-500 bg-red-50 focus-visible:ring-red-500 font-bold pr-10 text-red-900" defaultValue="BatmanRulez99" />
+            <X className="absolute right-3 top-2.5 h-5 w-5 text-red-500" />
+          </div>
+          <span className="text-xs font-black text-red-500 bg-red-100 px-2 py-1 rounded-[var(--radius-comic)] border-[2px] border-red-200 self-start">Username is already taken!</span>
+        </div>
+        <div className="flex flex-col gap-2 relative mt-4">
+          <Label className="font-black uppercase text-green-600 flex items-center gap-1">
+            Email Address <CheckCircle className="h-4 w-4" />
+          </Label>
+          <div className="relative">
+            <Input className="border-[3px] border-green-500 bg-green-50 focus-visible:ring-green-500 font-bold pr-10 text-green-900" defaultValue="bruce@wayne.com" />
+            <Check className="absolute right-3 top-2.5 h-5 w-5 text-green-600" />
+          </div>
+          <span className="text-xs font-black text-green-600 bg-green-100 px-2 py-1 rounded-[var(--radius-comic)] border-[2px] border-green-200 self-start">Looks good!</span>
+        </div>
+      </div>
+    ),
+    code: "<Input className=\"border-[3px] border-red-500 bg-red-50...\" />\n<span className=\"text-red-500\">Error message</span>"
+  },
+  {
+    name: "File Upload Zone",
+    category: "Advanced Forms",
+    description: "A playful drag & drop target that feels interactive.",
+    preview: (
+      <div className="w-full max-w-lg mx-auto flex flex-col gap-4">
+        <div className="w-full h-48 bg-blue-50 border-[3px] border-dashed border-blue-400 rounded-[var(--radius-comic)] flex flex-col items-center justify-center cursor-pointer hover:bg-blue-100 transition-colors group relative overflow-hidden">
+          <div className="bg-white p-4 rounded-full border-[3px] border-blue-400 shadow-[var(--shadow-comic-sm)] group-hover:-translate-y-2 group-hover:scale-110 transition-transform duration-300 mb-4 relative z-10">
+            <UploadCloud className="h-8 w-8 text-blue-500" />
+          </div>
+          <h4 className="font-black text-lg uppercase text-blue-600 z-10">Click or Drag Files Here</h4>
+          <p className="text-xs font-bold text-blue-400 z-10">PDF, PNG, JPG (Max 10MB)</p>
+          <div className="absolute inset-0 bg-blue-400 opacity-0 group-active:opacity-20 transition-opacity"></div>
+        </div>
+        <div className="flex items-center justify-between p-3 bg-white border-[3px] border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-sm)] hover:-translate-y-0.5 transition-transform">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-red-100 rounded-[var(--radius-comic)] border-[2px] border-red-200">
+              <FileText className="h-5 w-5 text-red-500" />
+            </div>
+            <div>
+              <div className="font-black text-sm">secret_blueprints.pdf</div>
+              <div className="text-xs font-bold text-gray-500 flex items-center gap-1">
+                <CheckCircle className="h-3 w-3 text-green-500" /> 2.4 MB • Uploaded
+              </div>
+            </div>
+          </div>
+          <Button variant="ghost" size="icon" className="hover:bg-red-100 text-gray-400 hover:text-red-500 rounded-full h-8 w-8 border-[2px] border-transparent hover:border-red-200">
+            <Trash2 className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+    ),
+    code: "<div className=\"h-48 border-[3px] border-dashed border-blue-400 hover:bg-blue-100\">...</div>"
+  },
+  {
+    name: "Date & Time Picker",
+    category: "Advanced Forms",
+    description: "Custom date selector bypassing default browser inputs.",
+    preview: (
+      <div className="w-full max-w-sm mx-auto">
+        <div className="bg-white rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-lg)] overflow-hidden inline-block w-full">
+          <div className="p-3 border-b-[3px] border-border flex items-center justify-between bg-purple-100">
+            <Button variant="ghost" size="icon" className="h-8 w-8 border-[2px] border-transparent hover:border-black rounded-full bg-white shadow-[var(--shadow-comic-sm)]"><ChevronRight className="h-4 w-4 rotate-180" /></Button>
+            <div className="font-black uppercase tracking-wider text-purple-900">April 2026</div>
+            <Button variant="ghost" size="icon" className="h-8 w-8 border-[2px] border-transparent hover:border-black rounded-full bg-white shadow-[var(--shadow-comic-sm)]"><ChevronRight className="h-4 w-4" /></Button>
+          </div>
+          <div className="p-4 bg-white">
+            <div className="grid grid-cols-7 gap-1 mb-2 text-center text-[10px] font-black text-gray-400 uppercase tracking-widest">
+              <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
+            </div>
+            <div className="grid grid-cols-7 gap-1 text-center font-bold text-sm">
+              <div className="p-1.5 text-gray-300">29</div><div className="p-1.5 text-gray-300">30</div><div className="p-1.5 text-gray-300">31</div>
+              <div className="p-1.5 hover:bg-gray-100 rounded-full cursor-pointer hover:border-black border-[2px] border-transparent">1</div>
+              <div className="p-1.5 hover:bg-gray-100 rounded-full cursor-pointer hover:border-black border-[2px] border-transparent">2</div>
+              <div className="p-1.5 hover:bg-gray-100 rounded-full cursor-pointer hover:border-black border-[2px] border-transparent">3</div>
+              <div className="p-1.5 bg-black text-white rounded-full cursor-pointer border-[2px] border-black shadow-[var(--shadow-comic-sm)] scale-110 font-black z-10 transition-transform">4</div>
+              <div className="p-1.5 hover:bg-gray-100 rounded-full cursor-pointer hover:border-black border-[2px] border-transparent">5</div>
+              <div className="p-1.5 hover:bg-gray-100 rounded-full cursor-pointer hover:border-black border-[2px] border-transparent">6</div>
+              <div className="p-1.5 hover:bg-gray-100 rounded-full cursor-pointer hover:border-black border-[2px] border-transparent relative">7<div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-red-500 rounded-full"></div></div>
+              <div className="p-1.5 hover:bg-gray-100 rounded-full cursor-pointer hover:border-black border-[2px] border-transparent">8</div>
+              <div className="p-1.5 hover:bg-gray-100 rounded-full cursor-pointer hover:border-black border-[2px] border-transparent">9</div>
+              <div className="p-1.5 hover:bg-gray-100 rounded-full cursor-pointer hover:border-black border-[2px] border-transparent">10</div>
+            </div>
+          </div>
+          <div className="p-3 border-t-[3px] border-border bg-gray-50 flex items-center justify-between">
+            <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-[var(--radius-comic)] border-[2px] border-border hover:border-black cursor-pointer shadow-[var(--shadow-comic-sm)] transition-colors">
+              <Clock className="h-4 w-4 text-purple-600" />
+              <span className="font-black text-sm">14:00</span>
+            </div>
+            <Button className="h-9 px-6 text-xs font-black bg-black text-white hover:bg-gray-800 border-[2px] border-black shadow-[var(--shadow-comic-sm)] uppercase tracking-wide">Apply</Button>
+          </div>
+        </div>
+      </div>
+    ),
+    code: "<div className=\"bg-white rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-lg)] overflow-hidden\">...</div>"
+  },
+  {
+    name: "Rich Text Editor",
+    category: "Advanced Forms",
+    description: "WYSIWYG layout combining a bold toolbar and content area.",
+    preview: (
+      <div className="w-full max-w-3xl mx-auto rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-lg)] overflow-hidden flex flex-col min-h-[300px] bg-white group hover:shadow-[var(--shadow-comic)] transition-shadow cursor-text">
+        <div className="bg-gray-100 border-b-[3px] border-border p-2 flex flex-wrap gap-2 items-center">
+          <div className="flex gap-1 pr-2 border-r-[3px] border-border">
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-[var(--radius-comic)] bg-white border-[2px] border-black shadow-[var(--shadow-comic-sm)] text-black"><Bold className="h-4 w-4" /></Button>
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-[var(--radius-comic)] hover:border-black border-[2px] border-transparent text-gray-600"><Italic className="h-4 w-4" /></Button>
+          </div>
+          <div className="flex gap-1 pr-2 border-r-[3px] border-border">
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-[var(--radius-comic)] hover:border-black border-[2px] border-transparent text-gray-600"><Heading1 className="h-4 w-4" /></Button>
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-[var(--radius-comic)] hover:border-black border-[2px] border-transparent text-gray-600"><Heading2 className="h-4 w-4" /></Button>
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-[var(--radius-comic)] hover:border-black border-[2px] border-transparent text-gray-600"><ListIcon className="h-4 w-4" /></Button>
+          </div>
+          <div className="flex gap-1">
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-[var(--radius-comic)] hover:border-black border-[2px] border-transparent text-gray-600"><Link2 className="h-4 w-4" /></Button>
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-[var(--radius-comic)] hover:border-black border-[2px] border-transparent text-gray-600"><ImageIcon className="h-4 w-4" /></Button>
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-[var(--radius-comic)] hover:border-black border-[2px] border-transparent text-gray-600"><Code className="h-4 w-4" /></Button>
+          </div>
+        </div>
+        <div className="flex-1 p-6 font-bold text-gray-800 outline-none overflow-y-auto" contentEditable suppressContentEditableWarning>
+          <h1 className="text-3xl font-black text-black mb-4 tracking-tight">KAPOW! The Ultimate Editor</h1>
+          <p className="mb-4 text-lg">Type your epic origin story here... Try making something <strong className="font-black text-black bg-yellow-200 px-1 border-[2px] border-black rounded-md">bold</strong> or <em className="text-blue-600">italic</em>.</p>
+          <ul className="list-disc pl-6 space-y-2 text-md">
+            <li>Save the city</li>
+            <li>Defeat the villain</li>
+            <li>Eat a sandwich</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    code: "<div className=\"border-[3px] border-border shadow-[var(--shadow-comic-lg)]\">\n  <div className=\"bg-gray-100 border-b-[3px] p-2 flex gap-2\">Toolbar...</div>\n  <div contentEditable>Content...</div>\n</div>"
+  },
+  {
+    name: "Autosave & Drafts",
+    category: "Advanced Forms",
+    description: "Continuous save badges that provide peace of mind.",
+    preview: (
+      <div className="w-full max-w-xl mx-auto bg-green-50 p-8 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)] relative">
+        <div className="absolute -top-4 right-6 bg-black text-white px-3 py-1.5 rounded-[var(--radius-comic)] border-[2px] border-black font-black uppercase text-xs flex items-center gap-2 shadow-[var(--shadow-comic-sm)] rotate-2 z-10 hover:-translate-y-1 transition-transform cursor-default">
+          <Cloud className="h-3.5 w-3.5 text-green-400" /> Saved to cloud
+        </div>
+        <div className="flex flex-col gap-5">
+           <div className="flex flex-col gap-2">
+             <Label className="font-black uppercase text-green-800">Mission Name</Label>
+             <Input className="border-[3px] font-bold bg-white h-12 text-lg focus-visible:ring-green-500" defaultValue="Operation: Midnight Strike" />
+           </div>
+           <div className="flex flex-col gap-2">
+             <Label className="font-black uppercase text-green-800">Field Notes</Label>
+             <textarea className="w-full min-h-[120px] border-[3px] border-border font-bold bg-white rounded-[var(--radius-comic)] p-4 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-black resize-none" defaultValue="Target spotted near the old warehouse. Awaiting further instructions." />
+           </div>
+        </div>
+        <div className="mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t-[3px] border-green-200 pt-6">
+           <div className="flex items-center gap-2 text-xs font-black text-green-700 bg-green-100 px-2 py-1 rounded-md border-[2px] border-green-200">
+             <Loader2 className="h-3.5 w-3.5 animate-spin" /> Saving changes...
+           </div>
+           <div className="flex items-center gap-3">
+             <Button variant="ghost" className="font-black text-gray-600 hover:text-black hover:bg-white border-[2px] border-transparent hover:border-black">Discard</Button>
+             <Button className="bg-green-500 hover:bg-green-600 text-white border-[3px] border-black font-black shadow-[var(--shadow-comic-sm)] uppercase tracking-wide">Publish Log</Button>
+           </div>
+        </div>
+      </div>
+    ),
+    code: "<div className=\"relative\">\n  <div className=\"absolute -top-4 right-6 bg-black text-white px-3 py-1.5 rounded-[var(--radius-comic)]\"><Cloud /> Saved to cloud</div>\n  <Input />\n</div>"
+  }
+,
   {
     name: "Breadcrumbs",
     category: "Navigation & Discovery",
