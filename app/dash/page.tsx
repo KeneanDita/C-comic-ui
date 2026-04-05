@@ -113,7 +113,7 @@ export default function V1DashboardDemo() {
               <TrendingUp className="h-4 w-4 text-purple-600" />
             </CardHeader>
             <CardContent className="pt-6 flex justify-between items-center">
-              <div className="text-4xl font-black text-red-500">Severe</div>
+              <div className="text-4xl font-black text-amber-600 bg-yellow-200 dark:bg-yellow-500/20 px-3 py-1 rounded-[var(--radius-comic)] border-[3px] border-amber-600 dark:border-amber-400 w-fit mt-1">Severe</div>
               <Badge variant="destructive" className="animate-pulse">DEFCON 2</Badge>
             </CardContent>
           </Card>
@@ -138,23 +138,23 @@ export default function V1DashboardDemo() {
                 <TabsTrigger value="settings" className="w-32"><Settings className="mr-2 h-4 w-4"/> Settings</TabsTrigger>
               </TabsList>
               
-              <TabsContent value="roster" className="space-y-4">
+              <TabsContent value="roster" className="space-y-4 text-black dark:text-card-foreground">
                 <div className="flex justify-between items-center bg-gray-50 p-4 border-[2px] border-border rounded-[var(--radius-comic)] border-dashed">
                   <div className="text-sm font-bold text-muted-foreground">Viewing active field operatives...</div>
                   <Button variant="default" size="sm"><UserPlus className="mr-2 h-4 w-4" /> Add Hero</Button>
                 </div>
                 
-                <Table>
+                <Table className="text-black dark:text-foreground">
                   <TableHeader>
                     <TableRow>
                       <TableHead className="w-[50px]"></TableHead>
-                      <TableHead>Codename</TableHead>
-                      <TableHead>Specialty</TableHead>
+                      <TableHead className="text-black dark:text-muted-foreground">Codename</TableHead>
+                      <TableHead className="text-black dark:text-muted-foreground">Specialty</TableHead>
                       <TableHead>Status</TableHead>
-                      <TableHead className="text-right">Bounties</TableHead>
+                      <TableHead className="text-right text-black dark:text-muted-foreground">Bounties</TableHead>
                     </TableRow>
                   </TableHeader>
-                  <TableBody>
+                  <TableBody className="text-black dark:text-foreground">
                     <TableRow>
                       <TableCell><Checkbox /></TableCell>
                       <TableCell className="font-black text-lg">Crimson Falcon</TableCell>
