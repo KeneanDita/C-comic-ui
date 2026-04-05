@@ -1,6 +1,9 @@
+"use client"
+
 import * as React from "react"
 import Link from "next/link"
 import { Search, Moon, Sun } from "lucide-react"
+import { useTheme } from "next-themes"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -26,6 +29,8 @@ function Github(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export function Navbar() {
+  const { setTheme, theme } = useTheme()
+
   return (
     <header className="sticky top-0 z-50 w-full border-b-[3px] border-border bg-card text-card-foreground shadow-[var(--shadow-comic)]">
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-8">
@@ -65,13 +70,13 @@ export function Navbar() {
             />
           </div>
           <nav className="flex items-center gap-2">
-            <Link href="https://github.com" target="_blank" rel="noreferrer">
-              <Button variant="outline" size="icon" className="h-9 w-9 bg-white text-black border-border shadow-[var(--shadow-comic-sm)] hover:shadow-[var(--shadow-comic)]">
+            <Link href="https://github.com/keneandita/c-comic-ui" target="_blank" rel="noreferrer">
+              <Button variant="outline" size="icon" className="h-9 w-9 bg-white text-black border-border shadow-[var(--shadow-comic-sm)] hover:shadow-[var(--shadow-comic)] dark:bg-card dark:text-foreground">
                 <Github className="h-4 w-4" />
                 <span className="sr-only">GitHub</span>
               </Button>
             </Link>
-            <Button variant="outline" size="icon" className="h-9 w-9 bg-white text-black border-border shadow-[var(--shadow-comic-sm)] hover:shadow-[var(--shadow-comic)]">
+            <Button variant="outline" size="icon" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="h-9 w-9 bg-white text-black border-border shadow-[var(--shadow-comic-sm)] hover:shadow-[var(--shadow-comic)] dark:bg-card dark:text-foreground">
               <Moon className="h-4 w-4 hidden dark:block" />
               <Sun className="h-4 w-4 block dark:hidden" />
               <span className="sr-only">Toggle theme</span>

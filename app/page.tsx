@@ -31,7 +31,7 @@ export default function Home() {
               <Button variant="secondary" className="text-lg px-8 py-6">Browse Components</Button>
             </Link>
             <Link href="/dash">
-              <Button variant="outline" className="text-lg px-8 py-6 bg-yellow-400 border-black hover:bg-yellow-500 text-black">View V1 Demo</Button>
+              <Button variant="outline" className="text-lg px-8 py-6 bg-yellow-400 border-black dark:border-border hover:bg-yellow-500 text-black dark:text-foreground">View V1 Demo</Button>
             </Link>
           </div>
         </div>
@@ -61,18 +61,18 @@ export default function Home() {
                 </div>
               </CardHeader>
               <CardContent className="flex flex-col gap-4">
-                <div className="flex items-center space-x-3 bg-white p-3 rounded-[var(--radius-comic)] border-[3px] border-border text-black">
+                <div className="flex items-center space-x-3 bg-white dark:bg-card p-3 rounded-[var(--radius-comic)] border-[3px] border-border text-black dark:text-foreground">
                   <Badge variant="destructive" className="text-sm px-3">PRO User</Badge>
                   <span className="font-bold flex-1 text-right">Rank: S-Class</span>
                 </div>
-                <div className="flex items-center space-x-3 bg-white p-3 rounded-[var(--radius-comic)] border-[3px] border-border text-black">
+                <div className="flex items-center space-x-3 bg-white dark:bg-card p-3 rounded-[var(--radius-comic)] border-[3px] border-border text-black dark:text-foreground">
                   <Checkbox id="notifications" defaultChecked />
-                  <Label htmlFor="notifications" className="text-black text-lg">Enable Alert Signals</Label>
+                  <Label htmlFor="notifications" className="text-black dark:text-foreground text-lg">Enable Alert Signals</Label>
                 </div>
               </CardContent>
               <CardFooter className="flex gap-4">
                 <Button variant="default" className="w-full text-lg">View Stats</Button>
-                <Button variant="outline" className="w-full text-lg text-black">Edit Info</Button>
+                <Button variant="outline" className="w-full text-lg text-black dark:text-foreground">Edit Info</Button>
               </CardFooter>
             </Card>
 
@@ -83,17 +83,17 @@ export default function Home() {
                 <CardDescription className="text-white/80">Adjust your utility belt preferences.</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col gap-6">
-                <div className="flex items-center justify-between bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border text-black">
-                  <Label htmlFor="auto-deploy" className="text-black text-lg">Auto-Deploy Parachute</Label>
+                <div className="flex items-center justify-between bg-white dark:bg-card p-4 rounded-[var(--radius-comic)] border-[3px] border-border text-black dark:text-foreground">
+                  <Label htmlFor="auto-deploy" className="text-black dark:text-foreground text-lg">Auto-Deploy Parachute</Label>
                   <Switch id="auto-deploy" defaultChecked />
                 </div>
-                <div className="flex items-center justify-between bg-white p-4 rounded-[var(--radius-comic)] border-[3px] border-border text-black">
-                  <Label htmlFor="stealth-mode" className="text-black text-lg">Stealth Mode</Label>
+                <div className="flex items-center justify-between bg-white dark:bg-card p-4 rounded-[var(--radius-comic)] border-[3px] border-border text-black dark:text-foreground">
+                  <Label htmlFor="stealth-mode" className="text-black dark:text-foreground text-lg">Stealth Mode</Label>
                   <Switch id="stealth-mode" />
                 </div>
                 <div className="flex flex-col gap-2 mt-2">
                   <Label className="text-white">Emergency Contact</Label>
-                  <Input placeholder="BAT-SIGNAL FREQUENCY" className="text-black bg-white" />
+                  <Input placeholder="BAT-SIGNAL FREQUENCY" className="text-black dark:text-foreground bg-white dark:bg-card" />
                 </div>
               </CardContent>
               <CardFooter>

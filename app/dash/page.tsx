@@ -19,10 +19,10 @@ export default function V1DashboardDemo() {
   return (
     <div className="min-h-screen bg-halftone font-sans pb-12">
       {/* Top Banner Navigation */}
-      <header className="bg-white border-b-[var(--border-comic)] border-border px-6 py-4 flex items-center justify-between sticky top-0 z-40 shadow-sm">
+      <header className="bg-white dark:bg-card border-b-[var(--border-comic)] border-border px-6 py-4 flex items-center justify-between sticky top-0 z-40 shadow-sm">
         <div className="flex items-center gap-2">
           <div className="bg-primary p-2 rounded-[var(--radius-comic)] border-[2px] border-border shadow-[var(--shadow-comic-sm)] rotate-3">
-            <Zap className="h-6 w-6 text-black" />
+            <Zap className="h-6 w-6 text-black dark:text-foreground" />
           </div>
           <h1 className="text-2xl font-black uppercase tracking-tighter ml-2">C-Comic Panel</h1>
           <Badge variant="destructive" className="ml-4 -translate-y-2 rotate-12">v1.0 LIVE</Badge>
@@ -188,7 +188,7 @@ export default function V1DashboardDemo() {
               </TabsContent>
               
               <TabsContent value="settings">
-                <div className="border-[var(--border-comic)] border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-sm)] p-6 bg-white space-y-6">
+                <div className="border-[var(--border-comic)] border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-sm)] p-6 bg-white dark:bg-card space-y-6">
                   <div className="space-y-4">
                     <h3 className="font-black uppercase text-xl border-b-[2px] border-border pb-2">System Preferences</h3>
                     

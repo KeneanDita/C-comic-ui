@@ -40,10 +40,10 @@
   --border-comic: 3px;
 
   /* Comic Effects */
-  --shadow-comic: 4px 4px 0px 0px rgba(0, 0, 0, 1);
-  --shadow-comic-sm: 2px 2px 0px 0px rgba(0, 0, 0, 1);
-  --shadow-comic-hover: 2px 2px 0px 0px rgba(0, 0, 0, 1);
-  --shadow-comic-active: 0px 0px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-comic: 4px 4px 0px 0px var(--shadow-color);
+  --shadow-comic-sm: 2px 2px 0px 0px var(--shadow-color);
+  --shadow-comic-hover: 2px 2px 0px 0px var(--shadow-color);
+  --shadow-comic-active: 0px 0px 0px 0px var(--shadow-color);
 }
 
 @layer base {
@@ -72,33 +72,37 @@
     --border: #000000;
     --input: #ffffff;
     --ring: #000000;
+
+    --shadow-color: #000000;
   }
 
   .dark {
-    --background: #0f172a; /* Dark blue/gray */
-    --foreground: #ffffff;
+    --background: #1c1917; /* Warm dark slate */
+    --foreground: #fdfbf7; /* Soft cream text */
 
-    --card: #1e3a8a; /* Deep blue background for dark mode cards */
-    --card-foreground: #ffffff;
+    --card: #334155; /* Muted dark blue/slate for cards */
+    --card-foreground: #fdfbf7;
 
-    --primary: #facc15;
-    --primary-foreground: #000000;
+    --primary: #eab308; /* Slightly deeper yellow to avoid glare */
+    --primary-foreground: #1c1917;
 
-    --secondary: #1f2937;
-    --secondary-foreground: #ffffff;
+    --secondary: #292524;
+    --secondary-foreground: #fdfbf7;
 
-    --destructive: #7f1d1d;
-    --destructive-foreground: #ffffff;
+    --destructive: #dc2626; /* Richer red */
+    --destructive-foreground: #fdfbf7;
 
-    --muted: #1f2937;
-    --muted-foreground: #9ca3af;
+    --muted: #292524;
+    --muted-foreground: #a8a29e;
 
-    --accent: #0f766e;
-    --accent-foreground: #ffffff;
+    --accent: #0f766e; /* Muted teal */
+    --accent-foreground: #fdfbf7;
 
-    --border: #ffffff;
-    --input: #1e293b;
-    --ring: #ffffff;
+    --border: #999999; /* Muted border */
+    --input: #292524;
+    --ring: #fdfbf7;
+
+    --shadow-color: #1a1a1a; /* Very weak shadow or dark grey */
   }
 }
 
