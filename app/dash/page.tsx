@@ -29,7 +29,7 @@ export default function V1DashboardDemo() {
         </div>
         <div className="flex items-center gap-4">
           <Link href="/">
-             <Button variant="ghost" className="font-bold underline">Back to docs</Button>
+             <Button variant="ghost" className="font-bold underline">Back to home</Button>
           </Link>
           <div className="relative w-64 hidden sm:block">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
