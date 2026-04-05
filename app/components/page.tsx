@@ -59,7 +59,13 @@ const componentsList: ComponentItem[] = [
         </Button>
       </div>
     ),
-    code: `<div className="text-center flex flex-col items-center">...<Ghost />...<Button>Start</Button></div>`
+    code: `import { Ghost, Button } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <div className="text-center flex flex-col items-center">...<Ghost />...<Button>Start</Button></div>
+  )
+}`
   },
   {
     name: "Error Pages (404/500)",
@@ -87,7 +93,11 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: `<div className="bg-blue-600 relative overflow-hidden">...<div className="text-[180px]">404</div>...</div>`
+    code: `export default function App() {
+  return (
+    <div className="bg-blue-600 relative overflow-hidden">...<div className="text-[180px]">404</div>...</div>
+  )
+}`
   },
   {
     name: "Onboarding Flow",
@@ -121,7 +131,13 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: `<div className="ring-4 ring-yellow-400 shadow-[0_0_0_999px_rgba(0,0,0,0.5)]"><Button>...</Button></div>`
+    code: `import { Button } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <div className="ring-4 ring-yellow-400 shadow-[0_0_0_999px_rgba(0,0,0,0.5)]"><Button>...</Button></div>
+  )
+}`
   },
   {
     name: "Keyboard Shortcuts UI",
@@ -154,7 +170,11 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: `<kbd className="border-[2px] border-black dark:border-border border-b-[4px] rounded-md px-2 font-mono">⌘ K</kbd>`
+    code: `export default function App() {
+  return (
+    <kbd className="border-[2px] border-black dark:border-border border-b-[4px] rounded-md px-2 font-mono">⌘ K</kbd>
+  )
+}`
   },
   {
     name: "Theme Switcher",
@@ -180,7 +200,11 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: `<div className="bg-slate-900 p-6 flex items-center justify-center">...Theme toggles...</div>`
+    code: `export default function App() {
+  return (
+    <div className="bg-slate-900 p-6 flex items-center justify-center">...Theme toggles...</div>
+  )
+}`
   },
   {
     name: "Accessibility Helpers",
@@ -222,7 +246,13 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: `<Button className="outline-none ring-4 ring-offset-2 ring-purple-500">Focused</Button>...<span className="sr-only">SR Only Text</span>`
+    code: `import { Button } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Button className="outline-none ring-4 ring-offset-2 ring-purple-500">Focused</Button>...<span className="sr-only">SR Only Text</span>
+  )
+}`
   }
 ,
   {
@@ -262,7 +292,11 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: "<div className=\"flex items-center justify-between mb-8 relative px-4\"><div className=\"h-10 w-10 rounded-full bg-blue-400...\">1</div>...</div>"
+    code: `export default function App() {
+  return (
+    <div className="flex items-center justify-between mb-8 relative px-4"><div className="h-10 w-10 rounded-full bg-blue-400...">1</div>...</div>
+  )
+}`
   },
   {
     name: "Form Validation",
@@ -292,7 +326,14 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: "<Input className=\"border-[3px] border-red-500 bg-red-50...\" />\n<span className=\"text-red-500\">Error message</span>"
+    code: `import { Input } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Input className="border-[3px] border-red-500 bg-red-50..." />
+    <span className="text-red-500">Error message</span>
+  )
+}`
   },
   {
     name: "File Upload Zone",
@@ -326,7 +367,11 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: "<div className=\"h-48 border-[3px] border-dashed border-blue-400 hover:bg-blue-100\">...</div>"
+    code: `export default function App() {
+  return (
+    <div className="h-48 border-[3px] border-dashed border-blue-400 hover:bg-blue-100">...</div>
+  )
+}`
   },
   {
     name: "Date & Time Picker",
@@ -368,7 +413,11 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: "<div className=\"bg-white dark:bg-card rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-lg)] overflow-hidden\">...</div>"
+    code: `export default function App() {
+  return (
+    <div className="bg-white dark:bg-card rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-lg)] overflow-hidden">...</div>
+  )
+}`
   },
   {
     name: "Rich Text Editor",
@@ -403,7 +452,14 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: "<div className=\"border-[3px] border-border shadow-[var(--shadow-comic-lg)]\">\n  <div className=\"bg-gray-100 border-b-[3px] p-2 flex gap-2\">Toolbar...</div>\n  <div contentEditable>Content...</div>\n</div>"
+    code: `export default function App() {
+  return (
+    <div className="border-[3px] border-border shadow-[var(--shadow-comic-lg)]">
+      <div className="bg-gray-100 border-b-[3px] p-2 flex gap-2">Toolbar...</div>
+      <div contentEditable>Content...</div>
+    </div>
+  )
+}`
   },
   {
     name: "Autosave & Drafts",
@@ -435,7 +491,16 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: "<div className=\"relative\">\n  <div className=\"absolute -top-4 right-6 bg-black text-white px-3 py-1.5 rounded-[var(--radius-comic)]\"><Cloud /> Saved to cloud</div>\n  <Input />\n</div>"
+    code: `import { Cloud, Input } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <div className="relative">
+      <div className="absolute -top-4 right-6 bg-black text-white px-3 py-1.5 rounded-[var(--radius-comic)]"><Cloud /> Saved to cloud</div>
+      <Input />
+    </div>
+  )
+}`
   }
 ,
   {
@@ -459,7 +524,11 @@ const componentsList: ComponentItem[] = [
         </nav>
       </div>
     ),
-    code: "<nav className=\"flex gap-2\"><a className=\"bg-yellow-300 border-[2px]...\">Home</a>...</nav>"
+    code: `export default function App() {
+  return (
+    <nav className="flex gap-2"><a className="bg-yellow-300 border-[2px]...">Home</a>...</nav>
+  )
+}`
   },
   {
     name: "Command Palette",
@@ -499,7 +568,11 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: "<div className=\"border-[3px] shadow-[var(--shadow-comic-lg)]\"><input placeholder=\"Search...\" />...</div>"
+    code: `export default function App() {
+  return (
+    <div className="border-[3px] shadow-[var(--shadow-comic-lg)]"><input placeholder="Search..." />...</div>
+  )
+}`
   },
   {
     name: "Global Search",
@@ -540,7 +613,13 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: "<div className=\"relative\"><Input /><div className=\"absolute top-full\">Results...</div></div>"
+    code: `import { Input } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <div className="relative"><Input /><div className="absolute top-full">Results...</div></div>
+  )
+}`
   },
   {
     name: "Collapsible Sidebar",
@@ -585,7 +664,11 @@ const componentsList: ComponentItem[] = [
         </main>
       </div>
     ),
-    code: "<aside className=\"w-64 bg-yellow-400 border-r-[3px] border-border flex flex-col\">...</aside>"
+    code: `export default function App() {
+  return (
+    <aside className="w-64 bg-yellow-400 border-r-[3px] border-border flex flex-col">...</aside>
+  )
+}`
   },
   {
     name: "Mega Menu",
@@ -664,7 +747,11 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: "<nav>...<div className=\"absolute w-full max-w-3xl\">Mega Menu Content</div></nav>"
+    code: `export default function App() {
+  return (
+    <nav>...<div className="absolute w-full max-w-3xl">Mega Menu Content</div></nav>
+  )
+}`
   },
 
   {
@@ -714,7 +801,11 @@ const componentsList: ComponentItem[] = [
         </p>
       </div>
     ),
-    code: "<div className=\"bg-white dark:bg-card p-8 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-lg)]\">...</div>"
+    code: `export default function App() {
+  return (
+    <div className="bg-white dark:bg-card p-8 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-lg)]">...</div>
+  )
+}`
   },
   {
     name: "Forgot Password",
@@ -742,7 +833,11 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: "<div className=\"bg-[#4ade80] p-8 rounded-[var(--radius-comic)] border-[3px] shadow-[var(--shadow-comic-lg)]\">...</div>"
+    code: `export default function App() {
+  return (
+    <div className="bg-[#4ade80] p-8 rounded-[var(--radius-comic)] border-[3px] shadow-[var(--shadow-comic-lg)]">...</div>
+  )
+}`
   },
   {
     name: "Email Verification",
@@ -761,7 +856,13 @@ const componentsList: ComponentItem[] = [
         <Button variant="ghost" className="font-bold underline decoration-2 underline-offset-4 hover:bg-gray-100">Resend Email</Button>
       </div>
     ),
-    code: "<div className=\"text-center flex flex-col items-center\"><Mail />...</div>"
+    code: `import { Mail } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <div className="text-center flex flex-col items-center"><Mail />...</div>
+  )
+}`
   },
   {
     name: "2FA / OTP Input",
@@ -784,7 +885,13 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: "<div className=\"flex justify-between gap-2\"><Input maxLength={1} className=\"w-12 h-14 text-center text-2xl font-black\" />...</div>"
+    code: `import { Input } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <div className="flex justify-between gap-2"><Input maxLength={1} className="w-12 h-14 text-center text-2xl font-black" />...</div>
+  )
+}`
   },
   {
     name: "Device Management",
@@ -837,7 +944,13 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: "<div className=\"p-4 border-[3px] border-border rounded-[var(--radius-comic)]\"><Laptop />...</div>"
+    code: `import { Laptop } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <div className="p-4 border-[3px] border-border rounded-[var(--radius-comic)]"><Laptop />...</div>
+  )
+}`
   },
 
   {
@@ -875,7 +988,11 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: "<div className=\"bg-yellow-400 border-[3px] border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-lg)]\">...</div>"
+    code: `export default function App() {
+  return (
+    <div className="bg-yellow-400 border-[3px] border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-lg)]">...</div>
+  )
+}`
   },
   {
     name: "Subscription Management",
@@ -904,7 +1021,13 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: "<div className=\"w-full max-w-lg bg-white dark:bg-card p-6 border-[3px]\"><Badge>Hero Tier</Badge>...</div>"
+    code: `import { Badge } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <div className="w-full max-w-lg bg-white dark:bg-card p-6 border-[3px]"><Badge>Hero Tier</Badge>...</div>
+  )
+}`
   },
   {
     name: "Billing History & Invoices",
@@ -947,7 +1070,15 @@ const componentsList: ComponentItem[] = [
         </Table>
       </div>
     ),
-    code: "<Table>\n  <TableHeader>...\n</Table>"
+    code: `import { Table, TableHeader } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Table>
+      <TableHeader>...
+    </Table>
+  )
+}`
   },
   {
     name: "API Usage Meter",
@@ -968,7 +1099,13 @@ const componentsList: ComponentItem[] = [
         </p>
       </div>
     ),
-    code: "<Progress value={85} indicatorColor=\"bg-red-500\" />"
+    code: `import { Progress } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Progress value={85} indicatorColor="bg-red-500" />
+  )
+}`
   },
   {
     name: "Team Roles & Permissions",
@@ -1029,7 +1166,15 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: "<Select defaultValue=\"editor\">\n  <SelectTrigger>...</SelectTrigger>\n</Select>"
+    code: `import { Select, SelectTrigger } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Select defaultValue="editor">
+      <SelectTrigger>...</SelectTrigger>
+    </Select>
+  )
+}`
   },
   {
     name: "API Key Management",
@@ -1062,7 +1207,13 @@ const componentsList: ComponentItem[] = [
         </Button>
       </div>
     ),
-    code: "<Input className=\"font-mono\" placeholder=\"sk_live_...\" readOnly />"
+    code: `import { Input } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Input className="font-mono" placeholder="sk_live_..." readOnly />
+  )
+}`
   },
 
   {
@@ -1086,7 +1237,13 @@ const componentsList: ComponentItem[] = [
         </Select>
       </div>
     ),
-    code: `<Select>\n  <SelectTrigger>\n    <SelectValue placeholder="Select a model" />\n  </SelectTrigger>\n  <SelectContent>\n    <SelectItem value="gemini">Gemini 1.5 Pro</SelectItem>\n  </SelectContent>\n</Select>`
+    code: `import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Select>\n  <SelectTrigger>\n    <SelectValue placeholder="Select a model" />\n  </SelectTrigger>\n  <SelectContent>\n    <SelectItem value="gemini">Gemini 1.5 Pro</SelectItem>\n  </SelectContent>\n</Select>
+  )
+}`
   },
   {
     name: "Chat Bubbles",
@@ -1116,7 +1273,11 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: `<div className="bg-yellow-400 p-4 border-[3px] border-border rounded-2xl">...</div>`
+    code: `export default function App() {
+  return (
+    <div className="bg-yellow-400 p-4 border-[3px] border-border rounded-2xl">...</div>
+  )
+}`
   },
   {
     name: "Code Block (with copy)",
@@ -1136,7 +1297,11 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: `<div className="bg-black border-[3px] border-border rounded-[var(--radius-comic)]">\n  <div className="bg-gray-200 border-b-[3px] border-border px-4 py-2">...</div>\n  <pre><code>...</code></pre>\n</div>`
+    code: `export default function App() {
+  return (
+    <div className="bg-black border-[3px] border-border rounded-[var(--radius-comic)]">\n  <div className="bg-gray-200 border-b-[3px] border-border px-4 py-2">...</div>\n  <pre><code>...</code></pre>\n</div>
+  )
+}`
   },
   {
     name: "Prompt Templates",
@@ -1163,7 +1328,11 @@ const componentsList: ComponentItem[] = [
         })}
       </div>
     ),
-    code: `<button className="bg-white dark:bg-card border-[3px] border-border p-4 rounded-[var(--radius-comic)]">...</button>`
+    code: `export default function App() {
+  return (
+    <button className="bg-white dark:bg-card border-[3px] border-border p-4 rounded-[var(--radius-comic)]">...</button>
+  )
+}`
   },
   {
     name: "Conversation Sidebar",
@@ -1187,7 +1356,11 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: `<div className="w-64 bg-[#fbbf24] border-[3px] border-border">...</div>`
+    code: `export default function App() {
+  return (
+    <div className="w-64 bg-[#fbbf24] border-[3px] border-border">...</div>
+  )
+}`
   },
   {
     name: "Streaming Text & Indicators",
@@ -1216,7 +1389,13 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: `<div className="flex flex-wrap gap-2">\n  <Badge>1,204 tokens</Badge>\n</div>`
+    code: `import { Badge } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <div className="flex flex-wrap gap-2">\n  <Badge>1,204 tokens</Badge>\n</div>
+  )
+}`
   },
   {
     name: "Regenerate/Edit Prompt Actions",
@@ -1235,7 +1414,11 @@ const componentsList: ComponentItem[] = [
         </Button>
       </div>
     ),
-    code: `<div className="bg-white dark:bg-card border-[3px] border-border p-1.5 rounded-full flex">...</div>`
+    code: `export default function App() {
+  return (
+    <div className="bg-white dark:bg-card border-[3px] border-border p-1.5 rounded-full flex">...</div>
+  )
+}`
   },
   {
     name: "Loaders & Progress",
@@ -1260,7 +1443,13 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: `<Progress value={60} />\n<Skeleton className="h-4 w-[200px]" />`
+    code: `import { Progress, Skeleton } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Progress value={60} />\n<Skeleton className="h-4 w-[200px]" />
+  )
+}`
   },
   {
     name: "Toast Notifications",
@@ -1277,7 +1466,16 @@ const componentsList: ComponentItem[] = [
         Trigger Toast
       </Button>
     ),
-    code: `toast("Hero deployed!")`
+    code: `import { Button } from "c-comic-ui"
+import { toast } from "sonner"
+
+export default function App() {
+  return (
+    <Button onClick={() => toast("Hero deployed!")}>
+      Show Toast
+    </Button>
+  )
+}`
   },
   {
     name: "Alerts",
@@ -1308,7 +1506,13 @@ const componentsList: ComponentItem[] = [
         </Alert>
       </div>
     ),
-    code: `<Alert variant="warning">\n  <AlertTitle>Heads up!</AlertTitle>\n  <AlertDescription>Danger zone.</AlertDescription>\n</Alert>`
+    code: `import { Alert, AlertTitle, AlertDescription } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Alert variant="warning">\n  <AlertTitle>Heads up!</AlertTitle>\n  <AlertDescription>Danger zone.</AlertDescription>\n</Alert>
+  )
+}`
   },
   {
     name: "Confirmation Dialog",
@@ -1333,7 +1537,13 @@ const componentsList: ComponentItem[] = [
         </AlertDialogContent>
       </AlertDialog>
     ),
-    code: `<AlertDialog>\n  <AlertDialogTrigger>Open</AlertDialogTrigger>\n  <AlertDialogContent>...</AlertDialogContent>\n</AlertDialog>`
+    code: `import { AlertDialog, AlertDialogTrigger, AlertDialogContent } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <AlertDialog>\n  <AlertDialogTrigger>Open</AlertDialogTrigger>\n  <AlertDialogContent>...</AlertDialogContent>\n</AlertDialog>
+  )
+}`
   },
   {
     name: "Inline Validation",
@@ -1351,7 +1561,13 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: `<Input className="border-red-500" />\n<p className="text-red-500">Error message</p>`
+    code: `import { Input } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Input className="border-red-500" />\n<p className="text-red-500">Error message</p>
+  )
+}`
   },
   {
     name: "Data Table",
@@ -1392,7 +1608,13 @@ const componentsList: ComponentItem[] = [
         </Table>
       </div>
     ),
-    code: `<Table>\n  <TableHeader>\n    <TableRow>\n      <TableHead>Hero</TableHead>\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n    <TableRow>\n      <TableCell>Captain Thunder</TableCell>\n    </TableRow>\n  </TableBody>\n</Table>`
+    code: `import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Table>\n  <TableHeader>\n    <TableRow>\n      <TableHead>Hero</TableHead>\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n    <TableRow>\n      <TableCell>Captain Thunder</TableCell>\n    </TableRow>\n  </TableBody>\n</Table>
+  )
+}`
   },
   {
     name: "List View (Activity)",
@@ -1416,7 +1638,13 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: `<div className="flex flex-col gap-4">\n  <div className="flex gap-4 items-start">\n    <Avatar><AvatarFallback>H1</AvatarFallback></Avatar>\n    <div className="flex flex-col">\n      <span className="font-bold">Action Performed</span>\n    </div>\n  </div>\n</div>`
+    code: `import { Avatar, AvatarFallback } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <div className="flex flex-col gap-4">\n  <div className="flex gap-4 items-start">\n    <Avatar><AvatarFallback>H1</AvatarFallback></Avatar>\n    <div className="flex flex-col">\n      <span className="font-bold">Action Performed</span>\n    </div>\n  </div>\n</div>
+  )
+}`
   },
   {
     name: "Stats / KPI Block",
@@ -1433,7 +1661,11 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: `<div className="bg-red-400 p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)]">\n  <div className="text-sm font-black text-black dark:text-foreground">Threat Level</div>\n  <div className="text-3xl font-black text-white">CRITICAL</div>\n</div>`
+    code: `export default function App() {
+  return (
+    <div className="bg-red-400 p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)]">\n  <div className="text-sm font-black text-black dark:text-foreground">Threat Level</div>\n  <div className="text-3xl font-black text-white">CRITICAL</div>\n</div>
+  )
+}`
   },
   {
     name: "Bar Chart",
@@ -1455,7 +1687,13 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: `<ResponsiveContainer width="100%" height="100%">\n  <BarChart data={data}>\n    <XAxis dataKey="name" stroke="#000" />\n    <Tooltip contentStyle={{border: '3px solid #000', fontWeight: 'bold'}} />\n    <Bar dataKey="uv" fill="#facc15" stroke="#000" strokeWidth={3} radius={[4,4,0,0]} />\n  </BarChart>\n</ResponsiveContainer>`
+    code: `import { ResponsiveContainer, BarChart, XAxis, Tooltip, Bar } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <ResponsiveContainer width="100%" height="100%">\n  <BarChart data={data}>\n    <XAxis dataKey="name" stroke="#000" />\n    <Tooltip contentStyle={{border: '3px solid #000', fontWeight: 'bold'}} />\n    <Bar dataKey="uv" fill="#facc15" stroke="#000" strokeWidth={3} radius={[4,4,0,0]} />\n  </BarChart>\n</ResponsiveContainer>
+  )
+}`
   },
   {
     name: "Empty State",
@@ -1471,7 +1709,13 @@ const componentsList: ComponentItem[] = [
         <Button className="mt-8 font-bold shadow-[var(--shadow-comic)] border-[3px] py-6 px-8 text-xl text-black dark:text-foreground" variant="default">Refresh Radar</Button>
       </div>
     ),
-    code: `<div className="p-12 bg-white dark:bg-card rounded-[var(--radius-comic)] border-[4px] border-dashed flex flex-col items-center text-center">\n  <div className="h-20 w-20 bg-yellow-400 rounded-full flex items-center justify-center mb-6">\n    <FileBox className="h-10 w-10 text-black dark:text-foreground" />\n  </div>\n  <h3 className="text-2xl font-black text-black dark:text-foreground">No Missions Found</h3>\n  <Button>Refresh Radar</Button>\n</div>`
+    code: `import { FileBox, Button } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <div className="p-12 bg-white dark:bg-card rounded-[var(--radius-comic)] border-[4px] border-dashed flex flex-col items-center text-center">\n  <div className="h-20 w-20 bg-yellow-400 rounded-full flex items-center justify-center mb-6">\n    <FileBox className="h-10 w-10 text-black dark:text-foreground" />\n  </div>\n  <h3 className="text-2xl font-black text-black dark:text-foreground">No Missions Found</h3>\n  <Button>Refresh Radar</Button>\n</div>
+  )
+}`
   },
   {
     name: "Accordion",
@@ -1495,7 +1739,18 @@ const componentsList: ComponentItem[] = [
         </Accordion>
       </div>
     ),
-    code: "<Accordion type=\"single\" collapsible>\n  <AccordionItem value=\"item-1\">\n    <AccordionTrigger>Is it accessible?</AccordionTrigger>\n    <AccordionContent>Yes!</AccordionContent>\n  </AccordionItem>\n</Accordion>"
+    code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Accordion type="single" collapsible>
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionContent>Yes!</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  )
+}`
   },
   {
     name: "Tabs",
@@ -1519,7 +1774,18 @@ const componentsList: ComponentItem[] = [
         </Tabs>
       </div>
     ),
-    code: "<Tabs defaultValue=\"account\">\n  <TabsList>\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Content</TabsContent>\n</Tabs>"
+    code: `import { Tabs, TabsList, TabsTrigger, TabsContent } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Tabs defaultValue="account">
+      <TabsList>
+        <TabsTrigger value="account">Account</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">Content</TabsContent>
+    </Tabs>
+  )
+}`
   },
   {
     name: "Sheet / Side Panel",
@@ -1547,7 +1813,20 @@ const componentsList: ComponentItem[] = [
         </Sheet>
       </div>
     ),
-    code: "<Sheet>\n  <SheetTrigger asChild><Button>Open Sidebar</Button></SheetTrigger>\n  <SheetContent side=\"right\">\n    <SheetHeader>\n      <SheetTitle>App Settings</SheetTitle>\n    </SheetHeader>\n  </SheetContent>\n</Sheet>"
+    code: `import { Sheet, SheetTrigger, Button, SheetContent, SheetHeader, SheetTitle } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Sheet>
+      <SheetTrigger asChild><Button>Open Sidebar</Button></SheetTrigger>
+      <SheetContent side="right">
+        <SheetHeader>
+          <SheetTitle>App Settings</SheetTitle>
+        </SheetHeader>
+      </SheetContent>
+    </Sheet>
+  )
+}`
   },
   {
     name: "Resizable Panels",
@@ -1571,7 +1850,17 @@ const componentsList: ComponentItem[] = [
         </ResizablePanelGroup>
       </div>
     ),
-    code: "<ResizablePanelGroup direction=\"horizontal\">\n  <ResizablePanel defaultSize={30}>Sidebar</ResizablePanel>\n  <ResizableHandle withHandle />\n  <ResizablePanel defaultSize={70}>Content</ResizablePanel>\n</ResizablePanelGroup>"
+    code: `import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <ResizablePanelGroup direction="horizontal">
+      <ResizablePanel defaultSize={30}>Sidebar</ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel defaultSize={70}>Content</ResizablePanel>
+    </ResizablePanelGroup>
+  )
+}`
   },
   {
     name: "Drawer (Mobile Panel)",
@@ -1597,7 +1886,23 @@ const componentsList: ComponentItem[] = [
         </Drawer>
       </div>
     ),
-    code: "<Drawer>\n  <DrawerTrigger asChild><Button>Open Drawer</Button></DrawerTrigger>\n  <DrawerContent>\n    <DrawerHeader>\n      <DrawerTitle>Move Goal</DrawerTitle>\n    </DrawerHeader>\n    <DrawerFooter>\n      <DrawerClose asChild><Button>Cancel</Button></DrawerClose>\n    </DrawerFooter>\n  </DrawerContent>\n</Drawer>"
+    code: `import { Drawer, DrawerTrigger, Button, DrawerContent, DrawerHeader, DrawerTitle, DrawerFooter, DrawerClose } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Drawer>
+      <DrawerTrigger asChild><Button>Open Drawer</Button></DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Move Goal</DrawerTitle>
+        </DrawerHeader>
+        <DrawerFooter>
+          <DrawerClose asChild><Button>Cancel</Button></DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
+  )
+}`
   },
 
   {
@@ -1613,7 +1918,13 @@ const componentsList: ComponentItem[] = [
         <Button variant="ghost">Ghost</Button>
       </div>
     ),
-    code: `<Button variant="default" className="bg-blue-500 hover:bg-blue-600 text-white">Action Blue</Button>\n<Button variant="secondary" className="bg-yellow-400 hover:bg-yellow-500 text-black dark:text-foreground">Zap Yellow</Button>\n<Button variant="destructive" className="bg-red-500 hover:bg-red-600 text-white">Pow Red</Button>`,
+    code: `import { Button } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Button variant="default" className="bg-blue-500 hover:bg-blue-600 text-white">Action Blue</Button>\n<Button variant="secondary" className="bg-yellow-400 hover:bg-yellow-500 text-black dark:text-foreground">Zap Yellow</Button>\n<Button variant="destructive" className="bg-red-500 hover:bg-red-600 text-white">Pow Red</Button>
+  )
+}`,
   },
   {
     name: "Input",
@@ -1625,7 +1936,13 @@ const componentsList: ComponentItem[] = [
         <Button type="submit">Subscribe</Button>
       </div>
     ),
-    code: `<div className="flex w-full max-w-sm items-center space-x-2">\n  <Input type="email" placeholder="Email" className="bg-white dark:bg-card" />\n  <Button type="submit">Subscribe</Button>\n</div>`
+    code: `import { Input, Button } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <div className="flex w-full max-w-sm items-center space-x-2">\n  <Input type="email" placeholder="Email" className="bg-white dark:bg-card" />\n  <Button type="submit">Subscribe</Button>\n</div>
+  )
+}`
   },
   {
     name: "Badge",
@@ -1639,7 +1956,13 @@ const componentsList: ComponentItem[] = [
         <Badge variant="outline">Outline</Badge>
       </div>
     ),
-    code: `<Badge className="bg-blue-500 text-white border-[2px] border-black dark:border-border">New</Badge>\n<Badge className="bg-yellow-400 text-black dark:text-foreground border-[2px] border-black dark:border-border">Beta</Badge>\n<Badge className="bg-red-500 text-white border-[2px] border-black dark:border-border">Warning</Badge>`
+    code: `import { Badge } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Badge className="bg-blue-500 text-white border-[2px] border-black dark:border-border">New</Badge>\n<Badge className="bg-yellow-400 text-black dark:text-foreground border-[2px] border-black dark:border-border">Beta</Badge>\n<Badge className="bg-red-500 text-white border-[2px] border-black dark:border-border">Warning</Badge>
+  )
+}`
   },
   {
     name: "Avatar",
@@ -1660,7 +1983,13 @@ const componentsList: ComponentItem[] = [
         </Avatar>
       </div>
     ),
-    code: `<Avatar>\n  <AvatarImage src="/Headshot (1).jpg" alt="@user" />\n  <AvatarFallback>CN</AvatarFallback>\n</Avatar>`
+    code: `import { Avatar, AvatarImage, AvatarFallback } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <Avatar>\n  <AvatarImage src="/Headshot (1).jpg" alt="@user" />\n  <AvatarFallback>CN</AvatarFallback>\n</Avatar>
+  )
+}`
   },
   {
     name: "Checkbox & Label",
@@ -1672,7 +2001,13 @@ const componentsList: ComponentItem[] = [
         <Label htmlFor="terms" className="text-black dark:text-foreground">Accept terms and conditions</Label>
       </div>
     ),
-    code: `<div className="flex items-center space-x-2">\n  <Checkbox id="terms" />\n  <Label htmlFor="terms">Accept terms and conditions</Label>\n</div>`
+    code: `import { Checkbox, Label } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <div className="flex items-center space-x-2">\n  <Checkbox id="terms" />\n  <Label htmlFor="terms">Accept terms and conditions</Label>\n</div>
+  )
+}`
   },
   {
     name: "Switch",
@@ -1684,7 +2019,13 @@ const componentsList: ComponentItem[] = [
         <Label htmlFor="airplane-mode" className="text-black dark:text-foreground">Airplane Mode</Label>
       </div>
     ),
-    code: `<div className="flex items-center space-x-2">\n  <Switch id="airplane-mode" />\n  <Label htmlFor="airplane-mode">Airplane Mode</Label>\n</div>`
+    code: `import { Switch, Label } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <div className="flex items-center space-x-2">\n  <Switch id="airplane-mode" />\n  <Label htmlFor="airplane-mode">Airplane Mode</Label>\n</div>
+  )
+}`
   },
   {
     name: "Separator",
@@ -1701,7 +2042,13 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: `<div className="flex h-5 items-center space-x-4">\n  <div>Docs</div>\n  <Separator orientation="vertical" />\n  <div>Source</div>\n</div>`
+    code: `import { Separator } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <div className="flex h-5 items-center space-x-4">\n  <div>Docs</div>\n  <Separator orientation="vertical" />\n  <div>Source</div>\n</div>
+  )
+}`
   },
   {
     name: "Skeleton",
@@ -1716,7 +2063,13 @@ const componentsList: ComponentItem[] = [
         </div>
       </div>
     ),
-    code: `<div className="flex items-center space-x-4">\n  <Skeleton className="h-12 w-12 rounded-full" />\n  <div className="space-y-2">\n    <Skeleton className="h-4 w-[250px]" />\n    <Skeleton className="h-4 w-[200px]" />\n  </div>\n</div>`
+    code: `import { Skeleton } from "c-comic-ui"
+
+export default function App() {
+  return (
+    <div className="flex items-center space-x-4">\n  <Skeleton className="h-12 w-12 rounded-full" />\n  <div className="space-y-2">\n    <Skeleton className="h-4 w-[250px]" />\n    <Skeleton className="h-4 w-[200px]" />\n  </div>\n</div>
+  )
+}`
   }
 ]
 
