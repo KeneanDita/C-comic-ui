@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
@@ -77,32 +79,32 @@
   }
 
   .dark {
-    --background: #1c1917; /* Warm dark slate */
-    --foreground: #fdfbf7; /* Soft cream text */
+    --background: #111111; /* Very dark gray, almost black but softer */
+    --foreground: #ededed; /* Off-white for less eye strain */
 
-    --card: #334155; /* Muted dark blue/slate for cards */
-    --card-foreground: #fdfbf7;
+    --card: #1a1a1a; /* Elevated surface */
+    --card-foreground: #ededed;
 
-    --primary: #eab308; /* Slightly deeper yellow to avoid glare */
-    --primary-foreground: #1c1917;
+    --primary: #facc15; /* Keep yellow but it stands out nicely on dark */
+    --primary-foreground: #111111;
 
-    --secondary: #292524;
-    --secondary-foreground: #fdfbf7;
+    --secondary: #262626; /* Slightly lighter gray */
+    --secondary-foreground: #ededed;
 
-    --destructive: #dc2626; /* Richer red */
-    --destructive-foreground: #fdfbf7;
+    --destructive: #ef4444; /* Keep the comic red */
+    --destructive-foreground: #ededed;
 
-    --muted: #292524;
-    --muted-foreground: #a8a29e;
+    --muted: #262626;
+    --muted-foreground: #a3a3a3; /* Subdued text */
 
-    --accent: #0f766e; /* Muted teal */
-    --accent-foreground: #fdfbf7;
+    --accent: #262626;
+    --accent-foreground: #facc15; /* Yellow on dark gray */
 
-    --border: #999999; /* Muted border */
-    --input: #292524;
-    --ring: #fdfbf7;
+    --border: #333333; /* Softer borders instead of #999 */
+    --input: #1a1a1a;
+    --ring: #facc15; /* Focus ring is yellow */
 
-    --shadow-color: #1a1a1a; /* Very weak shadow or dark grey */
+    --shadow-color: #000000; /* Kept black so shadows still pop slightly over very dark gray */
   }
 }
 

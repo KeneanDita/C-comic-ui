@@ -6,7 +6,7 @@ export default function DocsPage() {
     <div className="container mx-auto px-4 max-w-6xl py-12 flex flex-col md:flex-row gap-8 text-foreground">
       {/* Sidebar */}
       <aside className="hidden md:block w-64 shrink-0">
-        <div className="sticky top-24 bg-gray-100 dark:bg-muted p-6 border-[3px] border-border shadow-[var(--shadow-comic)] rounded-[var(--radius-comic-lg)]">
+        <div className="sticky top-24 bg-blue-50 dark:bg-muted p-6 border-[3px] border-border shadow-[var(--shadow-comic)] rounded-[var(--radius-comic-lg)]">
           <h3 className="font-black text-xl mb-4 text-black dark:text-foreground uppercase border-b-[3px] border-border pb-2">On this page</h3>
           <ul className="flex flex-col gap-3 font-bold text-black dark:text-foreground/70">
             <li>
@@ -30,14 +30,14 @@ export default function DocsPage() {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col gap-8">
-        <div id="introduction" className="bg-gray-800 text-white p-8 border-[3px] border-border shadow-[var(--shadow-comic)] rounded-[var(--radius-comic-lg)] scroll-mt-24">
+        <div id="introduction" className="bg-blue-600 dark:bg-card text-white dark:text-card-foreground p-8 border-[3px] border-border shadow-[var(--shadow-comic)] rounded-[var(--radius-comic-lg)] scroll-mt-24">
           <TypographyH1>Documentation</TypographyH1>
-          <TypographyP className="text-white/90">
+          <TypographyP className="text-white/90 dark:text-card-foreground/90">
             Welcome to C-Comic UI! Learn how to install and use our comic-style component library in your Next.js and React applications. Get perfectly bold, playful, and accessible UI elements right out of the box.
           </TypographyP>
         </div>
 
-        <div id="installation" className="bg-gray-100 dark:bg-muted text-black dark:text-foreground p-8 border-[3px] border-border shadow-[var(--shadow-comic)] rounded-[var(--radius-comic-lg)] scroll-mt-24">
+        <div id="installation" className="bg-blue-50 dark:bg-muted text-black dark:text-foreground p-8 border-[3px] border-border shadow-[var(--shadow-comic)] rounded-[var(--radius-comic-lg)] scroll-mt-24">
           <TypographyH2>Installation & User Guide</TypographyH2>
           <TypographyP>
             Install the package via npm or yarn. This will inject the core styles, comic variables, and radices into your project.
@@ -55,7 +55,7 @@ export default function DocsPage() {
           </div>
         </div>
 
-        <div id="components" className="bg-gray-100 dark:bg-muted text-black dark:text-foreground p-8 border-[3px] border-border shadow-[var(--shadow-comic)] rounded-[var(--radius-comic-lg)] scroll-mt-24">
+        <div id="components" className="bg-blue-50 dark:bg-muted text-black dark:text-foreground p-8 border-[3px] border-border shadow-[var(--shadow-comic)] rounded-[var(--radius-comic-lg)] scroll-mt-24">
           <TypographyH2>Components</TypographyH2>
           <TypographyP>
             Below is a brief description of the core components currently available in our library:
