@@ -77,8 +77,8 @@ export function Navbar() {
               </Button>
             </Link>
             <Button variant="outline" size="icon" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="h-9 w-9 bg-white text-black border-border shadow-[var(--shadow-comic-sm)] hover:shadow-[var(--shadow-comic)] dark:bg-card dark:text-foreground">
-              <Moon className="h-4 w-4 hidden dark:block" />
-              <Sun className="h-4 w-4 block dark:hidden" />
+              <Sun className="h-4 w-4 hidden dark:block" />
+              <Moon className="h-4 w-4 block dark:hidden" />
               <span className="sr-only">Toggle theme</span>
             </Button>
           </nav>

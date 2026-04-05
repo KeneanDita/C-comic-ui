@@ -189,28 +189,28 @@ export default function V1DashboardDemo() {
               
               <TabsContent value="settings">
                 <div className="border-[var(--border-comic)] border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-sm)] p-6 bg-white dark:bg-card space-y-6">
-                  <div className="space-y-4">
+                  <div className="space-y-4 text-black dark:text-foreground">
                     <h3 className="font-black uppercase text-xl border-b-[2px] border-border pb-2">System Preferences</h3>
                     
                     <div className="flex items-center justify-between">
                       <div className="space-y-0.5">
-                        <Label className="text-base">Auto-Engage Defense Matrix</Label>
-                        <p className="text-sm text-muted-foreground font-bold">Shields trigger automatically when threat exceeds Class B.</p>
+                        <Label className="text-base text-black dark:text-foreground">Auto-Engage Defense Matrix</Label>
+                        <p className="text-sm text-black/70 dark:text-muted-foreground font-bold">Shields trigger automatically when threat exceeds Class B.</p>
                       </div>
                       <Switch defaultChecked />
                     </div>
                     
                     <div className="flex items-center justify-between">
                       <div className="space-y-0.5">
-                        <Label className="text-base">Dark Mode (Night Vision)</Label>
-                        <p className="text-sm text-muted-foreground font-bold">Enhance visibility during covert nocturnal operations.</p>
+                        <Label className="text-base text-black dark:text-foreground">Dark Mode (Night Vision)</Label>
+                        <p className="text-sm text-black/70 dark:text-muted-foreground font-bold">Enhance visibility during covert nocturnal operations.</p>
                       </div>
                       <Switch />
                     </div>
                   </div>
                   
                   <div className="pt-4 flex justify-end gap-4">
-                    <Button variant="outline">Reset Defaults</Button>
+                    <Button variant="outline" className="text-black dark:text-foreground">Reset Defaults</Button>
                     <Button>Save Settings</Button>
                   </div>
                 </div>
