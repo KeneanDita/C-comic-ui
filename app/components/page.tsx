@@ -59,12 +59,16 @@ const componentsList: ComponentItem[] = [
         </Button>
       </div>
     ),
-    code: `import { Ghost, Button } from "c-comic-ui"
+    code: `import { Button } from "c-comic-ui";
+import { Ghost, Plus } from "lucide-react";
 
 export default function App() {
   return (
-    <div className="text-center flex flex-col items-center">...<Ghost />...<Button>Start</Button></div>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -93,10 +97,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `export default function App() {
+    code: `import { Button } from "c-comic-ui";
+import { MapIcon, Home, RefreshCcw } from "lucide-react";
+
+export default function App() {
   return (
-    <div className="bg-blue-600 relative overflow-hidden">...<div className="text-[180px]">404</div>...</div>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -131,12 +141,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `import { Button } from "c-comic-ui"
+    code: `import { Button } from "c-comic-ui";
+import { Sparkles, ArrowRight } from "lucide-react";
 
 export default function App() {
   return (
-    <div className="ring-4 ring-yellow-400 shadow-[0_0_0_999px_rgba(0,0,0,0.5)]"><Button>...</Button></div>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -170,10 +184,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `export default function App() {
+    code: `// Import your components from "c-comic-ui";
+import { Keyboard, Command } from "lucide-react";
+
+export default function App() {
   return (
-    <kbd className="border-[2px] border-black dark:border-border border-b-[4px] rounded-md px-2 font-mono">⌘ K</kbd>
-  )
+    // the corresponding elements
+    <>
+      
+    </>
+  );
 }`
   },
   {
@@ -200,10 +220,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `export default function App() {
+    code: `import { Button } from "c-comic-ui";
+import { Sun, Moon, Monitor } from "lucide-react";
+
+export default function App() {
   return (
-    <div className="bg-slate-900 p-6 flex items-center justify-center">...Theme toggles...</div>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -246,12 +272,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `import { Button } from "c-comic-ui"
+    code: `import { Button } from "c-comic-ui";
+import { MousePointerClick, Accessibility, Eye, User } from "lucide-react";
 
 export default function App() {
   return (
-    <Button className="outline-none ring-4 ring-offset-2 ring-purple-500">Focused</Button>...<span className="sr-only">SR Only Text</span>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+    </>
+  );
 }`
   }
 ,
@@ -292,10 +322,18 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `export default function App() {
+    code: `import { Label, Input, Button } from "c-comic-ui";
+import { Check, MapPin, ArrowRight } from "lucide-react";
+
+export default function App() {
   return (
-    <div className="flex items-center justify-between mb-8 relative px-4"><div className="h-10 w-10 rounded-full bg-blue-400...">1</div>...</div>
-  )
+    // the corresponding elements
+    <>
+      <Label />
+      <Input />
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -326,13 +364,17 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `import { Input } from "c-comic-ui"
+    code: `import { Label, Input } from "c-comic-ui";
+import { AlertTriangle, CheckCircle, Check } from "lucide-react";
 
 export default function App() {
   return (
-    <Input className="border-[3px] border-red-500 bg-red-50..." />
-    <span className="text-red-500">Error message</span>
-  )
+    // the corresponding elements
+    <>
+      <Label />
+      <Input />
+    </>
+  );
 }`
   },
   {
@@ -367,10 +409,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `export default function App() {
+    code: `import { Button } from "c-comic-ui";
+import { UploadCloud, FileText, CheckCircle, Trash2 } from "lucide-react";
+
+export default function App() {
   return (
-    <div className="h-48 border-[3px] border-dashed border-blue-400 hover:bg-blue-100">...</div>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -413,10 +461,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `export default function App() {
+    code: `import { Button } from "c-comic-ui";
+import { ChevronRight, Clock } from "lucide-react";
+
+export default function App() {
   return (
-    <div className="bg-white dark:bg-card rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-lg)] overflow-hidden">...</div>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -452,13 +506,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `export default function App() {
+    code: `import { Button } from "c-comic-ui";
+import { Bold, Italic, Heading1, Heading2, ListIcon, Link2, ImageIcon, Code } from "lucide-react";
+
+export default function App() {
   return (
-    <div className="border-[3px] border-border shadow-[var(--shadow-comic-lg)]">
-      <div className="bg-gray-100 border-b-[3px] p-2 flex gap-2">Toolbar...</div>
-      <div contentEditable>Content...</div>
-    </div>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -491,15 +548,18 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `import { Cloud, Input } from "c-comic-ui"
+    code: `import { Label, Input, Button } from "c-comic-ui";
+import { Cloud, Loader2 } from "lucide-react";
 
 export default function App() {
   return (
-    <div className="relative">
-      <div className="absolute -top-4 right-6 bg-black text-white px-3 py-1.5 rounded-[var(--radius-comic)]"><Cloud /> Saved to cloud</div>
+    // the corresponding elements
+    <>
+      <Label />
       <Input />
-    </div>
-  )
+      <Button />
+    </>
+  );
 }`
   }
 ,
@@ -524,10 +584,16 @@ export default function App() {
         </nav>
       </div>
     ),
-    code: `export default function App() {
+    code: `// Import your components from "c-comic-ui";
+import { Home, ChevronRight } from "lucide-react";
+
+export default function App() {
   return (
-    <nav className="flex gap-2"><a className="bg-yellow-300 border-[2px]...">Home</a>...</nav>
-  )
+    // the corresponding elements
+    <>
+      
+    </>
+  );
 }`
   },
   {
@@ -568,10 +634,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `export default function App() {
+    code: `import { Badge } from "c-comic-ui";
+import { Search, Calendar, Folder, Settings2 } from "lucide-react";
+
+export default function App() {
   return (
-    <div className="border-[3px] shadow-[var(--shadow-comic-lg)]"><input placeholder="Search..." />...</div>
-  )
+    // the corresponding elements
+    <>
+      <Badge />
+    </>
+  );
 }`
   },
   {
@@ -613,12 +685,19 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `import { Input } from "c-comic-ui"
+    code: `import { Input, Button, Avatar, AvatarFallback } from "c-comic-ui";
+import { Search, FileBox } from "lucide-react";
 
 export default function App() {
   return (
-    <div className="relative"><Input /><div className="absolute top-full">Results...</div></div>
-  )
+    // the corresponding elements
+    <>
+      <Input />
+      <Button />
+      <Avatar />
+      <AvatarFallback />
+    </>
+  );
 }`
   },
   {
@@ -664,10 +743,17 @@ export default function App() {
         </main>
       </div>
     ),
-    code: `export default function App() {
+    code: `import { Button, Badge } from "c-comic-ui";
+import { AlignLeft, Home, Compass, Star, Folder, Users, Settings2 } from "lucide-react";
+
+export default function App() {
   return (
-    <aside className="w-64 bg-yellow-400 border-r-[3px] border-border flex flex-col">...</aside>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+      <Badge />
+    </>
+  );
 }`
   },
   {
@@ -747,10 +833,17 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `export default function App() {
+    code: `import { Button } from "c-comic-ui";
+import { ChevronRight, ArrowRight, Zap, Users, ShieldCheck } from "lucide-react";
+import { BarChart } from "recharts";
+
+export default function App() {
   return (
-    <nav>...<div className="absolute w-full max-w-3xl">Mega Menu Content</div></nav>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+    </>
+  );
 }`
   },
 
@@ -801,10 +894,17 @@ export default function App() {
         </p>
       </div>
     ),
-    code: `export default function App() {
+    code: `import { Button, Label, Input } from "c-comic-ui";
+
+export default function App() {
   return (
-    <div className="bg-white dark:bg-card p-8 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-lg)]">...</div>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+      <Label />
+      <Input />
+    </>
+  );
 }`
   },
   {
@@ -833,10 +933,17 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `export default function App() {
+    code: `import { Input, Button } from "c-comic-ui";
+import { Lock, ArrowRight } from "lucide-react";
+
+export default function App() {
   return (
-    <div className="bg-[#4ade80] p-8 rounded-[var(--radius-comic)] border-[3px] shadow-[var(--shadow-comic-lg)]">...</div>
-  )
+    // the corresponding elements
+    <>
+      <Input />
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -856,12 +963,16 @@ export default function App() {
         <Button variant="ghost" className="font-bold underline decoration-2 underline-offset-4 hover:bg-gray-100">Resend Email</Button>
       </div>
     ),
-    code: `import { Mail } from "c-comic-ui"
+    code: `import { Button } from "c-comic-ui";
+import { Mail } from "lucide-react";
 
 export default function App() {
   return (
-    <div className="text-center flex flex-col items-center"><Mail />...</div>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -885,12 +996,17 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `import { Input } from "c-comic-ui"
+    code: `import { Input, Button } from "c-comic-ui";
+import { ShieldCheck } from "lucide-react";
 
 export default function App() {
   return (
-    <div className="flex justify-between gap-2"><Input maxLength={1} className="w-12 h-14 text-center text-2xl font-black" />...</div>
-  )
+    // the corresponding elements
+    <>
+      <Input />
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -944,12 +1060,17 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `import { Laptop } from "c-comic-ui"
+    code: `import { Badge, Button } from "c-comic-ui";
+import { Laptop, Smartphone, Monitor } from "lucide-react";
 
 export default function App() {
   return (
-    <div className="p-4 border-[3px] border-border rounded-[var(--radius-comic)]"><Laptop />...</div>
-  )
+    // the corresponding elements
+    <>
+      <Badge />
+      <Button />
+    </>
+  );
 }`
   },
 
@@ -988,10 +1109,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `export default function App() {
+    code: `import { Button } from "c-comic-ui";
+import { Check } from "lucide-react";
+
+export default function App() {
   return (
-    <div className="bg-yellow-400 border-[3px] border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic-lg)]">...</div>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -1021,12 +1148,17 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `import { Badge } from "c-comic-ui"
+    code: `import { Badge, Button } from "c-comic-ui";
+import { Zap } from "lucide-react";
 
 export default function App() {
   return (
-    <div className="w-full max-w-lg bg-white dark:bg-card p-6 border-[3px]"><Badge>Hero Tier</Badge>...</div>
-  )
+    // the corresponding elements
+    <>
+      <Badge />
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -1070,14 +1202,23 @@ export default function App() {
         </Table>
       </div>
     ),
-    code: `import { Table, TableHeader } from "c-comic-ui"
+    code: `import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell, Badge, Button } from "c-comic-ui";
+import { Download } from "lucide-react";
 
 export default function App() {
   return (
-    <Table>
-      <TableHeader>...
-    </Table>
-  )
+    // the corresponding elements
+    <>
+      <Table />
+      <TableHeader />
+      <TableRow />
+      <TableHead />
+      <TableBody />
+      <TableCell />
+      <Badge />
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -1099,12 +1240,16 @@ export default function App() {
         </p>
       </div>
     ),
-    code: `import { Progress } from "c-comic-ui"
+    code: `import { Progress } from "c-comic-ui";
+import { AlertCircle } from "lucide-react";
 
 export default function App() {
   return (
-    <Progress value={85} indicatorColor="bg-red-500" />
-  )
+    // the corresponding elements
+    <>
+      <Progress />
+    </>
+  );
 }`
   },
   {
@@ -1166,14 +1311,25 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `import { Select, SelectTrigger } from "c-comic-ui"
+    code: `import { Button, Avatar, AvatarFallback, Badge, Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectItem } from "c-comic-ui";
+import { Users, Trash2 } from "lucide-react";
 
 export default function App() {
   return (
-    <Select defaultValue="editor">
-      <SelectTrigger>...</SelectTrigger>
-    </Select>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+      <Avatar />
+      <AvatarFallback />
+      <Badge />
+      <Select />
+      <SelectTrigger />
+      <SelectValue />
+      <SelectContent />
+      <SelectGroup />
+      <SelectItem />
+    </>
+  );
 }`
   },
   {
@@ -1207,12 +1363,18 @@ export default function App() {
         </Button>
       </div>
     ),
-    code: `import { Input } from "c-comic-ui"
+    code: `import { Badge, Input, Button } from "c-comic-ui";
+import { Key, Copy, Plus } from "lucide-react";
 
 export default function App() {
   return (
-    <Input className="font-mono" placeholder="sk_live_..." readOnly />
-  )
+    // the corresponding elements
+    <>
+      <Badge />
+      <Input />
+      <Button />
+    </>
+  );
 }`
   },
 
@@ -1237,12 +1399,21 @@ export default function App() {
         </Select>
       </div>
     ),
-    code: `import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "c-comic-ui"
+    code: `import { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectItem } from "c-comic-ui";
 
 export default function App() {
   return (
-    <Select>\n  <SelectTrigger>\n    <SelectValue placeholder="Select a model" />\n  </SelectTrigger>\n  <SelectContent>\n    <SelectItem value="gemini">Gemini 1.5 Pro</SelectItem>\n  </SelectContent>\n</Select>
-  )
+    // the corresponding elements
+    <>
+      <Select />
+      <SelectTrigger />
+      <SelectValue />
+      <SelectContent />
+      <SelectGroup />
+      <SelectLabel />
+      <SelectItem />
+    </>
+  );
 }`
   },
   {
@@ -1273,10 +1444,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `export default function App() {
+    code: `// Import your components from "c-comic-ui";
+import { User, Bot } from "lucide-react";
+
+export default function App() {
   return (
-    <div className="bg-yellow-400 p-4 border-[3px] border-border rounded-2xl">...</div>
-  )
+    // the corresponding elements
+    <>
+      
+    </>
+  );
 }`
   },
   {
@@ -1297,10 +1474,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `export default function App() {
+    code: `// Import your components from "c-comic-ui";
+import { Copy } from "lucide-react";
+
+export default function App() {
   return (
-    <div className="bg-black border-[3px] border-border rounded-[var(--radius-comic)]">\n  <div className="bg-gray-200 border-b-[3px] border-border px-4 py-2">...</div>\n  <pre><code>...</code></pre>\n</div>
-  )
+    // the corresponding elements
+    <>
+      
+    </>
+  );
 }`
   },
   {
@@ -1328,10 +1511,15 @@ export default function App() {
         })}
       </div>
     ),
-    code: `export default function App() {
+    code: `// Import your components from "c-comic-ui";
+
+export default function App() {
   return (
-    <button className="bg-white dark:bg-card border-[3px] border-border p-4 rounded-[var(--radius-comic)]">...</button>
-  )
+    // the corresponding elements
+    <>
+      
+    </>
+  );
 }`
   },
   {
@@ -1356,10 +1544,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `export default function App() {
+    code: `// Import your components from "c-comic-ui";
+import { Plus, MessageSquare } from "lucide-react";
+
+export default function App() {
   return (
-    <div className="w-64 bg-[#fbbf24] border-[3px] border-border">...</div>
-  )
+    // the corresponding elements
+    <>
+      
+    </>
+  );
 }`
   },
   {
@@ -1389,12 +1583,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `import { Badge } from "c-comic-ui"
+    code: `import { Badge } from "c-comic-ui";
+import { Hash } from "lucide-react";
 
 export default function App() {
   return (
-    <div className="flex flex-wrap gap-2">\n  <Badge>1,204 tokens</Badge>\n</div>
-  )
+    // the corresponding elements
+    <>
+      <Badge />
+    </>
+  );
 }`
   },
   {
@@ -1414,10 +1612,16 @@ export default function App() {
         </Button>
       </div>
     ),
-    code: `export default function App() {
+    code: `import { Button } from "c-comic-ui";
+import { RefreshCcw, SquarePen } from "lucide-react";
+
+export default function App() {
   return (
-    <div className="bg-white dark:bg-card border-[3px] border-border p-1.5 rounded-full flex">...</div>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -1443,12 +1647,17 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `import { Progress, Skeleton } from "c-comic-ui"
+    code: `import { Progress, Skeleton } from "c-comic-ui";
+import { Loader2 } from "lucide-react";
 
 export default function App() {
   return (
-    <Progress value={60} />\n<Skeleton className="h-4 w-[200px]" />
-  )
+    // the corresponding elements
+    <>
+      <Progress />
+      <Skeleton />
+    </>
+  );
 }`
   },
   {
@@ -1466,15 +1675,15 @@ export default function App() {
         Trigger Toast
       </Button>
     ),
-    code: `import { Button } from "c-comic-ui"
-import { toast } from "sonner"
+    code: `import { Button } from "c-comic-ui";
 
 export default function App() {
   return (
-    <Button onClick={() => toast("Hero deployed!")}>
-      Show Toast
-    </Button>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -1506,12 +1715,18 @@ export default function App() {
         </Alert>
       </div>
     ),
-    code: `import { Alert, AlertTitle, AlertDescription } from "c-comic-ui"
+    code: `import { Alert, AlertTitle, AlertDescription } from "c-comic-ui";
+import { Terminal, AlertCircle, CheckCircle2 } from "lucide-react";
 
 export default function App() {
   return (
-    <Alert variant="warning">\n  <AlertTitle>Heads up!</AlertTitle>\n  <AlertDescription>Danger zone.</AlertDescription>\n</Alert>
-  )
+    // the corresponding elements
+    <>
+      <Alert />
+      <AlertTitle />
+      <AlertDescription />
+    </>
+  );
 }`
   },
   {
@@ -1537,12 +1752,24 @@ export default function App() {
         </AlertDialogContent>
       </AlertDialog>
     ),
-    code: `import { AlertDialog, AlertDialogTrigger, AlertDialogContent } from "c-comic-ui"
+    code: `import { AlertDialog, AlertDialogTrigger, Button, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "c-comic-ui";
 
 export default function App() {
   return (
-    <AlertDialog>\n  <AlertDialogTrigger>Open</AlertDialogTrigger>\n  <AlertDialogContent>...</AlertDialogContent>\n</AlertDialog>
-  )
+    // the corresponding elements
+    <>
+      <AlertDialog />
+      <AlertDialogTrigger />
+      <Button />
+      <AlertDialogContent />
+      <AlertDialogHeader />
+      <AlertDialogTitle />
+      <AlertDialogDescription />
+      <AlertDialogFooter />
+      <AlertDialogCancel />
+      <AlertDialogAction />
+    </>
+  );
 }`
   },
   {
@@ -1561,12 +1788,17 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `import { Input } from "c-comic-ui"
+    code: `import { Label, Input } from "c-comic-ui";
+import { AlertCircle } from "lucide-react";
 
 export default function App() {
   return (
-    <Input className="border-red-500" />\n<p className="text-red-500">Error message</p>
-  )
+    // the corresponding elements
+    <>
+      <Label />
+      <Input />
+    </>
+  );
 }`
   },
   {
@@ -1608,12 +1840,22 @@ export default function App() {
         </Table>
       </div>
     ),
-    code: `import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "c-comic-ui"
+    code: `import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell, Badge } from "c-comic-ui";
 
 export default function App() {
   return (
-    <Table>\n  <TableHeader>\n    <TableRow>\n      <TableHead>Hero</TableHead>\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n    <TableRow>\n      <TableCell>Captain Thunder</TableCell>\n    </TableRow>\n  </TableBody>\n</Table>
-  )
+    // the corresponding elements
+    <>
+      <Table />
+      <TableCaption />
+      <TableHeader />
+      <TableRow />
+      <TableHead />
+      <TableBody />
+      <TableCell />
+      <Badge />
+    </>
+  );
 }`
   },
   {
@@ -1638,12 +1880,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `import { Avatar, AvatarFallback } from "c-comic-ui"
+    code: `import { Avatar, AvatarFallback } from "c-comic-ui";
 
 export default function App() {
   return (
-    <div className="flex flex-col gap-4">\n  <div className="flex gap-4 items-start">\n    <Avatar><AvatarFallback>H1</AvatarFallback></Avatar>\n    <div className="flex flex-col">\n      <span className="font-bold">Action Performed</span>\n    </div>\n  </div>\n</div>
-  )
+    // the corresponding elements
+    <>
+      <Avatar />
+      <AvatarFallback />
+    </>
+  );
 }`
   },
   {
@@ -1661,10 +1907,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `export default function App() {
+    code: `// Import your components from "c-comic-ui";
+import { Target } from "lucide-react";
+
+export default function App() {
   return (
-    <div className="bg-red-400 p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic)]">\n  <div className="text-sm font-black text-black dark:text-foreground">Threat Level</div>\n  <div className="text-3xl font-black text-white">CRITICAL</div>\n</div>
-  )
+    // the corresponding elements
+    <>
+      
+    </>
+  );
 }`
   },
   {
@@ -1687,12 +1939,16 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `import { ResponsiveContainer, BarChart, XAxis, Tooltip, Bar } from "c-comic-ui"
+    code: `// Import your components from "c-comic-ui";
+import { ResponsiveContainer, BarChart, XAxis, Tooltip, Bar } from "recharts";
 
 export default function App() {
   return (
-    <ResponsiveContainer width="100%" height="100%">\n  <BarChart data={data}>\n    <XAxis dataKey="name" stroke="#000" />\n    <Tooltip contentStyle={{border: '3px solid #000', fontWeight: 'bold'}} />\n    <Bar dataKey="uv" fill="#facc15" stroke="#000" strokeWidth={3} radius={[4,4,0,0]} />\n  </BarChart>\n</ResponsiveContainer>
-  )
+    // the corresponding elements
+    <>
+      
+    </>
+  );
 }`
   },
   {
@@ -1709,12 +1965,16 @@ export default function App() {
         <Button className="mt-8 font-bold shadow-[var(--shadow-comic)] border-[3px] py-6 px-8 text-xl text-black dark:text-foreground" variant="default">Refresh Radar</Button>
       </div>
     ),
-    code: `import { FileBox, Button } from "c-comic-ui"
+    code: `import { Button } from "c-comic-ui";
+import { FileBox } from "lucide-react";
 
 export default function App() {
   return (
-    <div className="p-12 bg-white dark:bg-card rounded-[var(--radius-comic)] border-[4px] border-dashed flex flex-col items-center text-center">\n  <div className="h-20 w-20 bg-yellow-400 rounded-full flex items-center justify-center mb-6">\n    <FileBox className="h-10 w-10 text-black dark:text-foreground" />\n  </div>\n  <h3 className="text-2xl font-black text-black dark:text-foreground">No Missions Found</h3>\n  <Button>Refresh Radar</Button>\n</div>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -1739,17 +1999,18 @@ export default function App() {
         </Accordion>
       </div>
     ),
-    code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "c-comic-ui"
+    code: `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "c-comic-ui";
 
 export default function App() {
   return (
-    <Accordion type="single" collapsible>
-      <AccordionItem value="item-1">
-        <AccordionTrigger>Is it accessible?</AccordionTrigger>
-        <AccordionContent>Yes!</AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  )
+    // the corresponding elements
+    <>
+      <Accordion />
+      <AccordionItem />
+      <AccordionTrigger />
+      <AccordionContent />
+    </>
+  );
 }`
   },
   {
@@ -1774,17 +2035,19 @@ export default function App() {
         </Tabs>
       </div>
     ),
-    code: `import { Tabs, TabsList, TabsTrigger, TabsContent } from "c-comic-ui"
+    code: `import { Tabs, TabsList, TabsTrigger, TabsContent, Button } from "c-comic-ui";
 
 export default function App() {
   return (
-    <Tabs defaultValue="account">
-      <TabsList>
-        <TabsTrigger value="account">Account</TabsTrigger>
-      </TabsList>
-      <TabsContent value="account">Content</TabsContent>
-    </Tabs>
-  )
+    // the corresponding elements
+    <>
+      <Tabs />
+      <TabsList />
+      <TabsTrigger />
+      <TabsContent />
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -1813,19 +2076,24 @@ export default function App() {
         </Sheet>
       </div>
     ),
-    code: `import { Sheet, SheetTrigger, Button, SheetContent, SheetHeader, SheetTitle } from "c-comic-ui"
+    code: `import { Sheet, SheetTrigger, Button, SheetContent, SheetHeader, SheetTitle, SheetDescription, Label, Input, SheetFooter } from "c-comic-ui";
 
 export default function App() {
   return (
-    <Sheet>
-      <SheetTrigger asChild><Button>Open Sidebar</Button></SheetTrigger>
-      <SheetContent side="right">
-        <SheetHeader>
-          <SheetTitle>App Settings</SheetTitle>
-        </SheetHeader>
-      </SheetContent>
-    </Sheet>
-  )
+    // the corresponding elements
+    <>
+      <Sheet />
+      <SheetTrigger />
+      <Button />
+      <SheetContent />
+      <SheetHeader />
+      <SheetTitle />
+      <SheetDescription />
+      <Label />
+      <Input />
+      <SheetFooter />
+    </>
+  );
 }`
   },
   {
@@ -1850,16 +2118,17 @@ export default function App() {
         </ResizablePanelGroup>
       </div>
     ),
-    code: `import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "c-comic-ui"
+    code: `import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "c-comic-ui";
 
 export default function App() {
   return (
-    <ResizablePanelGroup direction="horizontal">
-      <ResizablePanel defaultSize={30}>Sidebar</ResizablePanel>
-      <ResizableHandle withHandle />
-      <ResizablePanel defaultSize={70}>Content</ResizablePanel>
-    </ResizablePanelGroup>
-  )
+    // the corresponding elements
+    <>
+      <ResizablePanelGroup />
+      <ResizablePanel />
+      <ResizableHandle />
+    </>
+  );
 }`
   },
   {
@@ -1886,22 +2155,23 @@ export default function App() {
         </Drawer>
       </div>
     ),
-    code: `import { Drawer, DrawerTrigger, Button, DrawerContent, DrawerHeader, DrawerTitle, DrawerFooter, DrawerClose } from "c-comic-ui"
+    code: `import { Drawer, DrawerTrigger, Button, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerClose, DrawerFooter } from "c-comic-ui";
 
 export default function App() {
   return (
-    <Drawer>
-      <DrawerTrigger asChild><Button>Open Drawer</Button></DrawerTrigger>
-      <DrawerContent>
-        <DrawerHeader>
-          <DrawerTitle>Move Goal</DrawerTitle>
-        </DrawerHeader>
-        <DrawerFooter>
-          <DrawerClose asChild><Button>Cancel</Button></DrawerClose>
-        </DrawerFooter>
-      </DrawerContent>
-    </Drawer>
-  )
+    // the corresponding elements
+    <>
+      <Drawer />
+      <DrawerTrigger />
+      <Button />
+      <DrawerContent />
+      <DrawerHeader />
+      <DrawerTitle />
+      <DrawerDescription />
+      <DrawerClose />
+      <DrawerFooter />
+    </>
+  );
 }`
   },
 
@@ -1918,12 +2188,15 @@ export default function App() {
         <Button variant="ghost">Ghost</Button>
       </div>
     ),
-    code: `import { Button } from "c-comic-ui"
+    code: `import { Button } from "c-comic-ui";
 
 export default function App() {
   return (
-    <Button variant="default" className="bg-blue-500 hover:bg-blue-600 text-white">Action Blue</Button>\n<Button variant="secondary" className="bg-yellow-400 hover:bg-yellow-500 text-black dark:text-foreground">Zap Yellow</Button>\n<Button variant="destructive" className="bg-red-500 hover:bg-red-600 text-white">Pow Red</Button>
-  )
+    // the corresponding elements
+    <>
+      <Button />
+    </>
+  );
 }`,
   },
   {
@@ -1936,12 +2209,16 @@ export default function App() {
         <Button type="submit">Subscribe</Button>
       </div>
     ),
-    code: `import { Input, Button } from "c-comic-ui"
+    code: `import { Input, Button } from "c-comic-ui";
 
 export default function App() {
   return (
-    <div className="flex w-full max-w-sm items-center space-x-2">\n  <Input type="email" placeholder="Email" className="bg-white dark:bg-card" />\n  <Button type="submit">Subscribe</Button>\n</div>
-  )
+    // the corresponding elements
+    <>
+      <Input />
+      <Button />
+    </>
+  );
 }`
   },
   {
@@ -1956,12 +2233,15 @@ export default function App() {
         <Badge variant="outline">Outline</Badge>
       </div>
     ),
-    code: `import { Badge } from "c-comic-ui"
+    code: `import { Badge } from "c-comic-ui";
 
 export default function App() {
   return (
-    <Badge className="bg-blue-500 text-white border-[2px] border-black dark:border-border">New</Badge>\n<Badge className="bg-yellow-400 text-black dark:text-foreground border-[2px] border-black dark:border-border">Beta</Badge>\n<Badge className="bg-red-500 text-white border-[2px] border-black dark:border-border">Warning</Badge>
-  )
+    // the corresponding elements
+    <>
+      <Badge />
+    </>
+  );
 }`
   },
   {
@@ -1983,12 +2263,17 @@ export default function App() {
         </Avatar>
       </div>
     ),
-    code: `import { Avatar, AvatarImage, AvatarFallback } from "c-comic-ui"
+    code: `import { Avatar, AvatarImage, AvatarFallback } from "c-comic-ui";
 
 export default function App() {
   return (
-    <Avatar>\n  <AvatarImage src="/Headshot (1).jpg" alt="@user" />\n  <AvatarFallback>CN</AvatarFallback>\n</Avatar>
-  )
+    // the corresponding elements
+    <>
+      <Avatar />
+      <AvatarImage />
+      <AvatarFallback />
+    </>
+  );
 }`
   },
   {
@@ -2001,12 +2286,16 @@ export default function App() {
         <Label htmlFor="terms" className="text-black dark:text-foreground">Accept terms and conditions</Label>
       </div>
     ),
-    code: `import { Checkbox, Label } from "c-comic-ui"
+    code: `import { Checkbox, Label } from "c-comic-ui";
 
 export default function App() {
   return (
-    <div className="flex items-center space-x-2">\n  <Checkbox id="terms" />\n  <Label htmlFor="terms">Accept terms and conditions</Label>\n</div>
-  )
+    // the corresponding elements
+    <>
+      <Checkbox />
+      <Label />
+    </>
+  );
 }`
   },
   {
@@ -2019,12 +2308,16 @@ export default function App() {
         <Label htmlFor="airplane-mode" className="text-black dark:text-foreground">Airplane Mode</Label>
       </div>
     ),
-    code: `import { Switch, Label } from "c-comic-ui"
+    code: `import { Switch, Label } from "c-comic-ui";
 
 export default function App() {
   return (
-    <div className="flex items-center space-x-2">\n  <Switch id="airplane-mode" />\n  <Label htmlFor="airplane-mode">Airplane Mode</Label>\n</div>
-  )
+    // the corresponding elements
+    <>
+      <Switch />
+      <Label />
+    </>
+  );
 }`
   },
   {
@@ -2042,12 +2335,15 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `import { Separator } from "c-comic-ui"
+    code: `import { Separator } from "c-comic-ui";
 
 export default function App() {
   return (
-    <div className="flex h-5 items-center space-x-4">\n  <div>Docs</div>\n  <Separator orientation="vertical" />\n  <div>Source</div>\n</div>
-  )
+    // the corresponding elements
+    <>
+      <Separator />
+    </>
+  );
 }`
   },
   {
@@ -2063,12 +2359,15 @@ export default function App() {
         </div>
       </div>
     ),
-    code: `import { Skeleton } from "c-comic-ui"
+    code: `import { Skeleton } from "c-comic-ui";
 
 export default function App() {
   return (
-    <div className="flex items-center space-x-4">\n  <Skeleton className="h-12 w-12 rounded-full" />\n  <div className="space-y-2">\n    <Skeleton className="h-4 w-[250px]" />\n    <Skeleton className="h-4 w-[200px]" />\n  </div>\n</div>
-  )
+    // the corresponding elements
+    <>
+      <Skeleton />
+    </>
+  );
 }`
   }
 ]
