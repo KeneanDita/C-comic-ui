@@ -63,7 +63,7 @@ export default function Home() {
           
           <div className="flex items-center gap-8 justify-center lg:justify-start mt-4 pt-4 border-t-[3px] border-border/50 max-w-md mx-auto lg:mx-0">
             <div className="flex flex-col">
-              <span className="text-3xl font-black">35+</span>
+              <span className="text-3xl font-black">50+</span>
               <span className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Components</span>
             </div>
             <div className="flex flex-col">
@@ -312,7 +312,7 @@ export default function Home() {
                </div>
                <div className="w-full flex justify-center mt-10">
                  <Link href="/components">
-                   <Button variant="secondary" className="px-8 shadow-[var(--shadow-comic)]">View All 35+ Components</Button>
+                   <Button variant="secondary" className="px-8 shadow-[var(--shadow-comic)]">View All 50+ Components</Button>
                  </Link>
                </div>
             </TabsContent>
