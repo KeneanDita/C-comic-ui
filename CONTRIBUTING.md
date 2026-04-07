@@ -34,10 +34,11 @@ C-Comic UI is deeply inspired by [shadcn/ui](https://ui.shadcn.com). To maintain
 ## Submitting a Pull Request
 
 1. Create a new branch for your feature: `git checkout -b feature/my-amazing-component`.
-2. Write your code and add a preview to `app/components/page.tsx` so others can see it.
-3. Ensure your code passes local linting:
+2. Write your code and add a preview to the `componentsList` in `app/components/page.tsx` so others can see and test it.
+   - **Important**: Make sure to add relevant `tags` into your component's entry (e.g., `tags: ["dropdown", "menu", "select"]`) so users can easily find it using the search bar!
+3. Ensure your code passes local linting and building:
    ```bash
-   npm run lint
+   npm run lint && npm run build
    ```
 4. Commit your changes with a descriptive commit message.
 5. Push to your fork and submit a Pull Request to the `main` branch.
