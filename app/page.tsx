@@ -92,7 +92,7 @@ export default function Home() {
               <CardContent className="p-6 bg-card flex flex-col gap-6">
                 <div className="flex items-center space-x-4">
                   <Avatar className="w-16 h-16 border-[3px] border-border">
-                    <AvatarImage src="/Headshot%20(1).jpg" className="object-cover" />
+                    <AvatarImage src="/headshot-1.jpg" className="object-cover" />
                     <AvatarFallback>HQ</AvatarFallback>
                   </Avatar>
                   <div className="space-y-2 flex-1">
@@ -211,7 +211,7 @@ export default function Home() {
                       <div className="flex justify-between items-center">
                         <TypographyH2 className="border-none mt-0 text-3xl">Overview</TypographyH2>
                         <div className="flex gap-2">
-                          <Avatar className="border-[3px] border-border"><AvatarImage src="" /><AvatarFallback>US</AvatarFallback></Avatar>
+                          <Avatar className="border-[3px] border-border"><AvatarImage src="/headshot-4.jpg" /><AvatarFallback>US</AvatarFallback></Avatar>
                         </div>
                       </div>
                       
