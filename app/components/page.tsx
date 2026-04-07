@@ -2251,11 +2251,11 @@ export default function App() {
     preview: (
       <div className="flex gap-4">
         <Avatar>
-          <AvatarImage src="/Headshot%20(1).jpg" alt="@user" />
+          <AvatarImage src="/headshot-1.jpg" alt="@user" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <Avatar>
-          <AvatarImage src="/Headshot%20(2).jpg" alt="@user2" />
+          <AvatarImage src="/headshot-2.jpg" alt="@user2" />
           <AvatarFallback>BM</AvatarFallback>
         </Avatar>
         <Avatar>
