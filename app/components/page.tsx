@@ -40,7 +40,6 @@ type ComponentItem = {
 const componentsList: ComponentItem[] = [
   {
     name: "Empty State",
-    tags: ["empty","state"],
     category: "Polished UI",
     description: "Keep users smiling even when there's no data.",
     preview: (
@@ -75,7 +74,6 @@ export default function App() {
   },
   {
     name: "Error Pages (404/500)",
-    tags: ["error","pages","404","500"],
     category: "Polished UI",
     description: "Turn frustration into a fun storytelling moment.",
     preview: (
@@ -114,7 +112,6 @@ export default function App() {
   },
   {
     name: "Onboarding Flow",
-    tags: ["onboarding","flow"],
     category: "Polished UI",
     description: "In-app guided tours with comic-style tooltips.",
     preview: (
@@ -159,7 +156,6 @@ export default function App() {
   },
   {
     name: "Keyboard Shortcuts UI",
-    tags: ["keyboard","shortcuts"],
     category: "Polished UI",
     description: "Power user tooltips showing keybindings in style.",
     preview: (
@@ -203,7 +199,6 @@ export default function App() {
   },
   {
     name: "Theme Switcher",
-    tags: ["theme","switcher"],
     category: "Polished UI",
     description: "Loud, chunky toggle for dark/light/system modes.",
     preview: (
@@ -240,7 +235,6 @@ export default function App() {
   },
   {
     name: "Accessibility Helpers",
-    tags: ["accessibility","helpers"],
     category: "Polished UI",
     description: "Oversized focus rings & screen reader indications.",
     preview: (
@@ -294,7 +288,6 @@ export default function App() {
 ,
   {
     name: "Multi-Step Wizard",
-    tags: ["multi-step","wizard"],
     category: "Advanced Forms",
     description: "Break complex forms into fun, bite-sized comic panels.",
     preview: (
@@ -346,7 +339,6 @@ export default function App() {
   },
   {
     name: "Form Validation",
-    tags: ["form","validation"],
     category: "Advanced Forms",
     description: "In-your-face validation states with bold colors and icons.",
     preview: (
@@ -388,7 +380,6 @@ export default function App() {
   },
   {
     name: "File Upload Zone",
-    tags: ["file","upload","zone"],
     category: "Advanced Forms",
     description: "A playful drag & drop target that feels interactive.",
     preview: (
@@ -433,7 +424,6 @@ export default function App() {
   },
   {
     name: "Date & Time Picker",
-    tags: ["date","time","picker"],
     category: "Advanced Forms",
     description: "Custom date selector bypassing default browser inputs.",
     preview: (
@@ -486,7 +476,6 @@ export default function App() {
   },
   {
     name: "Rich Text Editor",
-    tags: ["rich","text","editor"],
     category: "Advanced Forms",
     description: "WYSIWYG layout combining a bold toolbar and content area.",
     preview: (
@@ -532,7 +521,6 @@ export default function App() {
   },
   {
     name: "Autosave & Drafts",
-    tags: ["autosave","drafts"],
     category: "Advanced Forms",
     description: "Continuous save badges that provide peace of mind.",
     preview: (
@@ -578,7 +566,6 @@ export default function App() {
 ,
   {
     name: "Breadcrumbs",
-    tags: ["breadcrumbs"],
     category: "Navigation & Discovery",
     description: "Fun, heavily bordered block-style breadcrumbs.",
     preview: (
@@ -612,7 +599,6 @@ export default function App() {
   },
   {
     name: "Command Palette",
-    tags: ["command","palette"],
     category: "Navigation & Discovery",
     description: "Cmd+K interface for global navigation and actions.",
     preview: (
@@ -663,7 +649,6 @@ export default function App() {
   },
   {
     name: "Global Search",
-    tags: ["global","search"],
     category: "Navigation & Discovery",
     description: "Search bar with live preview dropdown.",
     preview: (
@@ -718,7 +703,6 @@ export default function App() {
   },
   {
     name: "Collapsible Sidebar",
-    tags: ["collapsible","sidebar"],
     category: "Navigation & Discovery",
     description: "A fun, chunky sidebar navigation for dashboards.",
     preview: (
@@ -775,7 +759,6 @@ export default function App() {
   },
   {
     name: "Mega Menu",
-    tags: ["mega","menu"],
     category: "Navigation & Discovery",
     description: "Large dropdown menu for complex site structures.",
     preview: (
@@ -867,7 +850,6 @@ export default function App() {
 
   {
     name: "Login / Sign Up",
-    tags: ["login","sign"],
     category: "Auth & Security",
     description: "Classic comic-style login form with social providers and hard shadows.",
     preview: (
@@ -928,7 +910,6 @@ export default function App() {
   },
   {
     name: "Forgot Password",
-    tags: ["forgot","password"],
     category: "Auth & Security",
     description: "Password recovery flow using strong borders.",
     preview: (
@@ -968,7 +949,6 @@ export default function App() {
   },
   {
     name: "Email Verification",
-    tags: ["email","verification"],
     category: "Auth & Security",
     description: "A fun inbox-checking prompt.",
     preview: (
@@ -998,7 +978,6 @@ export default function App() {
   },
   {
     name: "2FA / OTP Input",
-    tags: ["2fa","otp","input"],
     category: "Auth & Security",
     description: "Six-digit verification code entry.",
     preview: (
@@ -1033,7 +1012,6 @@ export default function App() {
   },
   {
     name: "Device Management",
-    tags: ["device","management"],
     category: "Auth & Security",
     description: "Active sessions and connected devices list.",
     preview: (
@@ -1099,7 +1077,6 @@ export default function App() {
 
   {
     name: "Pricing Table",
-    tags: ["pricing","table"],
     category: "SaaS & Billing",
     description: "Clear and bold pricing tiers that grab the user's attention.",
     preview: (
@@ -1147,7 +1124,6 @@ export default function App() {
   },
   {
     name: "Subscription Management",
-    tags: ["subscription","management"],
     category: "SaaS & Billing",
     description: "Account overview panel showing current plan, dates, and upgrade paths.",
     preview: (
@@ -1188,7 +1164,6 @@ export default function App() {
   },
   {
     name: "Billing History & Invoices",
-    tags: ["billing","history","invoices"],
     category: "SaaS & Billing",
     description: "Invoice history table with comic-styled download actions.",
     preview: (
@@ -1249,7 +1224,6 @@ export default function App() {
   },
   {
     name: "API Usage Meter",
-    tags: ["api","usage","meter"],
     category: "SaaS & Billing",
     description: "Visual indicator for tracking quota consumption.",
     preview: (
@@ -1281,7 +1255,6 @@ export default function App() {
   },
   {
     name: "Team Roles & Permissions",
-    tags: ["team","roles","permissions"],
     category: "SaaS & Billing",
     description: "Manage organization members with styled Selects and Avatars.",
     preview: (
@@ -1362,7 +1335,6 @@ export default function App() {
   },
   {
     name: "API Key Management",
-    tags: ["api","key","management"],
     category: "SaaS & Billing",
     description: "Panel to reveal, revoke, or generate new API credentials.",
     preview: (
@@ -1409,7 +1381,6 @@ export default function App() {
 
   {
     name: "Model Switcher",
-    tags: ["model","switcher"],
     category: "AI & LLM",
     description: "A playful, heavy-bordered dropdown to select active LLM models.",
     preview: (
@@ -1448,7 +1419,6 @@ export default function App() {
   },
   {
     name: "Chat Bubbles",
-    tags: ["chat","bubbles"],
     category: "AI & LLM",
     description: "Action-packed text bubbles distinguishing User and Assistant.",
     preview: (
@@ -1489,7 +1459,6 @@ export default function App() {
   },
   {
     name: "Code Block (with copy)",
-    tags: ["code","block","with","copy"],
     category: "AI & LLM",
     description: "Syntax highlighting block with a comic-style copy button.",
     preview: (
@@ -1520,7 +1489,6 @@ export default function App() {
   },
   {
     name: "Prompt Templates",
-    tags: ["prompt","templates"],
     category: "AI & LLM",
     description: "Grid of starting prompts for user discovery.",
     preview: (
@@ -1557,7 +1525,6 @@ export default function App() {
   },
   {
     name: "Conversation Sidebar",
-    tags: ["conversation","sidebar"],
     category: "AI & LLM",
     description: "History list for AI chats with bold active states.",
     preview: (
@@ -1592,7 +1559,6 @@ export default function App() {
   },
   {
     name: "Streaming Text & Indicators",
-    tags: ["streaming","text","indicators"],
     category: "AI & LLM",
     description: "Loading states and token usage specifically designed for LLMs.",
     preview: (
@@ -1632,7 +1598,6 @@ export default function App() {
   },
   {
     name: "Regenerate/Edit Prompt Actions",
-    tags: ["regenerate","edit","prompt","actions"],
     category: "AI & LLM",
     description: "Pill-shaped toolbars below assistant messages for quick actions.",
     preview: (
@@ -1662,7 +1627,6 @@ export default function App() {
   },
   {
     name: "Loaders & Progress",
-    tags: ["loaders","progress"],
     category: "Feedback",
     description: "Indicate loading state with spinners, skeletons, or progress bars.",
     preview: (
@@ -1699,7 +1663,6 @@ export default function App() {
   },
   {
     name: "Toast Notifications",
-    tags: ["toast","notifications"],
     category: "Feedback",
     description: "Brief, non-interruptive notifications that slide in.",
     preview: (
@@ -1726,7 +1689,6 @@ export default function App() {
   },
   {
     name: "Alerts",
-    tags: ["alerts"],
     category: "Feedback",
     description: "Important messages that deserve the user's attention.",
     preview: (
@@ -1770,7 +1732,6 @@ export default function App() {
   },
   {
     name: "Confirmation Dialog",
-    tags: ["confirmation","dialog"],
     category: "Feedback",
     description: "Interruptive dialog for destructive actions.",
     preview: (
@@ -1814,7 +1775,6 @@ export default function App() {
   },
   {
     name: "Inline Validation",
-    tags: ["inline","validation"],
     category: "Forms",
     description: "Show validation errors inline with form inputs.",
     preview: (
@@ -1844,7 +1804,6 @@ export default function App() {
   },
   {
     name: "Data Table",
-    tags: ["data","table"],
     category: "Complex Data",
     description: "Highly structured table for sorting, filtering, and pagination.",
     preview: (
@@ -1902,7 +1861,6 @@ export default function App() {
   },
   {
     name: "List View (Activity)",
-    tags: ["list","view","activity"],
     category: "Complex Data",
     description: "Virtualization-ready list style for tracking activity or generic data.",
     preview: (
@@ -1937,7 +1895,6 @@ export default function App() {
   },
   {
     name: "Stats / KPI Block",
-    tags: ["stats","kpi","block"],
     category: "Complex Data",
     description: "Important high-level metrics for dashboard homepages.",
     preview: (
@@ -1965,7 +1922,6 @@ export default function App() {
   },
   {
     name: "Bar Chart",
-    tags: ["bar","chart"],
     category: "Complex Data",
     description: "Integrated charts (recharts) with bold comic colors.",
     preview: (
@@ -1998,7 +1954,6 @@ export default function App() {
   },
   {
     name: "Empty State",
-    tags: ["empty","state"],
     category: "Complex Data",
     description: "Playful empty states for lists with no data.",
     preview: (
@@ -2025,7 +1980,6 @@ export default function App() {
   },
   {
     name: "Accordion",
-    tags: ["accordion"],
     category: "Layout/Structure",
     description: "A vertically stacked set of interactive headings that each reveal a section of content.",
     preview: (
@@ -2062,7 +2016,6 @@ export default function App() {
   },
   {
     name: "Tabs",
-    tags: ["tabs"],
     category: "Layout/Structure",
     description: "A set of layered sections of content, displayed one at a time.",
     preview: (
@@ -2100,7 +2053,6 @@ export default function App() {
   },
   {
     name: "Sheet / Side Panel",
-    tags: ["sheet","side","panel"],
     category: "Layout/Structure",
     description: "Extends from the edges of the window to display mobile panels, drawers, or dialogs.",
     preview: (
@@ -2147,7 +2099,6 @@ export default function App() {
   },
   {
     name: "Resizable Panels",
-    tags: ["resizable","panels"],
     category: "Layout/Structure",
     description: "Accessible resizable panel groups and layouts.",
     preview: (
@@ -2183,7 +2134,6 @@ export default function App() {
   },
   {
     name: "Drawer (Mobile Panel)",
-    tags: ["drawer","mobile","panel"],
     category: "Layout/Structure",
     description: "A drawer component for React, typically used on mobile for bottom-up dialogs.",
     preview: (
@@ -2228,7 +2178,6 @@ export default function App() {
 
   {
     name: "Button",
-    tags: ["button"],
     category: "Core/General",
     description: "Displays a button or a component that looks like a button.",
     preview: (
@@ -2253,7 +2202,6 @@ export default function App() {
   },
   {
     name: "Input",
-    tags: ["input"],
     category: "Forms",
     description: "Displays a form input field or a component that looks like an input field.",
     preview: (
@@ -2276,7 +2224,6 @@ export default function App() {
   },
   {
     name: "Badge",
-    tags: ["badge"],
     category: "Data Display",
     description: "Displays a badge or a component that looks like a badge.",
     preview: (
@@ -2300,7 +2247,6 @@ export default function App() {
   },
   {
     name: "Avatar",
-    tags: ["avatar"],
     category: "Data Display",
     description: "An image element with a fallback for representing the user.",
     preview: (
@@ -2333,7 +2279,6 @@ export default function App() {
   },
   {
     name: "Checkbox & Label",
-    tags: ["checkbox","label"],
     category: "Forms",
     description: "A control that allows the user to toggle between checked and not checked.",
     preview: (
@@ -2356,7 +2301,6 @@ export default function App() {
   },
   {
     name: "Switch",
-    tags: ["switch"],
     category: "Forms",
     description: "A control that allows the user to toggle between checked and not checked.",
     preview: (
@@ -2379,7 +2323,6 @@ export default function App() {
   },
   {
     name: "Separator",
-    tags: ["separator"],
     category: "Core/General",
     description: "Visually or semantically separates content.",
     preview: (
@@ -2406,7 +2349,6 @@ export default function App() {
   },
   {
     name: "Skeleton",
-    tags: ["skeleton"],
     category: "Feedback",
     description: "Use to show a placeholder while content is loading.",
     preview: (
@@ -2435,8 +2377,7 @@ export default function ComponentsPage() {
   const [searchQuery, setSearchQuery] = React.useState("")
 
   const filteredComponents = componentsList.filter(comp =>
-    comp.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    (comp.tags && comp.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())))
+    comp.name.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
   const categories = Array.from(new Set(filteredComponents.map(c => c.category)))
