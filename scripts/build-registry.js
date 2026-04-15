@@ -6,9 +6,16 @@ const registryPath = path.join(__dirname, "../public/registry.json");
 
 // Map of external dependencies required for each component
 const dependenciesMap = {
+  accordion: [
+    "@radix-ui/react-accordion",
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+  ],
   alert: ["class-variance-authority", "clsx", "tailwind-merge"],
+  "alert-dialog": ["@radix-ui/react-alert-dialog", "clsx", "tailwind-merge"],
+  avatar: ["@radix-ui/react-avatar", "clsx", "tailwind-merge"],
   badge: ["class-variance-authority", "clsx", "tailwind-merge"],
-  tabs: ["@radix-ui/react-tabs", "clsx", "tailwind-merge"],
   button: [
     "@radix-ui/react-slot",
     "class-variance-authority",
@@ -23,6 +30,7 @@ const dependenciesMap = {
     "tailwind-merge",
   ],
   dialog: ["@radix-ui/react-dialog", "lucide-react", "clsx", "tailwind-merge"],
+  drawer: ["vaul", "clsx", "tailwind-merge"],
   input: ["clsx", "tailwind-merge"],
   label: [
     "@radix-ui/react-label",
@@ -30,8 +38,22 @@ const dependenciesMap = {
     "clsx",
     "tailwind-merge",
   ],
+  progress: ["@radix-ui/react-progress", "clsx", "tailwind-merge"],
+  resizable: [
+    "react-resizable-panels",
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+  ],
+  select: ["@radix-ui/react-select", "lucide-react", "clsx", "tailwind-merge"],
+  separator: ["@radix-ui/react-separator", "clsx", "tailwind-merge"],
+  sheet: ["@radix-ui/react-dialog", "lucide-react", "clsx", "tailwind-merge"],
+  skeleton: ["clsx", "tailwind-merge"],
+  sonner: ["sonner", "next-themes", "lucide-react"],
   switch: ["@radix-ui/react-switch", "clsx", "tailwind-merge"],
   table: ["clsx", "tailwind-merge"],
+  tabs: ["@radix-ui/react-tabs", "clsx", "tailwind-merge"],
+  typography: ["clsx", "tailwind-merge"],
 };
 
 // Build the robust JSON registry
