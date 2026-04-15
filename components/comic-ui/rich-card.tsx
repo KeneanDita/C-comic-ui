@@ -2,7 +2,7 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/comic-ui/button"
 
-export interface RichCardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface RichCardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   imageSrc?: string;
   badgeText?: string;
   badgeIcon?: React.ReactNode;
