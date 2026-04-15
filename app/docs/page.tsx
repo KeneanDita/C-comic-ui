@@ -18,11 +18,325 @@ export default function DocsPage() {
               <Link href="#installation" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform inline-block">
                 Installation & User Guide
               </Link>
+              <ul className="flex flex-col gap-2 mt-2 ml-4 font-bold text-sm text-black dark:text-foreground/70">
+                <li>
+                  <Link href="#install-timeline" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform inline-block">
+                    Timeline
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#install-token-usage" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform inline-block">
+                    Token Usage Indicator
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#install-rich-card" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform inline-block">
+                    Rich Card
+                  </Link>
+                </li>
+              </ul>
             </li>
             <li>
               <Link href="#components" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform inline-block">
                 Components
               </Link>
+            </li>
+            <li>
+              <Link href="#usage" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform inline-block mt-4 mb-2">
+                Component Usage Tutorials
+              </Link>
+              <ul className="flex flex-col gap-2 mt-1 ml-4 font-bold text-sm text-black dark:text-foreground/70 max-h-[35vh] overflow-y-auto pr-2 overflow-x-hidden border-l-[3px] border-border pl-3">
+                <li className="break-inside-avoid">
+                  <Link href="#usage-empty-state" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Empty State">
+                    Empty State
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-error-pages--404-500-" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Error Pages (404/500)">
+                    Error Pages (404/500)
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-onboarding-flow" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Onboarding Flow">
+                    Onboarding Flow
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-keyboard-shortcuts-ui" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Keyboard Shortcuts UI">
+                    Keyboard Shortcuts UI
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-theme-switcher" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Theme Switcher">
+                    Theme Switcher
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-accessibility-helpers" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Accessibility Helpers">
+                    Accessibility Helpers
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-multi-step-wizard" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Multi-Step Wizard">
+                    Multi-Step Wizard
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-form-validation" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Form Validation">
+                    Form Validation
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-file-upload-zone" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="File Upload Zone">
+                    File Upload Zone
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-date---time-picker" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Date & Time Picker">
+                    Date & Time Picker
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-rich-text-editor" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Rich Text Editor">
+                    Rich Text Editor
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-autosave---drafts" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Autosave & Drafts">
+                    Autosave & Drafts
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-breadcrumbs" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Breadcrumbs">
+                    Breadcrumbs
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-command-palette" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Command Palette">
+                    Command Palette
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-global-search" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Global Search">
+                    Global Search
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-collapsible-sidebar" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Collapsible Sidebar">
+                    Collapsible Sidebar
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-mega-menu" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Mega Menu">
+                    Mega Menu
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-login---sign-up" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Login / Sign Up">
+                    Login / Sign Up
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-forgot-password" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Forgot Password">
+                    Forgot Password
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-email-verification" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Email Verification">
+                    Email Verification
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-2fa---otp-input" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="2FA / OTP Input">
+                    2FA / OTP Input
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-device-management" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Device Management">
+                    Device Management
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-pricing-table" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Pricing Table">
+                    Pricing Table
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-subscription-management" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Subscription Management">
+                    Subscription Management
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-billing-history---invoices" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Billing History & Invoices">
+                    Billing History & Invoices
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-api-usage-meter" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="API Usage Meter">
+                    API Usage Meter
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-team-roles---permissions" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Team Roles & Permissions">
+                    Team Roles & Permissions
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-api-key-management" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="API Key Management">
+                    API Key Management
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-model-switcher" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Model Switcher">
+                    Model Switcher
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-chat-bubbles" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Chat Bubbles">
+                    Chat Bubbles
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-code-block--with-copy-" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Code Block (with copy)">
+                    Code Block (with copy)
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-prompt-templates" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Prompt Templates">
+                    Prompt Templates
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-conversation-sidebar" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Conversation Sidebar">
+                    Conversation Sidebar
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-streaming-text---indicators" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Streaming Text & Indicators">
+                    Streaming Text & Indicators
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-regenerate-edit-prompt-actions" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Regenerate/Edit Prompt Actions">
+                    Regenerate/Edit Prompt Actions
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-loaders---progress" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Loaders & Progress">
+                    Loaders & Progress
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-toast-notifications" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Toast Notifications">
+                    Toast Notifications
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-alerts" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Alerts">
+                    Alerts
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-confirmation-dialog" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Confirmation Dialog">
+                    Confirmation Dialog
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-inline-validation" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Inline Validation">
+                    Inline Validation
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-data-table" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Data Table">
+                    Data Table
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-list-view--activity-" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="List View (Activity)">
+                    List View (Activity)
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-stats---kpi-block" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Stats / KPI Block">
+                    Stats / KPI Block
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-bar-chart" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Bar Chart">
+                    Bar Chart
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-empty-state" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Empty State">
+                    Empty State
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-accordion" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Accordion">
+                    Accordion
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-tabs" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Tabs">
+                    Tabs
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-sheet---side-panel" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Sheet / Side Panel">
+                    Sheet / Side Panel
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-resizable-panels" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Resizable Panels">
+                    Resizable Panels
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-drawer--mobile-panel-" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Drawer (Mobile Panel)">
+                    Drawer (Mobile Panel)
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-button" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Button">
+                    Button
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-input" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Input">
+                    Input
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-badge" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Badge">
+                    Badge
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-avatar" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Avatar">
+                    Avatar
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-checkbox---label" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Checkbox & Label">
+                    Checkbox & Label
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-switch" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Switch">
+                    Switch
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-separator" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Separator">
+                    Separator
+                  </Link>
+                </li>
+                <li className="break-inside-avoid">
+                  <Link href="#usage-skeleton" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Skeleton">
+                    Skeleton
+                  </Link>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -52,6 +366,33 @@ export default function DocsPage() {
           </TypographyP>
           <div className="bg-black text-white p-4 rounded mt-4 border-[3px] border-black dark:border-border overflow-hidden relative">
             <pre className="whitespace-pre-wrap break-words mt-2"><code>{`import { Button } from "c-comic-ui";\n\nexport default function App() {\n  return (\n    <Button variant="default">CLASH!</Button>\n  );\n}`}</code></pre>
+          </div>
+
+          <TypographyH2 className="mt-12 text-2xl font-black">Advanced Specific Components</TypographyH2>
+          <TypographyP>We also provide several specialized, high-functionality components you can pull via CLI:</TypographyP>
+
+          <div id="install-timeline" className="mt-8 scroll-mt-24">
+            <TypographyH3 className="text-xl font-black uppercase tracking-tight">Timeline</TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mt-2 mb-4">A chronologically ordered activity feed UI pattern.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border">
+              <code>npx c-comic add timeline</code>
+            </div>
+          </div>
+
+          <div id="install-token-usage" className="mt-8 scroll-mt-24">
+            <TypographyH3 className="text-xl font-black uppercase tracking-tight">Token Usage Indicator</TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mt-2 mb-4">For AI applications, an integrated progress usage meter displaying prompt vs response tokens.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border">
+              <code>npx c-comic add token-usage</code>
+            </div>
+          </div>
+
+          <div id="install-rich-card" className="mt-8 scroll-mt-24">
+            <TypographyH3 className="text-xl font-black uppercase tracking-tight">Rich Card</TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mt-2 mb-4">Expanded cards formatted to accept full cover media actions, complete with action hero buttons.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border">
+              <code>npx c-comic add rich-card</code>
+            </div>
           </div>
         </div>
 
