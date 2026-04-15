@@ -2700,7 +2700,7 @@ export default function App() {
               <div className="grid gap-4 py-4">
                 <div className="grid grid-cols-4 items-center gap-4">
                   <Label htmlFor="name" className="text-right font-black uppercase">Name</Label>
-                  <Input id="name" value="Pedro Duarte" className="col-span-3 border-[3px]" />
+                  <Input id="name" defaultValue="Pedro Duarte" className="col-span-3 border-[3px]" />
                 </div>
               </div>
               <SheetFooter>
