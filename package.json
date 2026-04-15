@@ -1,6 +1,6 @@
 {
   "name": "c-comic-ui",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "bin": {
     "c-comic": "./bin/c-comic.js"
   },
