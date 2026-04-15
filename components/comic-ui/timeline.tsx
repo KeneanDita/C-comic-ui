@@ -1,7 +1,7 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 
-export interface TimelineItemProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface TimelineItemProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   icon?: React.ReactNode;
   iconBgColor?: string;
   title: React.ReactNode;
@@ -39,7 +39,7 @@ const TimelineItem = React.forwardRef<HTMLDivElement, TimelineItemProps>(
 )
 TimelineItem.displayName = "TimelineItem"
 
-export interface TimelineProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface TimelineProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   title?: React.ReactNode;
   icon?: React.ReactNode;
 }
