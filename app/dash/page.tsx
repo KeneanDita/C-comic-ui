@@ -14,6 +14,7 @@ import {
 } from "@/components/comic-ui"
 import { Zap, ShieldAlert, Users, TrendingUp, Search, Plus, UserPlus, Settings, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
+import { DashToastDemo } from "./_components/toast-demo"
 
 export default function V1DashboardDemo() {
   return (
@@ -78,6 +79,8 @@ export default function V1DashboardDemo() {
             </AlertDescription>
           </div>
         </Alert>
+
+        <DashToastDemo />
 
         {/* Dashboard Grid - Cards */}
         <div className="grid gap-6 md:grid-cols-3">

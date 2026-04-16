@@ -53,6 +53,13 @@ const dependenciesMap = {
   switch: ["@radix-ui/react-switch", "clsx", "tailwind-merge"],
   table: ["clsx", "tailwind-merge"],
   tabs: ["@radix-ui/react-tabs", "clsx", "tailwind-merge"],
+  toast: [
+    "@radix-ui/react-toast",
+    "class-variance-authority",
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+  ],
   typography: ["clsx", "tailwind-merge"],
 };
 

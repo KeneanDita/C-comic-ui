@@ -29,6 +29,15 @@ import { SheetClose } from "@/components/ui/sheet"
 import { Progress } from "@/components/ui/progress"
 import { toast } from "sonner"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+  ToastProvider,
+  ToastViewport,
+  Toast,
+  ToastTitle,
+  ToastDescription,
+  ToastClose,
+  ToastAction,
+} from "@/components/ui/toast"
 import { Copy, Bot, User, RefreshCcw, SquarePen, Sparkles, MessageSquare, Plus, Minus, Hash, Check, CreditCard, Download, Key, Users, Settings2, Trash2, Zap, Smartphone, Mail, Lock, ShieldCheck, Monitor, Laptop, ArrowRight, ChevronRight, Command, Menu, X, Home, Compass, Folder, Calendar, Star, Compass as ExploreIcon, AlignLeft, UploadCloud, Clock, Bold, Italic, Link2, List as ListIcon, Type, Save, Cloud, AlertTriangle, CheckCircle, FileText, Image as ImageIcon, Heading1, Heading2, MapPin, Code, Ghost, Map as MapIcon, Route, Keyboard, Moon, Sun, MousePointerClick, Eye, Accessibility } from "lucide-react"
 
 type ComponentItem = {
@@ -39,6 +48,34 @@ type ComponentItem = {
   code: string;
   tags?: string[];
 };
+
+function ToastPrimitivePreview() {
+  const [open, setOpen] = React.useState(false)
+
+  return (
+    <ToastProvider swipeDirection="right">
+      <div className="w-full max-w-sm rounded-[var(--radius-comic)] border-[3px] border-black dark:border-border bg-white dark:bg-card p-4 shadow-[var(--shadow-comic)]">
+        <div className="flex items-center justify-between gap-2">
+          <p className="text-xs font-black uppercase tracking-wider">Radix Toast</p>
+          <Button variant="outline" size="sm" onClick={() => setOpen(true)}>
+            Show Toast
+          </Button>
+        </div>
+      </div>
+      <Toast open={open} onOpenChange={setOpen} variant="success" duration={4500}>
+        <div className="grid gap-1">
+          <ToastTitle>Mission broadcast sent</ToastTitle>
+          <ToastDescription>
+            Sector 7 heroes received the emergency update.
+          </ToastDescription>
+        </div>
+        <ToastAction altText="Open mission board">Open Board</ToastAction>
+        <ToastClose />
+      </Toast>
+      <ToastViewport className="sm:right-4 sm:bottom-4" />
+    </ToastProvider>
+  )
+}
 
 const componentsList: ComponentItem[] = [
   {
@@ -2756,6 +2793,47 @@ export default function App() {
     <Button onClick={() => toast("Hello World")}>Show Toast</Button>
   );
 }`
+  },
+  {
+    name: "Toast",
+    category: "Feedback",
+    description: "A Radix-based toast component with comic variants.",
+    preview: (
+
+      <ToastPrimitivePreview />
+
+    ),
+    code: `import * as React from "react";
+import {
+  Button,
+  Toast,
+  ToastAction,
+  ToastClose,
+  ToastDescription,
+  ToastProvider,
+  ToastTitle,
+  ToastViewport,
+} from "c-comic-ui";
+
+export default function App() {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <ToastProvider>
+      <Button onClick={() => setOpen(true)}>Show Toast</Button>
+      <Toast open={open} onOpenChange={setOpen} variant="success">
+        <div>
+          <ToastTitle>Mission broadcast sent</ToastTitle>
+          <ToastDescription>Sector 7 heroes received the update.</ToastDescription>
+        </div>
+        <ToastAction altText="Open mission board">Open Board</ToastAction>
+        <ToastClose />
+      </Toast>
+      <ToastViewport />
+    </ToastProvider>
+  );
+}`,
+    tags: ["toast", "notification", "alert"],
   },
   {
     name: "Table",
