@@ -18,12 +18,15 @@ import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescri
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable"
 import { Drawer, DrawerTrigger, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose } from "@/components/ui/drawer"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts"
+import { BarChart, Bar, XAxis, Tooltip as RechartsTooltip, ResponsiveContainer } from "recharts"
 import { Rocket, Target, Activity, FileBox, AlertCircle, Terminal, CheckCircle2, Loader2 } from "lucide-react"
 
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
 import { Card } from "@/components/ui/card"
+import { Textarea } from "@/components/comic-ui/textarea"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/comic-ui/tooltip"
+import { Slider } from "@/components/comic-ui/slider"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { SheetClose } from "@/components/ui/sheet"
 import { Progress } from "@/components/ui/progress"
@@ -78,6 +81,47 @@ function ToastPrimitivePreview() {
 }
 
 const componentsList: ComponentItem[] = [
+  {
+    name: "Textarea",
+    category: "Forms",
+    description: "A multi-line text input field, comic style.",
+    preview: (
+      <div className="w-full max-w-sm flex flex-col gap-2">
+        <Label>Message</Label>
+        <Textarea placeholder="Type your message here." />
+      </div>
+    ),
+    code: "import { Textarea } from \"@/components/comic-ui/textarea\";\nimport { Label } from \"@/components/comic-ui/label\";\n\nexport default function App() {\n  return (\n    <div className=\"flex flex-col gap-2\">\n      <Label>Message</Label>\n      <Textarea placeholder=\"Type your message here.\" />\n    </div>\n  );\n}"
+  },
+  {
+    name: "Tooltip",
+    category: "Overlay",
+    description: "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+    preview: (
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button variant="outline" className="shadow-[var(--shadow-comic-sm)]">Hover me</Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Tooltip from the comic dimension</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    ),
+    code: "import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from \"@/components/comic-ui/tooltip\";\nimport { Button } from \"@/components/comic-ui/button\";\n\nexport default function App() {\n  return (\n    <TooltipProvider>\n      <Tooltip>\n        <TooltipTrigger asChild>\n          <Button variant=\"outline\">Hover me</Button>\n        </TooltipTrigger>\n        <TooltipContent>\n          <p>Add to library</p>\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  );\n}"
+  },
+  {
+    name: "Slider",
+    category: "Forms",
+    description: "An input where the user selects a value from within a given range.",
+    preview: (
+      <div className="w-full max-w-sm px-6 py-4 bg-white dark:bg-card rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-sm)]">
+        <Slider defaultValue={[50]} max={100} step={1} />
+      </div>
+    ),
+    code: "import { Slider } from \"@/components/comic-ui/slider\";\n\nexport default function App() {\n  return (\n    <Slider defaultValue={[50]} max={100} step={1} />\n  );\n}"
+  },
   {
     name: "Empty State",
     category: "Polished UI",
@@ -1972,7 +2016,7 @@ export default function App() {
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={[{name: 'Jan', uv: 400}, {name: 'Feb', uv: 300}, {name: 'Mar', uv: 200}, {name: 'Apr', uv: 278}, {name: 'May', uv: 189}]}>
                 <XAxis dataKey="name" stroke="#000" tick={{fontWeight: 'bold', fill: '#000'}} />
-                <Tooltip cursor={{fill: '#e5e7eb'}} contentStyle={{border: '3px solid #000', borderRadius: 'var(--radius-comic)', fontWeight: 'bold'}} />
+                <RechartsTooltip cursor={{fill: '#e5e7eb'}} contentStyle={{border: '3px solid #000', borderRadius: 'var(--radius-comic)', fontWeight: 'bold'}} />
                 <Bar dataKey="uv" fill="#facc15" stroke="#000" strokeWidth={3} radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
