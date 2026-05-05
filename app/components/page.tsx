@@ -21,6 +21,8 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import { BarChart, Bar, XAxis, Tooltip as RechartsTooltip, ResponsiveContainer } from "recharts"
 import { Rocket, Target, Activity, FileBox, AlertCircle, Terminal, CheckCircle2, Loader2 } from "lucide-react"
 
+import { AspectRatio } from "@/components/comic-ui/aspect-ratio"
+import { ButtonGroup } from "@/components/comic-ui/button-group"
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
 import { Card } from "@/components/ui/card"
@@ -123,6 +125,36 @@ const componentsList: ComponentItem[] = [
     code: "import { Slider } from \"@/components/comic-ui/slider\";\n\nexport default function App() {\n  return (\n    <Slider defaultValue={[50]} max={100} step={1} />\n  );\n}"
   },
   {
+    name: "Button Group",
+    category: "Forms",
+    description: "A layout wrapper to group buttons together in a single line.",
+    preview: (
+      <ButtonGroup>
+        <Button variant="default">Save</Button>
+        <Button variant="secondary">Duplicate</Button>
+        <Button variant="destructive">Delete</Button>
+      </ButtonGroup>
+    ),
+    code: "import { ButtonGroup, Button } from \"@/components/comic-ui\";\n\nexport default function App() {\n  return (\n    <ButtonGroup>\n      <Button variant=\"default\">Save</Button>\n      <Button variant=\"secondary\">Duplicate</Button>\n      <Button variant=\"destructive\">Delete</Button>\n    </ButtonGroup>\n  );\n}"
+  },
+  {
+    name: "Aspect Ratio",
+    category: "Layout/Structure",
+    description: "Displays content within a desired ratio.",
+    preview: (
+      <div className="w-full max-w-sm">
+        <AspectRatio ratio={16 / 9} className="bg-muted">
+          <img
+            src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+            alt="Photo by Drew Beamer"
+            className="rounded-md object-cover w-full h-full"
+          />
+        </AspectRatio>
+      </div>
+    ),
+    code: "import { AspectRatio } from \"@/components/comic-ui\";\n\nexport default function App() {\n  return (\n    <AspectRatio ratio={16 / 9} className=\"bg-muted\">\n      <img src=\"https://...\" alt=\"Photo\" className=\"object-cover\" />\n    </AspectRatio>\n  );\n}"
+  },
+  {
     name: "Empty State",
     category: "Polished UI",
     description: "Keep users smiling even when there's no data.",
@@ -136,7 +168,7 @@ const componentsList: ComponentItem[] = [
           </div>
         </div>
         <div className="mt-4">
-          <h3 className="text-2xl font-black uppercase tracking-tight">Whoops! It's a ghost town.</h3>
+          <h3 className="text-2xl font-black uppercase tracking-tight">Whoops! It&apos;s a ghost town.</h3>
           <p className="text-gray-600 font-bold mt-2">Looks like there are no missions available right now.</p>
         </div>
         <Button className="mt-2 bg-black text-white hover:bg-gray-800 border-[3px] border-black dark:border-border font-black px-8 shadow-[var(--shadow-comic-sm)] uppercase tracking-wide">
