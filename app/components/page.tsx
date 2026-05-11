@@ -29,6 +29,14 @@ import { Card } from "@/components/ui/card"
 import { Textarea } from "@/components/comic-ui/textarea"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/comic-ui/tooltip"
 import { Slider } from "@/components/comic-ui/slider"
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/comic-ui/breadcrumb"
+import { RadioGroup, RadioGroupItem } from "@/components/comic-ui/radio-group"
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/comic-ui/hover-card"
+import { ScrollArea, ScrollBar } from "@/components/comic-ui/scroll-area"
+import { Toggle } from "@/components/comic-ui/toggle"
+import { Calendar } from "@/components/comic-ui/calendar"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/comic-ui/carousel"
+import { ChartContainer, ChartTooltipContent } from "@/components/comic-ui/chart"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { SheetClose } from "@/components/ui/sheet"
 import { Progress } from "@/components/ui/progress"
@@ -43,7 +51,7 @@ import {
   ToastClose,
   ToastAction,
 } from "@/components/ui/toast"
-import { Copy, Bot, User, RefreshCcw, SquarePen, Sparkles, MessageSquare, Plus, Minus, Hash, Check, CreditCard, Download, Key, Users, Settings2, Trash2, Zap, Smartphone, Mail, Lock, ShieldCheck, Monitor, Laptop, ArrowRight, ChevronRight, Command, Menu, X, Home, Compass, Folder, Calendar, Star, Compass as ExploreIcon, AlignLeft, UploadCloud, Clock, Bold, Italic, Link2, List as ListIcon, Type, Save, Cloud, AlertTriangle, CheckCircle, FileText, Image as ImageIcon, Heading1, Heading2, MapPin, Code, Ghost, Map as MapIcon, Route, Keyboard, Moon, Sun, MousePointerClick, Eye, Accessibility } from "lucide-react"
+import { Copy, Bot, User, RefreshCcw, SquarePen, Sparkles, MessageSquare, Plus, Minus, Hash, Check, CreditCard, Download, Key, Users, Settings2, Trash2, Zap, Smartphone, Mail, Lock, ShieldCheck, Monitor, Laptop, ArrowRight, ChevronRight, Command, Menu, X, Home, Compass, Folder, Calendar as CalendarIcon, Star, Compass as ExploreIcon, AlignLeft, UploadCloud, Clock, Bold, Italic, Link2, List as ListIcon, Type, Save, Cloud, AlertTriangle, CheckCircle, FileText, Image as ImageIcon, Heading1, Heading2, MapPin, Code, Ghost, Map as MapIcon, Route, Keyboard, Moon, Sun, MousePointerClick, Eye, Accessibility } from "lucide-react"
 
 type ComponentItem = {
   name: string;
@@ -83,6 +91,146 @@ function ToastPrimitivePreview() {
 }
 
 const componentsList: ComponentItem[] = [
+  {
+    name: "Calendar",
+    category: "Advanced Forms",
+    description: "A neo-brutalist date picker component with comic interactions.",
+    preview: (
+      <Calendar selected={new Date()} />
+    ),
+    code: "import { Calendar } from \"@/components/comic-ui/calendar\";\n\nexport default function App() {\n  return (\n    <Calendar selected={new Date()} />\n  );\n}"
+  },
+  {
+    name: "Carousel",
+    category: "Layout/Structure",
+    description: "A robust horizontal scroll container for sweeping through elements.",
+    preview: (
+      <Carousel className="w-full max-w-sm shrink-0">
+        <CarouselContent>
+          <CarouselItem className="basis-full">
+             <div className="p-1 aspect-square bg-[#ff5e5e] border-[3px] border-black rounded-[var(--radius-comic)] flex items-center justify-center font-black text-2xl">Slide 1</div>
+          </CarouselItem>
+          <CarouselItem className="basis-full">
+             <div className="p-1 aspect-square bg-yellow-400 border-[3px] border-black rounded-[var(--radius-comic)] flex items-center justify-center font-black text-2xl">Slide 2</div>
+          </CarouselItem>
+          <CarouselItem className="basis-full">
+             <div className="p-1 aspect-square bg-blue-400 border-[3px] border-black rounded-[var(--radius-comic)] flex items-center justify-center font-black text-2xl text-white">Slide 3</div>
+          </CarouselItem>
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+    ),
+    code: "import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from \"@/components/comic-ui/carousel\";\n\nexport default function App() {\n  return (\n    <Carousel>\n      <CarouselContent>\n        <CarouselItem>Slide 1</CarouselItem>\n        <CarouselItem>Slide 2</CarouselItem>\n      </CarouselContent>\n      <CarouselPrevious />\n      <CarouselNext />\n    </Carousel>\n  );\n}"
+  },
+  {
+    name: "Chart Container",
+    category: "Data Display",
+    description: "A stylized container for Recharts components complete with bold tooltips.",
+    preview: (
+      <div className="w-full max-w-md h-[300px]">
+        <ChartContainer config={{ desktop: { label: "Desktop", color: "#3b82f6" }, mobile: { label: "Mobile", color: "#eab308" } }}>
+           <ResponsiveContainer width="100%" height="100%">
+             <BarChart data={[ { name: "Mon", desktop: 120, mobile: 80 }, { name: "Tue", desktop: 150, mobile: 110 }, { name: "Wed", desktop: 180, mobile: 90 } ]}>
+                <XAxis dataKey="name" tickLine={false} axisLine={false} stroke="#000" tick={{ fontWeight: 900 }} />
+                <RechartsTooltip content={<ChartTooltipContent />} cursor={{ fill: 'transparent' }} />
+                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={[4, 4, 0, 0]} stroke="#000" strokeWidth={3} />
+                <Bar dataKey="mobile" fill="var(--color-mobile)" radius={[4, 4, 0, 0]} stroke="#000" strokeWidth={3} />
+             </BarChart>
+           </ResponsiveContainer>
+        </ChartContainer>
+      </div>
+    ),
+    code: "import { ChartContainer, ChartTooltipContent } from \"@/components/comic-ui/chart\";\nimport { BarChart, Bar, ResponsiveContainer, XAxis, Tooltip } from \"recharts\";\n\nexport default function App() {\n  return (\n    <ChartContainer>\n      <ResponsiveContainer width=\"100%\" height=\"100%\">\n         <BarChart data={data}>\n            <XAxis dataKey=\"name\" />\n            <Tooltip content={<ChartTooltipContent />} />\n            <Bar dataKey=\"desktop\" />\n         </BarChart>\n      </ResponsiveContainer>\n    </ChartContainer>\n  );\n}"
+  },
+  {
+    name: "Radio Group",
+    category: "Forms",
+    description: "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.",
+    preview: (
+      <div className="w-full max-w-sm px-6 py-4 bg-white dark:bg-card rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-sm)]">
+        <RadioGroup defaultValue="option-one">
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="option-one" id="option-one" />
+            <Label htmlFor="option-one" className="font-bold cursor-pointer">Option One</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="option-two" id="option-two" />
+            <Label htmlFor="option-two" className="font-bold cursor-pointer">Option Two</Label>
+          </div>
+        </RadioGroup>
+      </div>
+    ),
+    code: "import { RadioGroup, RadioGroupItem } from \"@/components/comic-ui/radio-group\";\nimport { Label } from \"@/components/comic-ui/label\";\n\nexport default function App() {\n  return (\n    <RadioGroup defaultValue=\"option-one\">\n      <div className=\"flex items-center space-x-2\">\n        <RadioGroupItem value=\"option-one\" id=\"option-one\" />\n        <Label htmlFor=\"option-one\">Option One</Label>\n      </div>\n      <div className=\"flex items-center space-x-2\">\n        <RadioGroupItem value=\"option-two\" id=\"option-two\" />\n        <Label htmlFor=\"option-two\">Option Two</Label>\n      </div>\n    </RadioGroup>\n  );\n}"
+  },
+  {
+    name: "Scroll Area",
+    category: "Layout/Structure",
+    description: "Augments native scroll functionality for custom, cross-browser styling.",
+    preview: (
+      <ScrollArea className="h-[200px] w-[350px] p-4 bg-white dark:bg-card">
+        <h4 className="mb-4 text-sm font-black uppercase leading-none">Tags</h4>
+        {Array.from({ length: 15 }).map((_, i, a) => (
+          <React.Fragment key={i}>
+            <div className="text-sm font-bold">v1.2.0-beta.{a.length - i}</div>
+            <Separator className="my-2" />
+          </React.Fragment>
+        ))}
+      </ScrollArea>
+    ),
+    code: "import { ScrollArea } from \"@/components/comic-ui/scroll-area\";\nimport { Separator } from \"@/components/comic-ui/separator\";\n\nexport default function App() {\n  return (\n    <ScrollArea className=\"h-[200px] w-[350px] p-4\">\n      <h4 className=\"mb-4 text-sm font-black uppercase leading-none\">Tags</h4>\n      <div className=\"text-sm font-bold\">v1.2.0-beta.15</div>\n      <Separator className=\"my-2\" />\n      <div className=\"text-sm font-bold\">v1.2.0-beta.14</div>\n    </ScrollArea>\n  );\n}"
+  },
+  {
+    name: "Toggle",
+    category: "Forms",
+    description: "A two-state button that can be either on or off.",
+    preview: (
+      <div className="flex gap-4">
+        <Toggle aria-label="Toggle italic">
+          <Italic className="h-4 w-4 mr-2" /> Italic
+        </Toggle>
+        <Toggle variant="outline" aria-label="Toggle bold">
+          <Bold className="h-4 w-4 mr-2" /> Bold
+        </Toggle>
+      </div>
+    ),
+    code: "import { Toggle } from \"@/components/comic-ui/toggle\";\nimport { Bold } from \"lucide-react\";\n\nexport default function App() {\n  return (\n    <Toggle variant=\"outline\" aria-label=\"Toggle bold\">\n      <Bold className=\"h-4 w-4 mr-2\" /> Bold\n    </Toggle>\n  );\n}"
+  },
+  {
+    name: "Hover Card",
+    category: "Overlay",
+    description: "For sighted users to preview content available behind a link.",
+    preview: (
+      <div className="py-8 text-center flex justify-center">
+        <HoverCard>
+          <HoverCardTrigger asChild>
+            <Button variant="link" className="font-black text-lg">@comic-ui</Button>
+          </HoverCardTrigger>
+          <HoverCardContent className="w-80">
+            <div className="flex justify-between space-x-4">
+              <Avatar>
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>UI</AvatarFallback>
+              </Avatar>
+              <div className="space-y-1">
+                <h4 className="text-sm font-black">@comic-ui</h4>
+                <p className="text-sm font-bold">
+                  A comic inspired neo-brutalist UI component library.
+                </p>
+                <div className="flex items-center pt-2">
+                  <CalendarIcon className="mr-2 h-4 w-4 opacity-70" />{" "}
+                  <span className="text-xs text-muted-foreground font-bold">
+                    Joined December 2021
+                  </span>
+                </div>
+              </div>
+            </div>
+          </HoverCardContent>
+        </HoverCard>
+      </div>
+    ),
+    code: "import { HoverCard, HoverCardContent, HoverCardTrigger } from \"@/components/comic-ui/hover-card\";\nimport { Button } from \"@/components/comic-ui/button\";\n\nexport default function App() {\n  return (\n    <HoverCard>\n      <HoverCardTrigger asChild>\n        <Button variant=\"link\">@hero</Button>\n      </HoverCardTrigger>\n      <HoverCardContent>\n        The hero of our story.\n      </HoverCardContent>\n    </HoverCard>\n  );\n}"
+  },
   {
     name: "Textarea",
     category: "Forms",
@@ -728,7 +876,7 @@ export default function App() {
           <div className="px-2 py-1.5 text-xs font-black uppercase text-gray-500">Suggestions</div>
           <button className="w-full flex items-center justify-between px-3 py-3 rounded-[var(--radius-comic)] border-[2px] border-transparent hover:border-black dark:border-border hover:bg-yellow-100 hover:shadow-[var(--shadow-comic-sm)] transition-all text-left group">
             <div className="flex items-center gap-3">
-              <Calendar className="h-5 w-5 text-blue-500 group-hover:scale-110 transition-transform" />
+              <CalendarIcon className="h-5 w-5 text-blue-500 group-hover:scale-110 transition-transform" />
               <span className="font-bold text-black dark:text-foreground">Create new event</span>
             </div>
             <span className="text-xs font-bold text-gray-400">Action</span>
