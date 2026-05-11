@@ -34,6 +34,16 @@ export default function DocsPage() {
                     Rich Card
                   </Link>
                 </li>
+                <li><Link href="#install-aspect-ratio" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform inline-block">Aspect Ratio</Link></li>
+                <li><Link href="#install-breadcrumb" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform inline-block">Breadcrumb</Link></li>
+                <li><Link href="#install-button-group" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform inline-block">Button Group</Link></li>
+                <li><Link href="#install-calendar" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform inline-block">Calendar</Link></li>
+                <li><Link href="#install-carousel" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform inline-block">Carousel</Link></li>
+                <li><Link href="#install-chart" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform inline-block">Chart</Link></li>
+                <li><Link href="#install-hover-card" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform inline-block">Hover Card</Link></li>
+                <li><Link href="#install-radio-group" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform inline-block">Radio Group</Link></li>
+                <li><Link href="#install-scroll-area" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform inline-block">Scroll Area</Link></li>
+                <li><Link href="#install-toggle" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform inline-block">Toggle</Link></li>
               </ul>
             </li>
             <li>
@@ -46,7 +56,57 @@ export default function DocsPage() {
                 Component Usage Tutorials
               </Link>
               <ul className="flex flex-col gap-2 mt-1 ml-4 font-bold text-sm text-black dark:text-foreground/70 max-h-[35vh] overflow-y-auto pr-2 overflow-x-hidden border-l-[3px] border-border pl-3">
-                <li className="break-inside-avoid">
+                                  <li className="break-inside-avoid">
+                    <Link href="#usage-aspect-ratio" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Aspect Ratio">
+                      Aspect Ratio
+                    </Link>
+                  </li>
+                  <li className="break-inside-avoid">
+                    <Link href="#usage-breadcrumb" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Breadcrumb">
+                      Breadcrumb
+                    </Link>
+                  </li>
+                  <li className="break-inside-avoid">
+                    <Link href="#usage-button-group" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Button Group">
+                      Button Group
+                    </Link>
+                  </li>
+                  <li className="break-inside-avoid">
+                    <Link href="#usage-calendar" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Calendar">
+                      Calendar
+                    </Link>
+                  </li>
+                  <li className="break-inside-avoid">
+                    <Link href="#usage-carousel" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Carousel">
+                      Carousel
+                    </Link>
+                  </li>
+                  <li className="break-inside-avoid">
+                    <Link href="#usage-chart" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Chart">
+                      Chart
+                    </Link>
+                  </li>
+                  <li className="break-inside-avoid">
+                    <Link href="#usage-hover-card" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Hover Card">
+                      Hover Card
+                    </Link>
+                  </li>
+                  <li className="break-inside-avoid">
+                    <Link href="#usage-radio-group" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Radio Group">
+                      Radio Group
+                    </Link>
+                  </li>
+                  <li className="break-inside-avoid">
+                    <Link href="#usage-scroll-area" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Scroll Area">
+                      Scroll Area
+                    </Link>
+                  </li>
+                  <li className="break-inside-avoid">
+                    <Link href="#usage-toggle" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Toggle">
+                      Toggle
+                    </Link>
+                  </li>
+<li className="break-inside-avoid">
                   <Link href="#usage-empty-state" className="hover:text-black dark:text-foreground hover:translate-x-1 transition-transform block truncate max-w-[200px]" title="Empty State">
                     Empty State
                   </Link>
@@ -395,6 +455,76 @@ export default function DocsPage() {
             </div>
           </div>
         </div>
+          <div id="install-aspect-ratio" className="mt-8 scroll-mt-24">
+            <TypographyH3 className="text-xl font-black uppercase tracking-tight">Aspect Ratio</TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mt-2 mb-4">A layout structure component that displays content within a desired ratio.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border">
+              <code>npx c-comic add aspect-ratio</code>
+            </div>
+          </div>
+          <div id="install-breadcrumb" className="mt-8 scroll-mt-24">
+            <TypographyH3 className="text-xl font-black uppercase tracking-tight">Breadcrumb</TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mt-2 mb-4">Shows hierarchy and navigation path in a comic-themed chunky style.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border">
+              <code>npx c-comic add breadcrumb</code>
+            </div>
+          </div>
+          <div id="install-button-group" className="mt-8 scroll-mt-24">
+            <TypographyH3 className="text-xl font-black uppercase tracking-tight">Button Group</TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mt-2 mb-4">A layout wrapper to automatically group buttons together in a single row without duplicate borders.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border">
+              <code>npx c-comic add button-group</code>
+            </div>
+          </div>
+          <div id="install-calendar" className="mt-8 scroll-mt-24">
+            <TypographyH3 className="text-xl font-black uppercase tracking-tight">Calendar</TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mt-2 mb-4">A customized, neo-brutalist date picker with interactive styling, overriding the traditional dull grid.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border">
+              <code>npx c-comic add calendar</code>
+            </div>
+          </div>
+          <div id="install-carousel" className="mt-8 scroll-mt-24">
+            <TypographyH3 className="text-xl font-black uppercase tracking-tight">Carousel</TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mt-2 mb-4">A native scroll-snap based horizontal gallery wrapper with custom prev/next comic buttons.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border">
+              <code>npx c-comic add carousel</code>
+            </div>
+          </div>
+          <div id="install-chart" className="mt-8 scroll-mt-24">
+            <TypographyH3 className="text-xl font-black uppercase tracking-tight">Chart</TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mt-2 mb-4">A themed Recharts container and tooltip for displaying bold, high-contrast data visualizations.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border">
+              <code>npx c-comic add chart</code>
+            </div>
+          </div>
+          <div id="install-hover-card" className="mt-8 scroll-mt-24">
+            <TypographyH3 className="text-xl font-black uppercase tracking-tight">Hover Card</TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mt-2 mb-4">Pop-up preview content activated on hover, heavily bordered with pop-out shadows.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border">
+              <code>npx c-comic add hover-card</code>
+            </div>
+          </div>
+          <div id="install-radio-group" className="mt-8 scroll-mt-24">
+            <TypographyH3 className="text-xl font-black uppercase tracking-tight">Radio Group</TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mt-2 mb-4">Stylized radial toggles that feel interactive and responsive.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border">
+              <code>npx c-comic add radio-group</code>
+            </div>
+          </div>
+          <div id="install-scroll-area" className="mt-8 scroll-mt-24">
+            <TypographyH3 className="text-xl font-black uppercase tracking-tight">Scroll Area</TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mt-2 mb-4">Custom cross-browser scrollbar area with comic aesthetics.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border">
+              <code>npx c-comic add scroll-area</code>
+            </div>
+          </div>
+          <div id="install-toggle" className="mt-8 scroll-mt-24">
+            <TypographyH3 className="text-xl font-black uppercase tracking-tight">Toggle</TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mt-2 mb-4">A stylized two-state button component with neo-brutalist interaction hints.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border">
+              <code>npx c-comic add toggle</code>
+            </div>
+          </div>
 
         
         <div id="usage" className="bg-blue-50 dark:bg-muted text-black dark:text-foreground p-8 border-[3px] border-border shadow-[var(--shadow-comic)] rounded-[var(--radius-comic-lg)] scroll-mt-24 mt-8">
@@ -405,7 +535,157 @@ export default function DocsPage() {
 
           <div className="mt-8 flex flex-col gap-6">
             
-        <div className="bg-white dark:bg-card p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-sm)] mt-4" id="usage-empty-state">
+        
+          <div className="bg-white dark:bg-card p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-sm)] mt-4" id="usage-aspect-ratio">
+            <TypographyH3 className="text-xl font-black mb-2">Aspect Ratio <span className="text-xs bg-yellow-300 text-black px-2 py-1 rounded ml-2 border-[2px] border-black inline-block align-middle">New</span></TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mb-4">A layout structure component that displays content within a desired ratio.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border overflow-auto max-h-[300px]">
+              <pre className="text-sm font-mono whitespace-pre-wrap break-all mt-2"><code>{`import { AspectRatio } from "c-comic-ui";
+  
+  export default function App() {
+    return (
+      <>
+        <AspectRatio />
+      </>
+    );
+  }`}</code></pre>
+            </div>
+          </div>
+          <div className="bg-white dark:bg-card p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-sm)] mt-4" id="usage-breadcrumb">
+            <TypographyH3 className="text-xl font-black mb-2">Breadcrumb <span className="text-xs bg-yellow-300 text-black px-2 py-1 rounded ml-2 border-[2px] border-black inline-block align-middle">New</span></TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mb-4">Shows hierarchy and navigation path in a comic-themed chunky style.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border overflow-auto max-h-[300px]">
+              <pre className="text-sm font-mono whitespace-pre-wrap break-all mt-2"><code>{`import { Breadcrumb } from "c-comic-ui";
+  
+  export default function App() {
+    return (
+      <>
+        <Breadcrumb />
+      </>
+    );
+  }`}</code></pre>
+            </div>
+          </div>
+          <div className="bg-white dark:bg-card p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-sm)] mt-4" id="usage-button-group">
+            <TypographyH3 className="text-xl font-black mb-2">Button Group <span className="text-xs bg-yellow-300 text-black px-2 py-1 rounded ml-2 border-[2px] border-black inline-block align-middle">New</span></TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mb-4">A layout wrapper to automatically group buttons together in a single row without duplicate borders.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border overflow-auto max-h-[300px]">
+              <pre className="text-sm font-mono whitespace-pre-wrap break-all mt-2"><code>{`import { ButtonGroup } from "c-comic-ui";
+  
+  export default function App() {
+    return (
+      <>
+        <ButtonGroup />
+      </>
+    );
+  }`}</code></pre>
+            </div>
+          </div>
+          <div className="bg-white dark:bg-card p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-sm)] mt-4" id="usage-calendar">
+            <TypographyH3 className="text-xl font-black mb-2">Calendar <span className="text-xs bg-yellow-300 text-black px-2 py-1 rounded ml-2 border-[2px] border-black inline-block align-middle">New</span></TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mb-4">A customized, neo-brutalist date picker with interactive styling, overriding the traditional dull grid.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border overflow-auto max-h-[300px]">
+              <pre className="text-sm font-mono whitespace-pre-wrap break-all mt-2"><code>{`import { Calendar } from "c-comic-ui";
+  
+  export default function App() {
+    return (
+      <>
+        <Calendar />
+      </>
+    );
+  }`}</code></pre>
+            </div>
+          </div>
+          <div className="bg-white dark:bg-card p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-sm)] mt-4" id="usage-carousel">
+            <TypographyH3 className="text-xl font-black mb-2">Carousel <span className="text-xs bg-yellow-300 text-black px-2 py-1 rounded ml-2 border-[2px] border-black inline-block align-middle">New</span></TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mb-4">A native scroll-snap based horizontal gallery wrapper with custom prev/next comic buttons.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border overflow-auto max-h-[300px]">
+              <pre className="text-sm font-mono whitespace-pre-wrap break-all mt-2"><code>{`import { Carousel } from "c-comic-ui";
+  
+  export default function App() {
+    return (
+      <>
+        <Carousel />
+      </>
+    );
+  }`}</code></pre>
+            </div>
+          </div>
+          <div className="bg-white dark:bg-card p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-sm)] mt-4" id="usage-chart">
+            <TypographyH3 className="text-xl font-black mb-2">Chart <span className="text-xs bg-yellow-300 text-black px-2 py-1 rounded ml-2 border-[2px] border-black inline-block align-middle">New</span></TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mb-4">A themed Recharts container and tooltip for displaying bold, high-contrast data visualizations.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border overflow-auto max-h-[300px]">
+              <pre className="text-sm font-mono whitespace-pre-wrap break-all mt-2"><code>{`import { Chart } from "c-comic-ui";
+  
+  export default function App() {
+    return (
+      <>
+        <Chart />
+      </>
+    );
+  }`}</code></pre>
+            </div>
+          </div>
+          <div className="bg-white dark:bg-card p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-sm)] mt-4" id="usage-hover-card">
+            <TypographyH3 className="text-xl font-black mb-2">Hover Card <span className="text-xs bg-yellow-300 text-black px-2 py-1 rounded ml-2 border-[2px] border-black inline-block align-middle">New</span></TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mb-4">Pop-up preview content activated on hover, heavily bordered with pop-out shadows.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border overflow-auto max-h-[300px]">
+              <pre className="text-sm font-mono whitespace-pre-wrap break-all mt-2"><code>{`import { HoverCard } from "c-comic-ui";
+  
+  export default function App() {
+    return (
+      <>
+        <HoverCard />
+      </>
+    );
+  }`}</code></pre>
+            </div>
+          </div>
+          <div className="bg-white dark:bg-card p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-sm)] mt-4" id="usage-radio-group">
+            <TypographyH3 className="text-xl font-black mb-2">Radio Group <span className="text-xs bg-yellow-300 text-black px-2 py-1 rounded ml-2 border-[2px] border-black inline-block align-middle">New</span></TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mb-4">Stylized radial toggles that feel interactive and responsive.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border overflow-auto max-h-[300px]">
+              <pre className="text-sm font-mono whitespace-pre-wrap break-all mt-2"><code>{`import { RadioGroup } from "c-comic-ui";
+  
+  export default function App() {
+    return (
+      <>
+        <RadioGroup />
+      </>
+    );
+  }`}</code></pre>
+            </div>
+          </div>
+          <div className="bg-white dark:bg-card p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-sm)] mt-4" id="usage-scroll-area">
+            <TypographyH3 className="text-xl font-black mb-2">Scroll Area <span className="text-xs bg-yellow-300 text-black px-2 py-1 rounded ml-2 border-[2px] border-black inline-block align-middle">New</span></TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mb-4">Custom cross-browser scrollbar area with comic aesthetics.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border overflow-auto max-h-[300px]">
+              <pre className="text-sm font-mono whitespace-pre-wrap break-all mt-2"><code>{`import { ScrollArea } from "c-comic-ui";
+  
+  export default function App() {
+    return (
+      <>
+        <ScrollArea />
+      </>
+    );
+  }`}</code></pre>
+            </div>
+          </div>
+          <div className="bg-white dark:bg-card p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-sm)] mt-4" id="usage-toggle">
+            <TypographyH3 className="text-xl font-black mb-2">Toggle <span className="text-xs bg-yellow-300 text-black px-2 py-1 rounded ml-2 border-[2px] border-black inline-block align-middle">New</span></TypographyH3>
+            <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mb-4">A stylized two-state button component with neo-brutalist interaction hints.</TypographyP>
+            <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border overflow-auto max-h-[300px]">
+              <pre className="text-sm font-mono whitespace-pre-wrap break-all mt-2"><code>{`import { Toggle } from "c-comic-ui";
+  
+  export default function App() {
+    return (
+      <>
+        <Toggle />
+      </>
+    );
+  }`}</code></pre>
+            </div>
+          </div><div className="bg-white dark:bg-card p-6 rounded-[var(--radius-comic)] border-[3px] border-border shadow-[var(--shadow-comic-sm)] mt-4" id="usage-empty-state">
           <TypographyH3 className="text-xl font-black mb-2">Empty State <span className="text-xs bg-yellow-300 text-black px-2 py-1 rounded ml-2 border-[2px] border-black inline-block align-middle">Polished UI</span></TypographyH3>
           <TypographyP className="text-sm font-bold text-gray-600 dark:text-gray-300 mb-4">Keep users smiling even when there&apos;s no data.</TypographyP>
           <div className="bg-black text-white p-4 rounded border-[3px] border-black dark:border-border overflow-auto max-h-[300px]">
