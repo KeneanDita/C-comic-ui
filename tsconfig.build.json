@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "declarationMap": false,
+    "emitDeclarationOnly": false,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "ES2019",
+    "jsx": "react-jsx",
+    "isolatedModules": false,
+    "incremental": false
+  },
+  "include": ["index.ts", "components/comic-ui/**/*.ts", "components/comic-ui/**/*.tsx", "lib/**/*.ts"],
+  "exclude": ["node_modules", "app", "components/ui", "components/site", "scripts"]
+}
