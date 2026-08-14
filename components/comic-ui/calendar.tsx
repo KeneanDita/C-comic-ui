@@ -3,7 +3,7 @@
 import * as React from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "./utils"
 
 export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
   selected?: Date
