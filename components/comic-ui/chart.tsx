@@ -3,7 +3,7 @@
 import * as React from "react"
 import { TooltipProps } from "recharts"
 
-import { cn } from "@/lib/utils"
+import { cn } from "./utils"
 
 export interface ChartContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   config: Record<string, { label: string; color: string }>
