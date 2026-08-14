@@ -3,7 +3,7 @@
 import * as React from "react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "./utils"
 
 export interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
