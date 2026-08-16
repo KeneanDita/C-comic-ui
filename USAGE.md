@@ -31,7 +31,7 @@ npx c-comic add button
 ```
 
 **What this does:**
-1. Fetches the component code (e.g., `button.tsx`) from the Comic UI registry.
+1. Reads the component code (e.g., `button.tsx`) from the registry bundled inside the installed package — the CLI never downloads code at runtime, so what you get is exactly what you audited when you installed it.
 2. Creates the `components/comic-ui/` directory if it doesn't already exist.
 3. Saves the component code directly into `components/comic-ui/button.tsx`.
 4. Automatically installs any specialized third-party dependencies required for that specific component (e.g., `@radix-ui/react-slot`).
