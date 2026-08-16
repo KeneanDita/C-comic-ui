@@ -1,7 +1,7 @@
 # C-Comic UI Package Verification
 
 This document describes how the published package is verified. Everything below runs
-automatically in CI (`.github/workflows/ci.yml`) and locally with `npm test`.
+automatically in CI and locally with `npm test`.
 
 ## Automated suite (`npm test`)
 
