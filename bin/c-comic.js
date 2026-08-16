@@ -2,11 +2,13 @@
 
 const fs = require("fs");
 const path = require("path");
-const { execSync } = require("child_process");
+const { spawnSync } = require("child_process");
 
-const REGISTRY_URL =
-  "https://raw.githubusercontent.com/KeneanDita/C-comic-ui/main/public/registry.json";
 const BUNDLED_REGISTRY = path.join(__dirname, "../public/registry.json");
+
+const COMPONENT_NAME = /^[a-z0-9][a-z0-9-]*$/;
+const FILE_NAME = /^[a-z0-9][a-z0-9.-]*\.(ts|tsx)$/;
+const PACKAGE_NAME = /^(@[a-z0-9][a-z0-9._-]*\/)?[a-z0-9][a-z0-9._-]*$/;
 
 const UTILS_SOURCE =
   `import { type ClassValue, clsx } from "clsx";\n` +
@@ -21,22 +23,55 @@ function usage() {
 }
 
 /**
- * Loads the component registry. The copy bundled with the installed package is
- * preferred so the CLI always matches the version the user installed; the
- * GitHub copy is only used when the bundled one is missing.
+ * Loads the component registry that ships inside this package. Nothing is
+ * fetched over the network: the CLI only ever writes code that was published
+ * as part of the exact version the user installed and audited.
  */
 async function loadRegistry() {
-  if (fs.existsSync(BUNDLED_REGISTRY)) {
-    return JSON.parse(fs.readFileSync(BUNDLED_REGISTRY, "utf8"));
-  }
-
-  const res = await fetch(REGISTRY_URL);
-  if (!res.ok) {
+  if (!fs.existsSync(BUNDLED_REGISTRY)) {
     throw new Error(
-      `Failed to fetch registry from ${REGISTRY_URL} (${res.status} ${res.statusText}).`,
+      `Component registry is missing from the installed package (${BUNDLED_REGISTRY}). Reinstall c-comic-ui.`,
     );
   }
-  return res.json();
+
+  const registry = JSON.parse(fs.readFileSync(BUNDLED_REGISTRY, "utf8"));
+  for (const [name, entry] of Object.entries(registry)) validateEntry(name, entry);
+  return registry;
+}
+
+/**
+ * Rejects registry entries that could escape the target directory, install
+ * unexpected packages, or write anything other than component source files.
+ */
+function validateEntry(name, entry) {
+  const reject = (reason) => {
+    throw new Error(`Refusing to use registry entry "${name}": ${reason}.`);
+  };
+
+  if (!COMPONENT_NAME.test(name)) reject("invalid component name");
+  if (!entry || typeof entry !== "object") reject("entry is not an object");
+  if (!Array.isArray(entry.files) || entry.files.length === 0) reject("no files listed");
+
+  for (const file of entry.files) {
+    if (!file || typeof file.name !== "string" || typeof file.content !== "string") {
+      reject("a file is missing a string name or content");
+    }
+    if (path.basename(file.name) !== file.name || !FILE_NAME.test(file.name)) {
+      reject(`unsafe file name "${file.name}"`);
+    }
+  }
+
+  for (const dep of entry.dependencies || []) {
+    if (typeof dep !== "string" || !PACKAGE_NAME.test(dep)) {
+      reject(`unsafe dependency name "${dep}"`);
+    }
+  }
+
+  for (const dep of entry.registryDependencies || []) {
+    if (typeof dep !== "string" || !COMPONENT_NAME.test(dep)) {
+      reject(`unsafe component dependency "${dep}"`);
+    }
+  }
 }
 
 function install(packages, cwd) {
@@ -46,7 +81,15 @@ function install(packages, cwd) {
     return;
   }
   console.log(`Installing dependencies: ${packages.join(", ")}`);
-  execSync(`npm install ${packages.join(" ")}`, { stdio: "inherit", cwd });
+  const result = spawnSync("npm", ["install", "--", ...packages], {
+    stdio: "inherit",
+    cwd,
+    shell: false,
+  });
+  if (result.error) throw result.error;
+  if (result.status !== 0) {
+    throw new Error(`npm install exited with code ${result.status}.`);
+  }
 }
 
 function collect(registry, names) {
@@ -56,6 +99,9 @@ function collect(registry, names) {
   const visit = (name) => {
     if (seen.has(name)) return;
     seen.add(name);
+    if (!COMPONENT_NAME.test(name)) {
+      throw new Error(`Invalid component name "${name}".`);
+    }
     const entry = registry[name];
     if (!entry) {
       throw new Error(
@@ -86,8 +132,12 @@ function add(registry, names, cwd) {
 
   const dependencies = new Set();
   for (const entry of entries) {
+    validateEntry(entry.name, entry);
     for (const file of entry.files) {
-      const targetPath = path.join(targetDir, file.name);
+      const targetPath = path.join(targetDir, path.basename(file.name));
+      if (path.dirname(path.resolve(targetPath)) !== path.resolve(targetDir)) {
+        throw new Error(`Refusing to write outside components/comic-ui: ${file.name}`);
+      }
       fs.writeFileSync(targetPath, file.content);
       console.log(`Wrote ${path.relative(cwd, targetPath)}`);
     }
@@ -139,4 +189,4 @@ if (require.main === module) {
   );
 }
 
-module.exports = { main, add, init, collect, loadRegistry, usage };
+module.exports = { main, add, init, collect, loadRegistry, usage, validateEntry };
