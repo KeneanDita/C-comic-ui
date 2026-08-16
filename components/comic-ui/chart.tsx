@@ -1,12 +1,26 @@
 "use client"
 
 import * as React from "react"
-import { TooltipProps } from "recharts"
 
 import { cn } from "./utils"
 
 export interface ChartContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   config: Record<string, { label: string; color: string }>
+}
+
+export interface ChartTooltipPayloadItem {
+  name?: React.ReactNode
+  value?: React.ReactNode
+  color?: string
+  payload?: { fill?: string }
+}
+
+export interface ChartTooltipContentProps
+  extends React.HTMLAttributes<HTMLDivElement> {
+  active?: boolean
+  payload?: ChartTooltipPayloadItem[]
+  label?: React.ReactNode
+  hideLabel?: boolean
 }
 
 const ChartContainer = React.forwardRef<HTMLDivElement, ChartContainerProps>(
@@ -38,7 +52,7 @@ ChartContainer.displayName = "ChartContainer"
 
 const ChartTooltipContent = React.forwardRef<
   HTMLDivElement,
-  any
+  ChartTooltipContentProps
 >(({ active, payload, label, hideLabel, className }, ref) => {
   if (!active || !payload?.length) {
     return null
@@ -58,13 +72,13 @@ const ChartTooltipContent = React.forwardRef<
         </div>
       )}
       <div className="space-y-1">
-        {payload.map((item: any, index: number) => {
+        {payload.map((item, index) => {
           return (
             <div key={`item-${index}`} className="flex items-center justify-between gap-4 font-bold text-sm">
               <div className="flex items-center gap-2">
                 <div 
                   className="w-3 h-3 rounded-full border-[2px] border-black dark:border-border" 
-                  style={{ backgroundColor: item.color || item.payload.fill }} 
+                  style={{ backgroundColor: item.color || item.payload?.fill }} 
                 />
                 <span className="capitalize">{item.name}</span>
               </div>

@@ -1,6 +1,8 @@
+"use client"
+
 import * as React from "react"
 import { cn } from "./utils"
-import { Button } from "@/components/comic-ui/button"
+import { Button } from "./button"
 
 export interface RichCardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   imageSrc?: string;
@@ -26,6 +28,7 @@ const RichCard = React.forwardRef<HTMLDivElement, RichCardProps>(
       >
         <div className="h-40 bg-zinc-200 relative border-b-[3px] border-black dark:border-border overflow-hidden">
           {imageSrc ? (
+            // eslint-disable-next-line @next/next/no-img-element
             <img src={imageSrc} alt={title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
           ) : (
             <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 opacity-80 group-hover:scale-110 transition-transform duration-500"></div>

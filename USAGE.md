@@ -79,10 +79,10 @@ Since the package exports its components via the `exports` mapping in `package.j
 
 ```tsx
 // Example importing from the main entry point
-import { Button } from "c-comic-ui"; 
+import { Button } from "c-comic-ui";
 
-// Alternatively, via path imports (depends on your bundler setup)
-import { Button } from "c-comic-ui/components/comic-ui/button";
+// Or import a single component to keep your bundle lean
+import { Button } from "c-comic-ui/button";
 
 export default function App() {
   return (
@@ -93,7 +93,11 @@ export default function App() {
 }
 ```
 
-*Note: For styles to be correctly tailored to your app, make sure your app's Tailwind CSS configuration is properly set up to scan the `node_modules/c-comic-ui/components/**/*.{ts,tsx}` paths or simply relying on standard tailwind classes exported.*
+`react` and `react-dom` (18 or 19) are peer dependencies, so the package always uses the copy already installed in your app.
+
+The package ships both an ES module and a CommonJS build with type declarations, and every interactive component keeps its `"use client"` directive, so it can be imported straight from a React Server Component in the Next.js App Router.
+
+*Note: For styles to be correctly tailored to your app, make sure your app's Tailwind CSS configuration is set up to scan `node_modules/c-comic-ui/dist/**/*.js`, or rely on the standard Tailwind classes the components emit.*
 
 ---
 
@@ -102,7 +106,8 @@ export default function App() {
 | Command                     | Description                                                                                     |
 |-----------------------------|-------------------------------------------------------------------------------------------------|
 | `npx c-comic init`          | Scaffolds the `lib/utils.ts` helper and installs foundational generic styling dependencies.     |
-| `npx c-comic add <name>`    | Pulls the specified component from the registry into your `components/comic-ui/` local folder.  |
+| `npx c-comic add <name...>` | Pulls the specified components (and the components they depend on) into `components/comic-ui/`. |
+| `npx c-comic list`          | Prints every component available in the registry.                                               |
 
 
 ## Available Native Components

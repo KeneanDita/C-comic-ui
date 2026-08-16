@@ -1,7 +1,7 @@
 import * as React from "react"
 import { 
   Button, 
-  Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter,
+  Card, CardHeader, CardTitle, CardDescription, CardContent,
   Checkbox, 
   Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter,
   Input, 

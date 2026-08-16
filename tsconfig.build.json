@@ -5,15 +5,22 @@
     "declaration": true,
     "declarationMap": false,
     "emitDeclarationOnly": false,
-    "outDir": "./dist",
+    "outDir": "./dist/cjs",
     "rootDir": ".",
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "ES2019",
     "jsx": "react-jsx",
     "isolatedModules": false,
-    "incremental": false
+    "incremental": false,
+    "verbatimModuleSyntax": false,
+    "paths": {}
   },
-  "include": ["index.ts", "components/comic-ui/**/*.ts", "components/comic-ui/**/*.tsx", "lib/**/*.ts"],
-  "exclude": ["node_modules", "app", "components/ui", "components/site", "scripts"]
+  "include": [
+    "index.ts",
+    "components/comic-ui/**/*.ts",
+    "components/comic-ui/**/*.tsx",
+    "lib/**/*.ts"
+  ],
+  "exclude": ["node_modules", "app", "components/ui", "components/site", "scripts", "tests"]
 }

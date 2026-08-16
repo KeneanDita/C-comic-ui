@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import { cn } from "./utils"
 
@@ -14,7 +16,12 @@ export interface TimelineItemProps extends Omit<React.HTMLAttributes<HTMLDivElem
 const TimelineItem = React.forwardRef<HTMLDivElement, TimelineItemProps>(
   ({ className, icon, iconBgColor = "bg-zinc-200", title, time, children, isLast, isActive, ...props }, ref) => {
     return (
-      <div ref={ref} className={cn("flex gap-4 relative z-10", className)} {...props}>
+      <div
+        ref={ref}
+        data-last={isLast ? "" : undefined}
+        className={cn("flex gap-4 relative z-10", className)}
+        {...props}
+      >
         <div 
           className={cn(
             "w-8 h-8 rounded-full border-[3px] border-black dark:border-border flex items-center justify-center shrink-0 shadow-[var(--shadow-comic-sm)]",
@@ -24,7 +31,7 @@ const TimelineItem = React.forwardRef<HTMLDivElement, TimelineItemProps>(
         >
           {icon}
         </div>
-        <div className="pb-6">
+        <div className={cn(isLast ? "pb-0" : "pb-6")}>
           <div className="font-black text-sm uppercase">{title}</div>
           <div className="text-xs font-bold text-gray-500">{time}</div>
           {children && (
