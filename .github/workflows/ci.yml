@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run build:package
+      - run: npm test
+      - run: npm run build
+
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Pack and install the tarball in a clean project
+        run: |
+          set -e
+          npm pack --pack-destination /tmp
+          tarball=$(ls /tmp/c-comic-ui-*.tgz)
+          mkdir /tmp/consumer && cd /tmp/consumer
+          npm init -y
+          npm install react@19 react-dom@19 "$tarball"
+          node -e "const m=require('c-comic-ui'); if (typeof m.Button !== 'object' || typeof m.cn !== 'function') throw new Error('CommonJS entry point is broken')"
+          node --input-type=module -e "import {Button, cn} from 'c-comic-ui'; import {Card} from 'c-comic-ui/card'; if (!Button || !cn || !Card) throw new Error('ESM entry point is broken')"
+          C_COMIC_SKIP_INSTALL=1 npx c-comic add button
+          test -f components/comic-ui/button.tsx

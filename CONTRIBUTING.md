@@ -21,7 +21,9 @@ C-Comic UI is an open-source project, and we love receiving contributions from o
 
 C-Comic UI is deeply inspired by [shadcn/ui](https://ui.shadcn.com). To maintain consistency, any new components must follow these architectural rules:
 
-- **Structure**: Place your component in `components/ui/[name].tsx`.
+- **Structure**: Place your component in `components/comic-ui/[name].tsx`, export it from `components/comic-ui/index.ts`, and regenerate the CLI registry with `npm run build:registry`.
+- **Imports**: Inside `components/comic-ui` always use relative imports (`./utils`, `./button`). The `@/` alias only exists in this repository and would break the published package.
+- **Client components**: Anything that uses hooks, `React.forwardRef`, Radix primitives or event handlers must start with `"use client"`.
 - **Accessibility First**: Use [Radix UI primitives](https://www.radix-ui.com/) for any complex interactive components (like Dialogs, Tooltips, or Accordions).
 - **Styling**: Use Tailwind CSS combined with `class-variance-authority` (CVA) to handle variants. Use the `cn` utility from `lib/utils.ts` for className merging.
 - **The Comic Aesthetic**: 
@@ -36,9 +38,9 @@ C-Comic UI is deeply inspired by [shadcn/ui](https://ui.shadcn.com). To maintain
 1. Create a new branch for your feature: `git checkout -b feature/my-amazing-component`.
 2. Write your code and add a preview to the `componentsList` in `app/components/page.tsx` so others can see and test it.
    - **Important**: Make sure to add relevant `tags` into your component's entry (e.g., `tags: ["dropdown", "menu", "select"]`) so users can easily find it using the search bar!
-3. Ensure your code passes local linting and building:
+3. Ensure your code passes linting, type checking, tests and both builds:
    ```bash
-   npm run lint && npm run build
+   npm run lint && npm run typecheck && npm test && npm run build
    ```
 4. Commit your changes with a descriptive commit message.
 5. Push to your fork and submit a Pull Request to the `main` branch.

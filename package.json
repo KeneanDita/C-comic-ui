@@ -1,28 +1,70 @@
 {
   "name": "c-comic-ui",
-  "version": "1.1.2",
+  "version": "1.1.3",
+  "description": "A collection of comic-inspired, accessible UI components for React and Next.js.",
+  "license": "MIT",
+  "author": "Kenean Dita",
+  "homepage": "https://c-comic-ui.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeneanDita/C-comic-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KeneanDita/C-comic-ui/issues"
+  },
+  "keywords": [
+    "react",
+    "nextjs",
+    "ui",
+    "components",
+    "comic",
+    "tailwindcss",
+    "radix-ui",
+    "design-system"
+  ],
   "bin": {
     "c-comic": "./bin/c-comic.js"
   },
   "private": false,
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/cjs/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./*": {
+      "import": {
+        "types": "./dist/esm/components/comic-ui/*.d.ts",
+        "default": "./dist/esm/components/comic-ui/*.js"
+      },
+      "require": {
+        "types": "./dist/cjs/components/comic-ui/*.d.ts",
+        "default": "./dist/cjs/components/comic-ui/*.js"
+      }
     },
     "./package.json": "./package.json"
   },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:package": "tsc -p tsconfig.build.json",
+    "build:package": "node scripts/build-package.mjs",
+    "build:registry": "node scripts/build-registry.js",
     "prepare": "npm run build:package",
     "prepack": "npm run build:package",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "files": [
     "bin",
@@ -31,6 +73,16 @@
     "README.md",
     "LICENSE"
   ],
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
+  },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
@@ -39,7 +91,6 @@
     "@radix-ui/react-checkbox": "^1.3.3",
     "@radix-ui/react-collapsible": "^1.1.12",
     "@radix-ui/react-dialog": "^1.1.15",
-    "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-hover-card": "^1.1.15",
     "@radix-ui/react-label": "^2.1.8",
     "@radix-ui/react-popover": "^1.1.15",
@@ -54,30 +105,36 @@
     "@radix-ui/react-tabs": "^1.1.13",
     "@radix-ui/react-toast": "^1.2.15",
     "@radix-ui/react-toggle": "^1.1.10",
-    "@radix-ui/react-toggle-group": "^1.1.11",
     "@radix-ui/react-tooltip": "^1.2.8",
-    "c-comic-ui": "^1.1.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.7.0",
-    "next": "16.2.2",
     "next-themes": "^0.4.6",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
     "react-resizable-panels": "^2.1.7",
-    "recharts": "^3.8.1",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.5.0",
     "vaul": "^1.1.2"
   },
   "devDependencies": {
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-toggle-group": "^1.1.11",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
+    "jsdom": "^25.0.1",
+    "next": "16.2.2",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "recharts": "^3.8.1",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^2.1.8"
   }
 }

@@ -1,6 +1,8 @@
+"use client"
+
 import * as React from "react"
 import { cn } from "./utils"
-import { Progress } from "@/components/comic-ui/progress"
+import { Progress } from "./progress"
 
 export interface TokenUsageProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   promptTokens: number;

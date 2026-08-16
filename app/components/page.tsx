@@ -29,10 +29,9 @@ import { Card } from "@/components/ui/card"
 import { Textarea } from "@/components/comic-ui/textarea"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/comic-ui/tooltip"
 import { Slider } from "@/components/comic-ui/slider"
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/comic-ui/breadcrumb"
 import { RadioGroup, RadioGroupItem } from "@/components/comic-ui/radio-group"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/comic-ui/hover-card"
-import { ScrollArea, ScrollBar } from "@/components/comic-ui/scroll-area"
+import { ScrollArea } from "@/components/comic-ui/scroll-area"
 import { Toggle } from "@/components/comic-ui/toggle"
 import { Calendar } from "@/components/comic-ui/calendar"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/comic-ui/carousel"
@@ -51,7 +50,7 @@ import {
   ToastClose,
   ToastAction,
 } from "@/components/ui/toast"
-import { Copy, Bot, User, RefreshCcw, SquarePen, Sparkles, MessageSquare, Plus, Minus, Hash, Check, CreditCard, Download, Key, Users, Settings2, Trash2, Zap, Smartphone, Mail, Lock, ShieldCheck, Monitor, Laptop, ArrowRight, ChevronRight, Command, Menu, X, Home, Compass, Folder, Calendar as CalendarIcon, Star, Compass as ExploreIcon, AlignLeft, UploadCloud, Clock, Bold, Italic, Link2, List as ListIcon, Type, Save, Cloud, AlertTriangle, CheckCircle, FileText, Image as ImageIcon, Heading1, Heading2, MapPin, Code, Ghost, Map as MapIcon, Route, Keyboard, Moon, Sun, MousePointerClick, Eye, Accessibility } from "lucide-react"
+import { Copy, Bot, User, RefreshCcw, SquarePen, Sparkles, MessageSquare, Plus, Minus, Hash, Check, Download, Key, Users, Settings2, Trash2, Zap, Smartphone, Mail, Lock, ShieldCheck, Monitor, Laptop, ArrowRight, ChevronRight, Command, X, Home, Compass, Folder, Calendar as CalendarIcon, Star, AlignLeft, UploadCloud, Clock, Bold, Italic, Link2, List as ListIcon, Cloud, AlertTriangle, CheckCircle, FileText, Image as ImageIcon, Heading1, Heading2, MapPin, Code, Ghost, Map as MapIcon, Keyboard, Moon, Sun, MousePointerClick, Eye, Accessibility } from "lucide-react"
 
 type ComponentItem = {
   name: string;
@@ -292,6 +291,7 @@ const componentsList: ComponentItem[] = [
     preview: (
       <div className="w-full max-w-sm">
         <AspectRatio ratio={16 / 9} className="bg-muted">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
             alt="Photo by Drew Beamer"
@@ -527,7 +527,7 @@ export default function App() {
                <div className="absolute inset-0 border-[2px] border-dashed border-red-500 rounded-full animate-[spin_4s_linear_infinite] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <div className="flex-1 font-bold text-sm text-gray-500 group-hover:text-black dark:text-foreground transition-colors rounded-[var(--radius-comic)] bg-white dark:bg-card p-3 border-[2px] border-gray-200 group-hover:border-black dark:border-border shadow-sm overflow-hidden">
-              <span className="text-gray-400">&lt;span className="sr-only"&gt;</span>
+              <span className="text-gray-400">&lt;span className=&quot;sr-only&quot;&gt;</span>
               <br />
               <span className="text-blue-600 font-mono">User profile avatar for Bruce Wayne</span>
               <br />
@@ -1155,7 +1155,7 @@ export default function App() {
           <Button className="w-full h-12 font-black uppercase text-lg bg-black text-white hover:bg-gray-800 border-[3px] border-black dark:border-border shadow-[var(--shadow-comic)] mt-2">Log In</Button>
         </form>
         <p className="text-center mt-6 text-sm font-bold">
-          Don't have an account? <a href="#!" onClick={(e) => e.preventDefault()} className="font-black text-blue-600 hover:underline">Sign up</a>
+          Don&apos;t have an account? <a href="#!" onClick={(e) => e.preventDefault()} className="font-black text-blue-600 hover:underline">Sign up</a>
         </p>
       </div>
     ),
@@ -1184,7 +1184,7 @@ export default function App() {
           </div>
           <div>
             <h3 className="font-black text-xl uppercase">Reset Password</h3>
-            <p className="text-xs font-bold text-muted-foreground mt-1">We'll send a recovery link to your inbox.</p>
+            <p className="text-xs font-bold text-muted-foreground mt-1">We&apos;ll send a recovery link to your inbox.</p>
           </div>
         </div>
         <form className="flex flex-col gap-4">
@@ -1222,7 +1222,7 @@ export default function App() {
         </div>
         <h3 className="font-black text-2xl uppercase mb-2">Check Your Mail!</h3>
         <p className="text-sm font-bold text-muted-foreground mb-6">
-          We've sent a verification link to <br/><span className="text-black dark:text-foreground font-black">hero@example.com</span>
+          We&apos;ve sent a verification link to <br/><span className="text-black dark:text-foreground font-black">hero@example.com</span>
         </p>
         <Button className="w-full font-black bg-black text-white hover:bg-gray-800 border-[3px] border-black dark:border-border mb-3">Open Email App</Button>
         <Button variant="ghost" className="font-bold underline decoration-2 underline-offset-4 hover:bg-gray-100">Resend Email</Button>
@@ -1403,7 +1403,7 @@ export default function App() {
            <Zap className="h-8 w-8 text-yellow-400 drop-shadow-md" />
            <div className="flex-1">
              <div className="font-black text-sm uppercase">Looking for more power?</div>
-             <div className="text-xs font-bold text-muted-foreground mt-1">Upgrade to the "God Tier" for unlimited access.</div>
+             <div className="text-xs font-bold text-muted-foreground mt-1">Upgrade to the &quot;God Tier&quot; for unlimited access.</div>
            </div>
            <Button className="bg-blue-400 text-white font-black hover:bg-blue-500 shadow-[var(--shadow-comic-sm)]">Upgrade</Button>
         </div>
@@ -1501,7 +1501,7 @@ export default function App() {
         </div>
         <Progress value={85} indicatorColor="bg-red-500" />
         <p className="text-xs font-bold text-muted-foreground mt-1 text-center">
-          You are nearing your plan\'s limit.
+          You are nearing your plan&apos;s limit.
         </p>
       </div>
     ),
@@ -1689,7 +1689,7 @@ export default function App() {
       <div className="w-full max-w-md bg-white dark:bg-card border-[3px] border-border rounded-[var(--radius-comic)] p-4 shadow-[var(--shadow-comic)] flex flex-col gap-4">
         <div className="flex gap-3 justify-end w-full">
           <div className="bg-yellow-400 p-4 border-[3px] border-border rounded-[var(--radius-comic)] rounded-tr-sm max-w-[80%] shadow-[var(--shadow-comic-sm)]">
-            <p className="font-bold text-sm text-black dark:text-foreground">Can you explain quantum physics like it's a comic book?</p>
+            <p className="font-bold text-sm text-black dark:text-foreground">Can you explain quantum physics like it&apos;s a comic book?</p>
           </div>
           <div className="shrink-0 pt-1">
             <div className="w-10 h-10 rounded-full border-[3px] border-border bg-white dark:bg-card flex items-center justify-center overflow-hidden shadow-[var(--shadow-comic-sm)]">
@@ -1704,7 +1704,7 @@ export default function App() {
             </div>
           </div>
           <div className="bg-gray-100 p-4 border-[3px] border-border rounded-[var(--radius-comic)] rounded-tl-sm max-w-[80%] relative shadow-[var(--shadow-comic-sm)]">
-             <p className="font-bold text-sm text-black dark:text-foreground">KA-POW! The atom is split! It's both a particle and a wave!</p>
+             <p className="font-bold text-sm text-black dark:text-foreground">KA-POW! The atom is split! It&apos;s both a particle and a wave!</p>
           </div>
         </div>
       </div>
@@ -1735,7 +1735,7 @@ export default function App() {
         </div>
         <div className="p-4 overflow-x-auto text-sm font-mono text-green-400">
           <div><span className="text-pink-400">def</span> <span className="text-blue-300">save_the_day</span>():</div>
-          <div className="pl-4"><span className="text-pink-400">print</span>(<span className="text-yellow-300">"Hero arriving!"</span>)</div>
+          <div className="pl-4"><span className="text-pink-400">print</span>(<span className="text-yellow-300">&quot;Hero arriving!&quot;</span>)</div>
         </div>
       </div>
     ),
@@ -2760,7 +2760,7 @@ export default function App() {
           <DialogHeader>
             <DialogTitle className="font-black uppercase text-xl">Edit Profile</DialogTitle>
             <DialogDescription className="font-bold text-muted-foreground">
-              Make changes to your profile here. Click save when you're done.
+              Make changes to your profile here. Click save when you&apos;re done.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
@@ -2955,7 +2955,7 @@ export default function App() {
               <SheetHeader>
                 <SheetTitle className="font-black uppercase text-2xl">Edit profile</SheetTitle>
                 <SheetDescription className="font-bold text-muted-foreground">
-                  Make changes to your profile here. Click save when you're done.
+                  Make changes to your profile here. Click save when you&apos;re done.
                 </SheetDescription>
               </SheetHeader>
               <div className="grid gap-4 py-4">
@@ -3183,7 +3183,7 @@ export default function App() {
             <div>
               <div className="font-black text-sm uppercase">HQ Contacted</div>
               <div className="text-xs font-bold text-gray-500">4 hours ago</div>
-              <div className="mt-2 text-sm font-bold bg-blue-50 p-2 rounded-[var(--radius-comic)] border-[2px] border-black dark:border-border">"We need backup at sector 4!"</div>
+              <div className="mt-2 text-sm font-bold bg-blue-50 p-2 rounded-[var(--radius-comic)] border-[2px] border-black dark:border-border">&quot;We need backup at sector 4!&quot;</div>
             </div>
           </div>
 

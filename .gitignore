@@ -48,3 +48,7 @@ Release_Notes.md
 Collab.md
 Component list.md
 unadded.md
+
+# build output
+/dist
+*.tgz

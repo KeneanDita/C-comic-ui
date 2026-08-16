@@ -3,8 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { TypographyH1, TypographyH2, TypographyH3, TypographyP } from "@/components/ui/typography";
-import { Checkbox } from "@/components/ui/checkbox";
+import { TypographyH1, TypographyH2, TypographyP } from "@/components/ui/typography";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
@@ -13,7 +12,6 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Zap, Palette, Layers, Terminal as CmdTerminal, ArrowRight, Shield, Star, Crown, Copy, Check } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 
 export default function Home() {
@@ -147,7 +145,7 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <TypographyP className="text-black/80 dark:text-foreground/80 mt-0">
-                  We don't sacrifice usability for style. Powered by Radix Primitives guaranteeing WAI-ARIA compliance, keyboard navigation, and structural integrity.
+                  We don&apos;t sacrifice usability for style. Powered by Radix Primitives guaranteeing WAI-ARIA compliance, keyboard navigation, and structural integrity.
                 </TypographyP>
               </CardContent>
             </Card>

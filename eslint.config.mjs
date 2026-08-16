@@ -12,7 +12,16 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated package output.
+    "dist/**",
   ]),
+  {
+    // Node scripts and the CLI are plain CommonJS.
+    files: ["bin/**/*.js", "scripts/**/*.js", "tests/**/*.ts", "tests/**/*.tsx"],
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;

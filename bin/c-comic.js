@@ -4,108 +4,139 @@ const fs = require("fs");
 const path = require("path");
 const { execSync } = require("child_process");
 
-async function main() {
-  const args = process.argv.slice(2);
-  const command = args[0];
-  const componentName = args[1];
+const REGISTRY_URL =
+  "https://raw.githubusercontent.com/KeneanDita/C-comic-ui/main/public/registry.json";
+const BUNDLED_REGISTRY = path.join(__dirname, "../public/registry.json");
 
-  if (command === "init") {
-    console.log("🚀 Initializing Comic UI into your multiverse...");
+const UTILS_SOURCE =
+  `import { type ClassValue, clsx } from "clsx";\n` +
+  `import { twMerge } from "tailwind-merge";\n\n` +
+  `export function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n`;
 
-    const utilsDir = path.join(process.cwd(), "lib");
-    if (!fs.existsSync(utilsDir)) fs.mkdirSync(utilsDir, { recursive: true });
-
-    const utilsCode =
-      `import { type ClassValue, clsx } from "clsx";\n` +
-      `import { twMerge } from "tailwind-merge";\n\n` +
-      `export function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n`;
-    const utilsPath = path.join(utilsDir, "utils.ts");
-    fs.writeFileSync(utilsPath, utilsCode);
-    console.log("🛠️ Created lib/utils.ts");
-
-    console.log(
-      "📦 Installing base dependencies: clsx tailwind-merge class-variance-authority",
-    );
-    execSync("npm install clsx tailwind-merge class-variance-authority", {
-      stdio: "inherit",
-    });
-
-    console.log(
-      "✅ Initialization complete! Try running: npx c-comic add button",
-    );
-    process.exit(0);
-  }
-
-  if (command === "add" && componentName) {
-    console.log(`🦸 Deploying <${componentName} /> to your project...`);
-
-    const registryUrl =
-      "https://raw.githubusercontent.com/KeneanDita/C-comic-ui/main/public/registry.json";
-    let registry;
-
-    try {
-      console.log(`Fetching registry from ${registryUrl}...`);
-      const res = await fetch(registryUrl);
-      if (!res.ok) {
-        throw new Error(
-          `Failed to fetch registry (${res.status} ${res.statusText}). Make sure your GitHub repo is public and the registry.json is pushed to main.`,
-        );
-      }
-      registry = await res.json();
-    } catch (err) {
-      console.error("❌ Could not load registry from GitHub:", err.message);
-
-      // Fallback for local testing if running inside the original repo
-      const localRegistryPath = path.join(__dirname, "../public/registry.json");
-      if (fs.existsSync(localRegistryPath)) {
-        console.log("⚠️ Using local registry fallback for testing...");
-        registry = JSON.parse(fs.readFileSync(localRegistryPath, "utf8"));
-      } else {
-        process.exit(1);
-      }
-    }
-
-    const comp = registry[componentName];
-    if (!comp) {
-      console.error(
-        `❌ Component "${componentName}" not found in the Comic UI registry.`,
-      );
-      if (registry) {
-        console.log("Available components: ", Object.keys(registry).join(", "));
-      }
-      process.exit(1);
-    }
-
-    const targetDir = path.join(process.cwd(), "components", "comic-ui");
-    if (!fs.existsSync(targetDir)) {
-      fs.mkdirSync(targetDir, { recursive: true });
-    }
-
-    comp.files.forEach((file) => {
-      const targetPath = path.join(targetDir, file.name);
-      fs.writeFileSync(targetPath, file.content);
-      console.log(`📝 Wrote ${targetPath}`);
-    });
-
-    if (comp.dependencies && comp.dependencies.length > 0) {
-      console.log(
-        `📦 Installing required dependencies: ${comp.dependencies.join(", ")}`,
-      );
-      execSync(`npm install ${comp.dependencies.join(" ")}`, {
-        stdio: "inherit",
-      });
-    }
-
-    console.log(
-      `✅ Success! You can now import { ${componentName.charAt(0).toUpperCase() + componentName.slice(1)} } from "@/components/comic-ui/${componentName}"`,
-    );
-  } else if (command !== "init") {
-    console.log("Usage:");
-    console.log("  npx c-comic init        - Initialize base config and utils");
-    console.log(
-      "  npx c-comic add <name>  - Add a primitive component to your project",
-    );
-  }
+function usage() {
+  console.log("Usage:");
+  console.log("  npx c-comic init              Create lib/utils.ts and install base deps");
+  console.log("  npx c-comic add <name...>     Copy components into components/comic-ui");
+  console.log("  npx c-comic list              List every available component");
 }
 
-main().catch(console.error);
+/**
+ * Loads the component registry. The copy bundled with the installed package is
+ * preferred so the CLI always matches the version the user installed; the
+ * GitHub copy is only used when the bundled one is missing.
+ */
+async function loadRegistry() {
+  if (fs.existsSync(BUNDLED_REGISTRY)) {
+    return JSON.parse(fs.readFileSync(BUNDLED_REGISTRY, "utf8"));
+  }
+
+  const res = await fetch(REGISTRY_URL);
+  if (!res.ok) {
+    throw new Error(
+      `Failed to fetch registry from ${REGISTRY_URL} (${res.status} ${res.statusText}).`,
+    );
+  }
+  return res.json();
+}
+
+function install(packages, cwd) {
+  if (packages.length === 0) return;
+  if (process.env.C_COMIC_SKIP_INSTALL === "1") {
+    console.log(`Skipping install of: ${packages.join(", ")}`);
+    return;
+  }
+  console.log(`Installing dependencies: ${packages.join(", ")}`);
+  execSync(`npm install ${packages.join(" ")}`, { stdio: "inherit", cwd });
+}
+
+function collect(registry, names) {
+  const resolved = [];
+  const seen = new Set();
+
+  const visit = (name) => {
+    if (seen.has(name)) return;
+    seen.add(name);
+    const entry = registry[name];
+    if (!entry) {
+      throw new Error(
+        `Component "${name}" not found. Available components: ${Object.keys(registry).join(", ")}`,
+      );
+    }
+    for (const dep of entry.registryDependencies || []) visit(dep);
+    resolved.push(entry);
+  };
+
+  names.forEach(visit);
+  return resolved;
+}
+
+function init(cwd) {
+  const utilsDir = path.join(cwd, "lib");
+  fs.mkdirSync(utilsDir, { recursive: true });
+  fs.writeFileSync(path.join(utilsDir, "utils.ts"), UTILS_SOURCE);
+  console.log("Created lib/utils.ts");
+  install(["clsx", "tailwind-merge", "class-variance-authority"], cwd);
+  console.log("Initialization complete. Try: npx c-comic add button");
+}
+
+function add(registry, names, cwd) {
+  const entries = collect(registry, names);
+  const targetDir = path.join(cwd, "components", "comic-ui");
+  fs.mkdirSync(targetDir, { recursive: true });
+
+  const dependencies = new Set();
+  for (const entry of entries) {
+    for (const file of entry.files) {
+      const targetPath = path.join(targetDir, file.name);
+      fs.writeFileSync(targetPath, file.content);
+      console.log(`Wrote ${path.relative(cwd, targetPath)}`);
+    }
+    for (const dep of entry.dependencies || []) dependencies.add(dep);
+  }
+
+  install([...dependencies], cwd);
+  console.log(
+    `Done. Import from "@/components/comic-ui/${entries[entries.length - 1].name}"`,
+  );
+}
+
+async function main(argv = process.argv.slice(2), cwd = process.cwd()) {
+  const [command, ...rest] = argv;
+
+  if (command === "init") {
+    init(cwd);
+    return 0;
+  }
+
+  if (command === "list") {
+    const registry = await loadRegistry();
+    console.log(Object.keys(registry).sort().join("\n"));
+    return 0;
+  }
+
+  if (command === "add") {
+    if (rest.length === 0) {
+      console.error("Specify at least one component, e.g. npx c-comic add button");
+      usage();
+      return 1;
+    }
+    const registry = await loadRegistry();
+    add(registry, rest, cwd);
+    return 0;
+  }
+
+  usage();
+  return command === undefined || command === "--help" || command === "-h" ? 0 : 1;
+}
+
+if (require.main === module) {
+  main().then(
+    (code) => process.exit(code),
+    (err) => {
+      console.error(err.message);
+      process.exit(1);
+    },
+  );
+}
+
+module.exports = { main, add, init, collect, loadRegistry, usage };
