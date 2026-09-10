@@ -10,7 +10,7 @@ This document describes how the published package is verified. The automated par
 | `tests/components.test.tsx` | Components render, handle interaction (button clicks, tab switching, dialog open, checkbox/switch toggling), forward refs, and the barrel exports every documented component. |
 | `tests/package.test.ts` | `package.json` contract: not private, no self-dependency, React declared only as a peer dependency, no unused runtime dependencies, every runtime import declared, `files` list. Build output: CJS + ESM + type declarations exist, per-format `type` markers, every `exports` path resolves, no `@/` alias imports leak into `dist`, `"use client"` survives compilation, ESM specifiers are fully specified, and both formats load in Node. |
 | `tests/registry.test.ts` | `public/registry.json` is regenerated from the component sources, covers every component, rewrites in-repo relative imports to consumer aliases, and declares each component's dependencies. |
-| `tests/cli.test.ts` | `c-comic init`, `add` (including transitive component dependencies), `list`, and the exit codes for unknown commands/components. |
+| `tests/cli.test.ts` | `c-comic init`, `add` (including transitive component dependencies), `list`, the exit codes for unknown commands/components, and the CLI's supply-chain guards: no network fetch, no `execSync`, and rejection of registry entries with unsafe file names, package names or component dependencies. |
 
 ## Manual verification performed for 1.1.3
 
@@ -38,3 +38,17 @@ This document describes how the published package is verified. The automated par
 - `recharts`, `@radix-ui/react-dropdown-menu` and `@radix-ui/react-toggle-group` were installed for
   every consumer even though the library never imports them.
 - The component registry used by the CLI was stale relative to the component sources.
+
+## Fixed in 1.1.4
+
+Supply-chain hardening of `bin/c-comic.js`:
+
+- The CLI no longer fetches `registry.json` over the network; it only uses the copy bundled in the
+  installed package, so it cannot be made to write code that was not part of the published version.
+- Registry entries are validated before use: file names must be plain `*.ts`/`*.tsx` basenames
+  (blocking path traversal), package names must match the npm name grammar, and component
+  dependencies must be simple component names.
+- Writes are re-checked to resolve inside `components/comic-ui`.
+- `execSync("npm install " + packages.join(" "))` was replaced with
+  `spawnSync("npm", ["install", "--", ...packages], { shell: false })`, so registry data can never be
+  interpreted by a shell.
