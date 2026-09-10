@@ -23,7 +23,7 @@
     "design-system"
   ],
   "bin": {
-    "c-comic": "./bin/c-comic.js"
+    "c-comic": "bin/c-comic.js"
   },
   "private": false,
   "sideEffects": false,

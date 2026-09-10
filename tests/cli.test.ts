@@ -21,7 +21,7 @@ afterEach(() => {
 describe("c-comic CLI", () => {
   it("is executable and declared as the package bin", () => {
     const pkg = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
-    expect(pkg.bin["c-comic"]).toBe("./bin/c-comic.js");
+    expect(pkg.bin["c-comic"]).toBe("bin/c-comic.js");
     expect(fs.readFileSync(path.join(root, "bin", "c-comic.js"), "utf8")).toMatch(
       /^#!\/usr\/bin\/env node/,
     );
