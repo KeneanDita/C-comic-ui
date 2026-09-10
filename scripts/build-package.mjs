@@ -15,15 +15,15 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
 
-const tsc = path.join(
-  root,
-  "node_modules",
-  ".bin",
-  process.platform === "win32" ? "tsc.cmd" : "tsc",
-);
+// Invoke the TypeScript entry point directly through node: spawning the
+// `.bin/tsc.cmd` shim fails with EINVAL on Windows under Node >= 18.20/20.12/22.
+const tsc = path.join(root, "node_modules", "typescript", "bin", "tsc");
 
 function run(project) {
-  execFileSync(tsc, ["-p", project], { cwd: root, stdio: "inherit" });
+  execFileSync(process.execPath, [tsc, "-p", project], {
+    cwd: root,
+    stdio: "inherit",
+  });
 }
 
 function walk(dir) {

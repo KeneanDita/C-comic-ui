@@ -26,9 +26,15 @@ function externalDependencies(content) {
     const specifier = match[1];
     if (specifier.startsWith(".") || specifier.startsWith("@/")) continue;
     if (specifier === "react" || specifier.startsWith("react/")) continue;
-    if (specifier === "react-dom" || specifier.startsWith("react-dom/")) continue;
+    if (specifier === "react-dom" || specifier.startsWith("react-dom/"))
+      continue;
     const scoped = specifier.startsWith("@");
-    deps.add(specifier.split("/").slice(0, scoped ? 2 : 1).join("/"));
+    deps.add(
+      specifier
+        .split("/")
+        .slice(0, scoped ? 2 : 1)
+        .join("/"),
+    );
   }
   return [...deps].sort();
 }
@@ -52,7 +58,10 @@ function buildRegistry() {
     const name = file.replace(".tsx", "");
     if (name === "index") continue;
 
-    const content = fs.readFileSync(path.join(componentsDir, file), "utf8");
+    // Normalize line endings so the registry is identical regardless of git autocrlf.
+    const content = fs
+      .readFileSync(path.join(componentsDir, file), "utf8")
+      .replace(/\r\n/g, "\n");
 
     registry[name] = {
       name,
@@ -71,7 +80,10 @@ function buildRegistry() {
 }
 
 if (require.main === module) {
-  fs.writeFileSync(registryPath, `${JSON.stringify(buildRegistry(), null, 2)}\n`);
+  fs.writeFileSync(
+    registryPath,
+    `${JSON.stringify(buildRegistry(), null, 2)}\n`,
+  );
   console.log("Comic UI registry written to public/registry.json");
 }
 

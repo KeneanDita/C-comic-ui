@@ -23,25 +23,34 @@ export interface ChartTooltipContentProps
   hideLabel?: boolean
 }
 
+const CSS_IDENT = /^[a-zA-Z_][a-zA-Z0-9_-]*$/
+
 const ChartContainer = React.forwardRef<HTMLDivElement, ChartContainerProps>(
   ({ className, config, children, ...props }, ref) => {
-    // Generate CSS variables for the chart colors based on config
-    const styleStr = Object.entries(config).map(([key, val]) => {
-      return `--color-${key}: ${val.color};`
-    }).join(' ')
+    // Scoped inline custom properties instead of an injected <style> tag, so
+    // config values can never break out into arbitrary CSS.
+    const colorVars = Object.entries(config).reduce<Record<string, string>>(
+      (vars, [key, val]) => {
+        if (CSS_IDENT.test(key)) vars[`--color-${key}`] = val.color
+        return vars
+      },
+      {}
+    )
 
     return (
-      <div 
-        ref={ref} 
+      <div
+        ref={ref}
         className={cn(
           "w-full bg-white dark:bg-card border-[3px] border-black dark:border-border rounded-[var(--radius-comic)] shadow-[var(--shadow-comic)] p-4 relative font-bold",
           className
         )}
-        style={{ ...props.style } as React.CSSProperties}
         {...props}
       >
-        <style dangerouslySetInnerHTML={{ __html: `[data-chart-container] { ${styleStr} }` }} />
-        <div data-chart-container className="w-full h-full">
+        <div
+          data-chart-container
+          className="w-full h-full"
+          style={colorVars as React.CSSProperties}
+        >
           {children}
         </div>
       </div>

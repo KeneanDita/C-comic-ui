@@ -2,11 +2,16 @@
 
 const fs = require("fs");
 const path = require("path");
-const { execSync } = require("child_process");
+const { spawnSync } = require("child_process");
 
 const REGISTRY_URL =
   "https://raw.githubusercontent.com/KeneanDita/C-comic-ui/main/public/registry.json";
 const BUNDLED_REGISTRY = path.join(__dirname, "../public/registry.json");
+
+// npm package name grammar (optionally scoped), no version specifiers or shell characters.
+const PACKAGE_NAME = /^(@[a-z0-9-~][a-z0-9-._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/;
+// Registry files must be plain component file names that stay inside components/comic-ui.
+const COMPONENT_FILE = /^[\w-]+\.tsx?$/;
 
 const UTILS_SOURCE =
   `import { type ClassValue, clsx } from "clsx";\n` +
@@ -15,8 +20,12 @@ const UTILS_SOURCE =
 
 function usage() {
   console.log("Usage:");
-  console.log("  npx c-comic init              Create lib/utils.ts and install base deps");
-  console.log("  npx c-comic add <name...>     Copy components into components/comic-ui");
+  console.log(
+    "  npx c-comic init              Create lib/utils.ts and install base deps",
+  );
+  console.log(
+    "  npx c-comic add <name...>     Copy components into components/comic-ui",
+  );
   console.log("  npx c-comic list              List every available component");
 }
 
@@ -41,12 +50,28 @@ async function loadRegistry() {
 
 function install(packages, cwd) {
   if (packages.length === 0) return;
+  const invalid = packages.filter((name) => !PACKAGE_NAME.test(name));
+  if (invalid.length > 0) {
+    throw new Error(
+      `Refusing to install invalid package name(s): ${invalid.join(", ")}`,
+    );
+  }
   if (process.env.C_COMIC_SKIP_INSTALL === "1") {
     console.log(`Skipping install of: ${packages.join(", ")}`);
     return;
   }
   console.log(`Installing dependencies: ${packages.join(", ")}`);
-  execSync(`npm install ${packages.join(" ")}`, { stdio: "inherit", cwd });
+  const npm = process.platform === "win32" ? "npm.cmd" : "npm";
+  const result = spawnSync(npm, ["install", ...packages], {
+    stdio: "inherit",
+    cwd,
+    // Windows needs a shell to run the npm.cmd shim; names are validated above.
+    shell: process.platform === "win32",
+  });
+  if (result.error) throw result.error;
+  if (result.status !== 0) {
+    throw new Error(`npm install exited with code ${result.status}`);
+  }
 }
 
 function collect(registry, names) {
@@ -56,7 +81,7 @@ function collect(registry, names) {
   const visit = (name) => {
     if (seen.has(name)) return;
     seen.add(name);
-    const entry = registry[name];
+    const entry = Object.hasOwn(registry, name) ? registry[name] : undefined;
     if (!entry) {
       throw new Error(
         `Component "${name}" not found. Available components: ${Object.keys(registry).join(", ")}`,
@@ -87,6 +112,16 @@ function add(registry, names, cwd) {
   const dependencies = new Set();
   for (const entry of entries) {
     for (const file of entry.files) {
+      if (typeof file.name !== "string" || !COMPONENT_FILE.test(file.name)) {
+        throw new Error(
+          `Registry entry "${entry.name}" has an invalid file name: ${file.name}`,
+        );
+      }
+      if (typeof file.content !== "string") {
+        throw new Error(
+          `Registry entry "${entry.name}" has invalid content for ${file.name}`,
+        );
+      }
       const targetPath = path.join(targetDir, file.name);
       fs.writeFileSync(targetPath, file.content);
       console.log(`Wrote ${path.relative(cwd, targetPath)}`);
@@ -116,7 +151,9 @@ async function main(argv = process.argv.slice(2), cwd = process.cwd()) {
 
   if (command === "add") {
     if (rest.length === 0) {
-      console.error("Specify at least one component, e.g. npx c-comic add button");
+      console.error(
+        "Specify at least one component, e.g. npx c-comic add button",
+      );
       usage();
       return 1;
     }
@@ -126,7 +163,9 @@ async function main(argv = process.argv.slice(2), cwd = process.cwd()) {
   }
 
   usage();
-  return command === undefined || command === "--help" || command === "-h" ? 0 : 1;
+  return command === undefined || command === "--help" || command === "-h"
+    ? 0
+    : 1;
 }
 
 if (require.main === module) {
